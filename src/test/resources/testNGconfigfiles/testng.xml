@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Train Line Assignment suite" parallel="methods"
+	verbose="2" thread-count="4" configfailurepolicy="skip">  <!-- continue if precondition i.e *Before fails -->
+	<listeners>
+		<!--<listener class-name="com.qa.extentReportListener.ExtentTestNGIReporterListener" 
+			/> -->
+		<listener
+			class-name="com.trainline.qa.util.AnnotationTransformer" />
+		<listener
+			class-name="com.trainline.qa.report.ExtentTestNGITestListener" />
+	</listeners>
+
+	<test name="Ticket Fare Test">
+		<classes>
+			<class name="com.trainline.qa.tests.DemoTest">
+				<methods>
+					<include name="demoTest" />
+				</methods>
+			</class>
+			<class name="com.trainline.qa.tests.TicketFareTest" />
+		</classes>
+	</test> <!-- Default test -->
+
+</suite> <!-- Default suite -->

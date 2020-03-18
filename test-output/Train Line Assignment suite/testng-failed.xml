@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="-1" guice-stage="DEVELOPMENT" verbose="2" name="Failed suite [Train Line Assignment suite]">
+  <listeners>
+    <listener class-name="com.trainline.qa.util.AnnotationTransformer"/>
+    <listener class-name="com.trainline.qa.report.ExtentTestNGITestListener"/>
+  </listeners>
+  <test verbose="2" name="Ticket Fare Test(failed)">
+    <classes>
+      <class name="com.trainline.qa.tests.DemoTest">
+        <methods>
+          <include name="demoTest"/>
+          <include name="setup"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.trainline.qa.tests.DemoTest -->
+    </classes>
+  </test> <!-- Ticket Fare Test(failed) -->
+</suite> <!-- Failed suite [Train Line Assignment suite] -->
