@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.trainline.qa.base.DriverFactory;
-import com.trainline.qa.util.TestUtil;
+import com.trainline.qa.util.Constants;
 
 public class CheckOutPage {
 	RegisterPage registerPage;
@@ -27,7 +27,7 @@ public class CheckOutPage {
 	private WebElement fareOnCheckOut;
 
 	public String getFareOnChckOutPage() {
-		WebDriverWait wait = new WebDriverWait(DriverFactory.getInstance().getDriver(), TestUtil.EXPLICIT_WAIT);
+		WebDriverWait wait = new WebDriverWait(DriverFactory.getInstance().getDriver(), Constants.EXPLICIT_WAIT);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[@data-test='trip-card-total']")));
 		return fareOnCheckOut.getAttribute("innerHTML");
 	}

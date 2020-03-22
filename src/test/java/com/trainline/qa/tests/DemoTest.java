@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 import com.trainline.qa.base.DriverFactory;
 import com.trainline.qa.util.LoggerUtil;
+import com.trainline.qa.util.RetryAnalyzer;
 import com.trainline.qa.util.TestUtil;
 import com.trainline.qa.util.WebEventListener;
 
@@ -29,9 +30,15 @@ public class DemoTest {
 		DriverFactory.getInstance().removeDriver();
 	}
 
-	@Test
+	@Test(retryAnalyzer = RetryAnalyzer.class, enabled=false)
 	public void demoTest() {
 		LoggerUtil.logMessage("Demo Test Execution");
 		Assert.assertEquals(true, false);
+	}
+	
+	@Test(enabled = false)
+	public void AnnotationTtest() {
+		LoggerUtil.logMessage("Annotation Transformation Test");
+		Assert.assertEquals(true, true);
 	}
 }

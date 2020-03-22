@@ -19,12 +19,6 @@ import com.trainline.qa.base.DriverFactory;
 
 public class TestUtil {
 
-	public static final long PAGE_LOAD_TIMEOUT = 40;
-	public static final long IMPLICIT_WAIT = 5;
-	public static final long EXPLICIT_WAIT = 15;
-	public static final String TEST_DATA_PATH = System.getProperty("user.dir")
-			+ "/src/main/java/com/trainline/qa/testData/TestDocument.xlsx";
-	public static final String APP_URL = "https://www.thetrainline.com/";
 	private static FileInputStream fis = null;
 	private static XSSFWorkbook workbook = null;
 	private static XSSFSheet sheet = null;
@@ -77,7 +71,7 @@ public class TestUtil {
 		eDriver.register(eventListener);
 		eDriver.manage().deleteAllCookies();
 		eDriver.manage().window().maximize();
-		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(Constants.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 		return eDriver;
 	}
-}
+}// End of class TestUtil

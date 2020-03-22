@@ -17,11 +17,12 @@ public class RetryAnalyzer implements IRetryAnalyzer {
 	 * it not.
 	 *
 	 */
+	
 	public boolean retry(ITestResult result) {
-		if (counter < retryLimit) {
-			counter++;
-			return true;
-		}
+			if (counter < retryLimit) {
+				counter++;
+				return true;
+			}
 		return false;
 	}
 }

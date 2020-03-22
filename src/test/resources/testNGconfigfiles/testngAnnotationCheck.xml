@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<listeners>
+		<!--<listener class-name="com.qa.extentReportListener.ExtentTestNGIReporterListener" 
+			/> -->
+		<listener
+			class-name="com.trainline.qa.util.AnnotationTransformer" />
+		<listener
+			class-name="com.trainline.qa.report.ExtentTestNGITestListener" />
+	</listeners>
+
+	<test thread-count="1" name="Test">
+		<classes>
+		
+			<class name="com.trainline.qa.tests.DemoTest">
+            <methods>
+			    <exclude name="demoTest" />
+		   </methods>
+			</class>
+		
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

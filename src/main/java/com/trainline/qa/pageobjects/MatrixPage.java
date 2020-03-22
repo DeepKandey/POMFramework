@@ -12,8 +12,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.trainline.qa.base.DriverFactory;
+import com.trainline.qa.util.Constants;
 import com.trainline.qa.util.LoggerUtil;
-import com.trainline.qa.util.TestUtil;
 
 public class MatrixPage {
 
@@ -33,7 +33,7 @@ public class MatrixPage {
 
 	public void clickOnFirstClassOption() throws InterruptedException {
 		Thread.sleep(1000);
-		WebDriverWait wait = new WebDriverWait(DriverFactory.getInstance().getDriver(), TestUtil.EXPLICIT_WAIT);
+		WebDriverWait wait = new WebDriverWait(DriverFactory.getInstance().getDriver(), Constants.EXPLICIT_WAIT);
 		wait.until(ExpectedConditions.elementToBeClickable(
 				DriverFactory.getInstance().getDriver().findElement(By.xpath("//button[@class='_1vwjm4ai']"))));
 		Thread.sleep(1000);
@@ -89,7 +89,7 @@ public class MatrixPage {
 	}
 
 	public void clickOnCheckOut() throws InterruptedException {
-		WebDriverWait wait = new WebDriverWait(DriverFactory.getInstance().getDriver(), TestUtil.EXPLICIT_WAIT);
+		WebDriverWait wait = new WebDriverWait(DriverFactory.getInstance().getDriver(), Constants.EXPLICIT_WAIT);
 		try {
 			WebElement continueBtn1 = DriverFactory.getInstance().getDriver()
 					.findElement(By.xpath("//span[@class='_eu1pe2']/span"));

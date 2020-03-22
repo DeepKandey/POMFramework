@@ -11,8 +11,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.trainline.qa.base.DriverFactory;
+import com.trainline.qa.util.Constants;
 import com.trainline.qa.util.LoggerUtil;
-import com.trainline.qa.util.TestUtil;
 
 public class SearchPage {
 	@FindBy(id = "from.text")
@@ -43,7 +43,7 @@ public class SearchPage {
 	}
 
 	public void clickOnSearchBtn() {
-		WebDriverWait wait = new WebDriverWait(DriverFactory.getInstance().getDriver(), TestUtil.EXPLICIT_WAIT);
+		WebDriverWait wait = new WebDriverWait(DriverFactory.getInstance().getDriver(), Constants.EXPLICIT_WAIT);
 		wait.until(ExpectedConditions.elementToBeClickable(searchButton));
 		searchButton.click();
 		while (!DriverFactory.getInstance().getDriver()

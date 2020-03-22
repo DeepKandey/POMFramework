@@ -14,6 +14,7 @@ import com.trainline.qa.pageobjects.CheckOutPage;
 import com.trainline.qa.pageobjects.MatrixPage;
 import com.trainline.qa.pageobjects.RegisterPage;
 import com.trainline.qa.pageobjects.SearchPage;
+import com.trainline.qa.util.Constants;
 import com.trainline.qa.util.ExcelReader;
 import com.trainline.qa.util.LoggerUtil;
 import com.trainline.qa.util.TestUtil;
@@ -29,7 +30,7 @@ public class TicketFareTest {
 	public void setUp() {
 		DriverFactory.getInstance().setDriver("chrome");
 		WebDriver driver = TestUtil.webDriverEvents(DriverFactory.getInstance().getDriver());
-		driver.get(TestUtil.APP_URL);
+		driver.get(DriverFactory.getInstance().getProperties().getProperty("url"));
 
 		searchPage = new SearchPage(driver);
 		matrixPage = new MatrixPage(driver);
@@ -44,7 +45,7 @@ public class TicketFareTest {
 
 	@DataProvider
 	public Object[][] getData() throws IOException {
-		ExcelReader excelReader = new ExcelReader(TestUtil.TEST_DATA_PATH);
+		ExcelReader excelReader = new ExcelReader(Constants.TEST_DATA_PATH);
 		Object userData[][] = excelReader.getExcelData("Sheet2");
 		return userData;
 	}

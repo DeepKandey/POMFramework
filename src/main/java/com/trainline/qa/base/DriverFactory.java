@@ -75,4 +75,8 @@ public class DriverFactory {
 		getDriver().quit();
 		driver.remove();
 	}
+
+	public Properties getProperties() {
+		return DriverFactory.prop;
+	}
 } // end of class DriverFactory

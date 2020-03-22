@@ -41,7 +41,7 @@ public class ExtentTestNGITestListener implements ITestListener {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		try {
 			test.get().fail("Test Case Failed", MediaEntityBuilder
 					.createScreenCaptureFromPath(TestUtil.takeScreenshotAtEndOfTest(result.getName())).build());
@@ -70,11 +70,14 @@ public class ExtentTestNGITestListener implements ITestListener {
 	}
 
 	public void onStart(ITestContext context) {
-		LoggerUtil.logMessage("Extent Reports Version 4 Test Suite started!");
+		LoggerUtil.logMessage("Extent Reports Version 4 Test Suite started! " + context.getOutputDirectory());
 	}
 
 	public void onFinish(ITestContext context) {
 		LoggerUtil.logMessage("Extent Reports Version 4  Test Suite is ending!");
+		LoggerUtil.logMessage("This is onFinish method. Passed Tests: " + context.getPassedTests());
+		LoggerUtil.logMessage("This is onFinish method. Failed Test: " + context.getFailedTests());
+		LoggerUtil.logMessage("This is onFinish method. Skipped Test: " + context.getSkippedTests());
 		extent.flush();
 	}
 }
