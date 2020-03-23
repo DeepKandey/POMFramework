@@ -9,7 +9,6 @@ import org.testng.annotations.Test;
 
 import com.trainline.qa.base.DriverFactory;
 import com.trainline.qa.util.LoggerUtil;
-import com.trainline.qa.util.RetryAnalyzer;
 import com.trainline.qa.util.TestUtil;
 import com.trainline.qa.util.WebEventListener;
 
@@ -30,7 +29,7 @@ public class DemoTest {
 		DriverFactory.getInstance().removeDriver();
 	}
 
-	@Test(retryAnalyzer = RetryAnalyzer.class, enabled=false)
+	@Test(alwaysRun = true)
 	public void demoTest() {
 		LoggerUtil.logMessage("Demo Test Execution");
 		Assert.assertEquals(true, false);

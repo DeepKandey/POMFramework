@@ -12,13 +12,10 @@
 
 	<test thread-count="1" name="Test">
 		<classes>
-		
+
 			<class name="com.trainline.qa.tests.DemoTest">
-            <methods>
-			    <exclude name="demoTest" />
-		   </methods>
 			</class>
-		
+
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
