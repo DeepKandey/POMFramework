@@ -78,6 +78,7 @@ public class ExtentTestNGITestListener implements ITestListener {
 		LoggerUtil.logMessage("This is onFinish method. Passed Tests: " + context.getPassedTests());
 		LoggerUtil.logMessage("This is onFinish method. Failed Test: " + context.getFailedTests());
 		LoggerUtil.logMessage("This is onFinish method. Skipped Test: " + context.getSkippedTests());
+		extent.getStartedReporters().forEach(a->a.getReporterName().lines().forEach(b->System.out.println(b)));
 		extent.flush();
 	}
-}
+}// End of class ExtentTestNGITestListener

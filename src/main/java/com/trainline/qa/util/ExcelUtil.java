@@ -25,7 +25,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class ExcelReader {
+public class ExcelUtil {
 
 	public String path;
 	public FileInputStream fis = null;
@@ -35,7 +35,7 @@ public class ExcelReader {
 	private XSSFRow row = null;
 	private XSSFCell cell = null;
 
-	public ExcelReader(String path) {
+	public ExcelUtil(String path) {
 		this.path = path;
 		try {
 			fis = new FileInputStream(path);

@@ -17,7 +17,7 @@ public class AnnotationTransformer implements IAnnotationTransformer {
 	}
 
 	@SuppressWarnings("rawtypes")
-	public void transform(ITestAnnotation annotation, Class testClass, Constructor testConstructor, Method testMethod) {
+	public synchronized void transform(ITestAnnotation annotation, Class testClass, Constructor testConstructor, Method testMethod) {
 
 		try {
 			Object[][] object = TestUtil.getExcelData(Constants.TEST_DATA_PATH, "TestScripts");

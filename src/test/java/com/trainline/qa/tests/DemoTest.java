@@ -36,8 +36,14 @@ public class DemoTest {
 	}
 	
 	@Test(enabled = false)
-	public void AnnotationTtest() {
+	public void annotationTest() {
 		LoggerUtil.logMessage("Annotation Transformation Test");
-		Assert.assertEquals(true, true);
+		Assert.assertEquals(false, true);
+	}
+	
+	@Test()
+	public void retryTest() {
+		LoggerUtil.logMessage("RetryAnalyzer Test");
+		Assert.assertEquals(false, true);
 	}
 }

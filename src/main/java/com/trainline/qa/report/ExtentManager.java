@@ -16,10 +16,10 @@ public class ExtentManager {
 	private static Platform platform;
 	private static Date date = new Date();
 	private static String reportFileName = "Extent_" + date.toString().replaceAll(":", "_") + ".html";
-	private static String windowsPath = System.getProperty("user.dir") + "\\test-output";
+	private static String windowsPath = System.getProperty("user.dir") + "/test-output";
 	// private static String macPath = System.getProperty("user.dir")+
 	// "/TestReport";
-	private static String winReportFileLoc = windowsPath + "\\" + reportFileName;
+	private static String winReportFileLoc = windowsPath + "/" + reportFileName;
 	// private static String macReportFileLoc = macPath + "/" + reportFileName;
 
 	public static ExtentReports getInstance() {
