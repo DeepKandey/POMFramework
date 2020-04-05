@@ -1,5 +1,11 @@
 package com.trainline.qa.util;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -48,7 +54,6 @@ public class WebInteractUtil {
 			// Use clear=false
 			if (clear)
 				element.clear();
-
 			element.sendKeys(value);
 
 			if (tab)
@@ -81,10 +86,82 @@ public class WebInteractUtil {
 		RemoteWebDriver remoteDriver = (RemoteWebDriver) driver;
 		remoteDriver.getCapabilities().getBrowserName();
 	}// end of method getBrowserName()
-	
+
 	public void executeUsingJavaScript(String executionScript, WebElement element) {
 		((JavascriptExecutor) driver).executeScript(executionScript, element);
 	}// end of method executeUsingJavaScript()
+
+	public void isEnabled(WebElement element) {
+		if (element.isEnabled())
+			System.out.println("Successfully verified that element is enabled");
+		else
+			System.out.println("Failed to verify that element is enabled");
+	}// end of method isEnabled()
+
+	public void clear(WebElement element) {
+		Click(element, null);
+		element.clear();
+	} // end of method clear()
+
+	public void isSelected(WebElement element) {
+		if (element.isEnabled())
+			System.out.println("Successfully verified that element is selected");
+		else
+			System.out.println("Failed to verify that element is selected");
+	}// end of method isSelected()
+
+	public void isDisplayed(WebElement element) {
+		try {
+			if (element.isDisplayed()) {
+				System.out.println("Successfully verified element is displayed");
+			}
+		} catch (Exception e) {
+			System.out.println("Failed to verify element is displayed");
+		}
+	}// end of method isDisplayed()
+
+	public String getText(WebElement element) {
+		return element.getText().trim();
+	}// end of method getText()
+
+	public List<String> getText(List<WebElement> list) {
+		List<String> listOfString = new ArrayList<String>();
+		for (int i = 0; i < list.size(); i++) {
+			listOfString.add(getText(list.get(i)).toLowerCase());
+		}
+		return listOfString;
+	}// end of method getText()
+
+	public int getCount(List<WebElement> listOfelement) {
+		return listOfelement.size();
+	} // end of method getCount()
+
+	public String getAttributeValue(WebElement element, String attributeName) {
+		return element.getAttribute(attributeName).trim();
+	} // end of method getAttributeValue()
+
+	public String getCSSValue(WebElement element, String propertyName) {
+		return element.getCssValue(propertyName);
+	}// end of method getCSSValue()
+
+	public Set<String> getWindowHandles() {
+		return driver.getWindowHandles();
+	}
+
+	public boolean setTimeZone(String timeZone) {
+		try {
+			Process process = new ProcessBuilder("tzutil.exe", "/s", "India Standard Time").start();
+			return process.isAlive();
+		} catch (IOException e) {
+			System.out.println("Failed to set timezone");
+			e.printStackTrace();
+			return false;
+		}
+	}
 	
-	
+	public WebElement getWebElement(By locator) {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		return driver.findElement(locator);
+	}
 }

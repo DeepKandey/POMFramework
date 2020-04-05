@@ -35,6 +35,7 @@ public class RetryAnalyzer implements IRetryAnalyzer {
 					+ (((MAX_RETRY_COUNT - count) + 1)) + " out of " + MAX_RETRY_COUNT);
 			retryAgain = true;
 			--count;
+			result.setStatus(ITestResult.FAILURE);
 			LoggerUtil.logMessage(result.getInstanceName());
 		}
 		return retryAgain;
