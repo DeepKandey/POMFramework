@@ -19,7 +19,7 @@ public class DriverFactory {
 
 	private static DriverFactory instance = null;
 	// thread local driver object for web driver
-	private static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+	private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
 	private DriverFactory() {
 	}
@@ -41,7 +41,6 @@ public class DriverFactory {
 	}
 
 	public final void setDriver(String browser) {
-		// DesiredCapabilities caps = null;
 		switch (browser.toUpperCase()) {
 		case "CHROME":
 			WebDriverManager.chromedriver().setup();

@@ -23,7 +23,7 @@ public class WebInteractUtil {
 
 		Actions action = new Actions(driver);
 		try {
-			if (isClickWithJavaScriptExecutor) {
+			if (Boolean.TRUE.equals(isClickWithJavaScriptExecutor)) {
 				((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 			} else
 				element.click();
@@ -52,11 +52,11 @@ public class WebInteractUtil {
 			}
 
 			// Use clear=false
-			if (clear)
+			if (Boolean.TRUE.equals(clear))
 				element.clear();
 			element.sendKeys(value);
 
-			if (tab)
+			if (Boolean.TRUE.equals(tab))
 				element.sendKeys(Keys.TAB);
 		} catch (Exception e) {
 			System.out.println("Failed to enter value: " + value);
@@ -146,22 +146,22 @@ public class WebInteractUtil {
 
 	public Set<String> getWindowHandles() {
 		return driver.getWindowHandles();
-	}
+	} // end of method getWindowHandles()
 
 	public boolean setTimeZone(String timeZone) {
 		try {
-			Process process = new ProcessBuilder("tzutil.exe", "/s", "India Standard Time").start();
+			Process process = new ProcessBuilder("tzutil.exe", "/s", timeZone).start();
 			return process.isAlive();
 		} catch (IOException e) {
 			System.out.println("Failed to set timezone");
 			e.printStackTrace();
 			return false;
 		}
-	}
-	
+	}// end of method setTimeZone()
+
 	public WebElement getWebElement(By locator) {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 		return driver.findElement(locator);
-	}
+	} // end of method getWebElement()
 }

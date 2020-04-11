@@ -52,7 +52,7 @@ public class TicketFareTest {
 
 	// @Test(retryAnalyzer=RetryAnalyzer.class)
 	@Test(dataProvider = "getData")
-	public void verifyTicketFare(String addressData1, String addressData2) throws InterruptedException {
+	public void verifyTicketFare() throws InterruptedException {
 		// Enter Journey Details
 		searchPage.enterJourneyDetails();
 		// Click on Search
@@ -62,7 +62,7 @@ public class TicketFareTest {
 		// Click on Register Link
 		matrixPage.clickOnRegisterLink();
 		// Enter Registration Details
-		registerPage.enterRegistrationDetails(addressData1, addressData2);
+		registerPage.enterRegistrationDetails();
 		// Click on Register button
 		registerPage.clickOnRegisterBtn();
 		// Click on Search button

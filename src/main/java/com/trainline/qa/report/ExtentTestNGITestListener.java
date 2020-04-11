@@ -20,8 +20,9 @@ public class ExtentTestNGITestListener implements ITestListener {
 
 	// Extent Report Declarations
 	private static ExtentReports extent = ExtentManager.createInstance();
-	private static ThreadLocal<ExtentTest> test = new ThreadLocal<ExtentTest>();
+	private static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
 
+	@Override
 	public void onTestStart(ITestResult result) {
 		LoggerUtil.logMessage((result.getMethod().getMethodName() + " started!"));
 		ExtentTest extentTest = extent.createTest(result.getMethod().getMethodName(),
@@ -29,11 +30,13 @@ public class ExtentTestNGITestListener implements ITestListener {
 		test.set(extentTest);
 	}
 
+	@Override
 	public void onTestSuccess(ITestResult result) {
 		LoggerUtil.logMessage((result.getMethod().getMethodName() + " passed!"));
 		test.get().pass("Test Case Passed");
 	}
 
+	@Override
 	public void onTestFailure(ITestResult result) {
 		LoggerUtil.logMessage((result.getMethod().getMethodName() + " failed!"));
 		try {
@@ -51,7 +54,7 @@ public class ExtentTestNGITestListener implements ITestListener {
 
 		String exceptionMessage = Arrays.toString(result.getThrowable().getStackTrace());
 		test.get().fail("<details>" + "<summary>" + "<b>" + "<font color=" + "red>" + "Exception Occured:Click to see"
-				+ "</font>" + "</b>" + "</summary>" + exceptionMessage.replaceAll(",", "<br>") + "</details>" + " \n");
+				+ "</font>" + "</b>" + "</summary>" + exceptionMessage.replace(",", "<br>") + "</details>" + " \n");
 		// test.get().fail(result.getThrowable());
 
 		String failureLog = "TEST CASE FAILED";
@@ -59,20 +62,24 @@ public class ExtentTestNGITestListener implements ITestListener {
 		test.get().fail(markup);
 	}
 
+	@Override
 	public void onTestSkipped(ITestResult result) {
 		LoggerUtil.logMessage((result.getMethod().getMethodName() + " skipped!"));
 		test.get().skip("Test Case Skipped");
 		test.get().skip(result.getThrowable());
 	}
 
+	@Override
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
 		LoggerUtil.logMessage(("onTestFailedButWithinSuccessPercentage for " + result.getMethod().getMethodName()));
 	}
 
+	@Override
 	public void onStart(ITestContext context) {
 		LoggerUtil.logMessage("Extent Reports Version 4 Test Suite started! " + context.getOutputDirectory());
 	}
 
+	@Override
 	public void onFinish(ITestContext context) {
 		LoggerUtil.logMessage("Extent Reports Version 4  Test Suite is ending!");
 		LoggerUtil.logMessage("This is onFinish method. Passed Tests: " + context.getPassedTests());
@@ -80,5 +87,6 @@ public class ExtentTestNGITestListener implements ITestListener {
 		LoggerUtil.logMessage("This is onFinish method. Skipped Test: " + context.getSkippedTests());
 		extent.getStartedReporters().forEach(a->a.getReporterName().lines().forEach(b->System.out.println(b)));
 		extent.flush();
+		test.remove();
 	}
 }// End of class ExtentTestNGITestListener

@@ -53,7 +53,7 @@ public class MatrixPage {
 			} else {
 				wait.until(ExpectedConditions.elementToBeClickable(radioBtnList.get(4)));
 				radioBtnList.get(4).click();
-				
+
 				String fareXpath = beforexPath + 5 + afterxPath;
 				fareOnMatrixPage = DriverFactory.getInstance().getDriver().findElement(By.xpath(fareXpath)).getText();
 				LoggerUtil.logMessage("Fare on Matrix Page when size is greater than 5 : " + fareOnMatrixPage);
@@ -63,7 +63,7 @@ public class MatrixPage {
 					.findElements(By.xpath("descendant::input[@type='radio']"));
 			if (radioBtnList1.size() < 5) {
 				radioBtnList1.get(2).click();
-				
+
 				String fareXpath = beforexPath + 3 + afterxPath;
 				fareOnMatrixPage = DriverFactory.getInstance().getDriver().findElement(By.xpath(fareXpath)).getText();
 				LoggerUtil.logMessage("Fare on Matrix Page: " + fareOnMatrixPage);
@@ -71,7 +71,7 @@ public class MatrixPage {
 			} else {
 				wait.until(ExpectedConditions.visibilityOf(radioBtnList1.get(4)));
 				radioBtnList1.get(4).click();
-				
+
 				String fareXpath = beforexPath + 5 + afterxPath;
 				fareOnMatrixPage = DriverFactory.getInstance().getDriver().findElement(By.xpath(fareXpath)).getText();
 				LoggerUtil.logMessage("Fare on Matrix Page: " + fareOnMatrixPage);
@@ -85,7 +85,6 @@ public class MatrixPage {
 
 	public void clickOnRegisterLink() {
 		registerLnk.click();
-	//	return new RegisterPage(DriverFactory.getInstance().getDriver());
 	}
 
 	public void clickOnCheckOut() throws InterruptedException {
