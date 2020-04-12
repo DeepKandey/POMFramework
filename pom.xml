@@ -118,6 +118,13 @@
 			<version>3.7.1</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.tesults/tesults -->
+		<dependency>
+			<groupId>com.tesults</groupId>
+			<artifactId>tesults</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
