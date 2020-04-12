@@ -1,4 +1,4 @@
-package com.trainline.qa.util;
+package com.qa.util;
 
 /*************************************** PURPOSE **********************************
 - This class implements the WebDriverEventListener, which is included under events.

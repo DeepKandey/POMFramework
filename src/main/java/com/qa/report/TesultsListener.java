@@ -1,4 +1,4 @@
-package com.trainline.qa.report;
+package com.qa.report;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,8 +13,8 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import com.qa.util.TestUtil;
 import com.tesults.tesults.Results;
-import com.trainline.qa.util.TestUtil;
 
 public class TesultsListener implements ITestListener {
 
@@ -57,7 +57,7 @@ public class TesultsListener implements ITestListener {
 		testCase.put("params", getTestParams(iTestResult));
 		List<String> files = new ArrayList<>();
 		try {
-			files.add(TestUtil.takeScreenshotAtEndOfTest(iTestResult.getName()));
+			files.add(TestUtil.takeScreenshotAtEndOfTest(getTestMethodName(iTestResult)));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -75,7 +75,7 @@ public class TesultsListener implements ITestListener {
 		testCase.put("params", getTestParams(iTestResult));
 		List<String> files = new ArrayList<>();
 		try {
-			files.add(TestUtil.takeScreenshotAtEndOfTest(iTestResult.getName()));
+			files.add(TestUtil.takeScreenshotAtEndOfTest(getTestMethodName(iTestResult)));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

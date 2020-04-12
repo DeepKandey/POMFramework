@@ -1,4 +1,4 @@
-package com.trainline.qa.pageobjects;
+package com.qa.pageobjects;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.trainline.qa.base.DriverFactory;
+import com.qa.base.DriverFactory;
 
 public class RegisterPage {
 

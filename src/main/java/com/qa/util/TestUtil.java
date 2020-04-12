@@ -1,4 +1,4 @@
-package com.trainline.qa.util;
+package com.qa.util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,7 +15,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
-import com.trainline.qa.base.DriverFactory;
+import com.qa.base.DriverFactory;
 
 public class TestUtil {
 

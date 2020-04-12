@@ -2,7 +2,7 @@
  * author: Naveen Khunteta
  */
 
-package com.trainline.qa.util;
+package com.qa.util;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

@@ -1,4 +1,4 @@
-package com.trainline.qa.base;
+package com.qa.base;
 
 import java.util.Properties;
 

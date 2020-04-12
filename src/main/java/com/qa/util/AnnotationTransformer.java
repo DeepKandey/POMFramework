@@ -1,4 +1,4 @@
-package com.trainline.qa.util;
+package com.qa.util;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;

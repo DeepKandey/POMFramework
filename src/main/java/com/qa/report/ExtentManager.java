@@ -1,4 +1,4 @@
-package com.trainline.qa.report;
+package com.qa.report;
 
 import java.io.File;
 import java.util.Date;
@@ -8,7 +8,7 @@ import org.openqa.selenium.Platform;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import com.trainline.qa.util.LoggerUtil;
+import com.qa.util.LoggerUtil;
 
 public class ExtentManager {
 

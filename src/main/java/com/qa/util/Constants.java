@@ -1,4 +1,4 @@
-package com.trainline.qa.util;
+package com.qa.util;
 
 public class Constants {
 	public static final long PAGE_LOAD_TIMEOUT = 40;

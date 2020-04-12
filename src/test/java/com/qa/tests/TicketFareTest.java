@@ -1,4 +1,4 @@
-package com.trainline.qa.tests;
+package com.qa.tests;
 
 import java.io.IOException;
 
@@ -9,15 +9,15 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.trainline.qa.base.DriverFactory;
-import com.trainline.qa.pageobjects.CheckOutPage;
-import com.trainline.qa.pageobjects.MatrixPage;
-import com.trainline.qa.pageobjects.RegisterPage;
-import com.trainline.qa.pageobjects.SearchPage;
-import com.trainline.qa.util.Constants;
-import com.trainline.qa.util.ExcelUtil;
-import com.trainline.qa.util.LoggerUtil;
-import com.trainline.qa.util.TestUtil;
+import com.qa.base.DriverFactory;
+import com.qa.pageobjects.CheckOutPage;
+import com.qa.pageobjects.MatrixPage;
+import com.qa.pageobjects.RegisterPage;
+import com.qa.pageobjects.SearchPage;
+import com.qa.util.Constants;
+import com.qa.util.ExcelUtil;
+import com.qa.util.LoggerUtil;
+import com.qa.util.TestUtil;
 
 public class TicketFareTest {
 

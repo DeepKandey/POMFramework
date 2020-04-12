@@ -1,4 +1,4 @@
-package com.trainline.qa.base;
+package com.qa.base;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
-import com.trainline.qa.util.LoggerUtil;
+import com.qa.util.LoggerUtil;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 

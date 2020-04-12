@@ -1,4 +1,4 @@
-package com.trainline.qa.report;
+package com.qa.report;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -13,8 +13,8 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
-import com.trainline.qa.util.LoggerUtil;
-import com.trainline.qa.util.TestUtil;
+import com.qa.util.LoggerUtil;
+import com.qa.util.TestUtil;
 
 public class ExtentTestNGITestListener implements ITestListener {
 

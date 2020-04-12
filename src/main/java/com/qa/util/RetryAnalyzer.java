@@ -1,4 +1,4 @@
-package com.trainline.qa.util;
+package com.qa.util;
 
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
