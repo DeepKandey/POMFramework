@@ -26,7 +26,7 @@ public class TestUtil {
 	private static WebEventListener eventListener = null;
 
 	public static String takeScreenshotAtEndOfTest(String methodName) throws IOException {
-		File scrFile = ((TakesScreenshot) DriverFactory.getInstance().getDriver()).getScreenshotAs(OutputType.FILE);
+		File scrFile = ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.FILE);
 		String currentDir = System.getProperty("user.dir");
 
 		Date date = new Date();

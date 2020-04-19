@@ -19,14 +19,13 @@ public class DemoTest {
 
 	@BeforeMethod
 	public void setup() {
-		DriverFactory.getInstance().setDriver("chrome");
-		WebDriver driver = TestUtil.webDriverEvents(DriverFactory.getInstance().getDriver());
+		WebDriver driver = TestUtil.webDriverEvents(DriverFactory.getDriver());
 		driver.get("https://www.google.com");
 	}
 
 	@AfterMethod
 	public void tearDown() {
-		DriverFactory.getInstance().removeDriver();
+		DriverFactory.removeDriver();
 	}
 
 	@Test(alwaysRun = true)
@@ -34,13 +33,13 @@ public class DemoTest {
 		LoggerUtil.logMessage("Demo Test Execution");
 		Assert.assertEquals(true, false);
 	}
-	
+
 	@Test(enabled = false)
 	public void annotationTest() {
 		LoggerUtil.logMessage("Annotation Transformation Test");
 		Assert.assertEquals(false, true);
 	}
-	
+
 	@Test()
 	public void retryTest() {
 		LoggerUtil.logMessage("RetryAnalyzer Test");

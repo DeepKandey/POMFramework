@@ -17,11 +17,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebInteractUtil {
 
-	private static WebDriver driver;
+	private WebDriver driver;
+	private WebDriverWait wait;
+	private Actions action;
 
+	public void setDriver(WebDriver driver) {
+		this.driver= driver;
+		wait = new WebDriverWait(this.driver, Constants.EXPLICIT_WAIT);
+		action = new Actions(this.driver);
+	}
+	
 	public void Click(WebElement element, Boolean isClickWithJavaScriptExecutor) {
 
-		Actions action = new Actions(driver);
 		try {
 			if (Boolean.TRUE.equals(isClickWithJavaScriptExecutor)) {
 				((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
@@ -44,7 +51,7 @@ public class WebInteractUtil {
 
 	public void sendKey(WebElement element, String value, Boolean clear, Boolean tab) {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 10);
+			wait = new WebDriverWait(driver, Constants.EXPLICIT_WAIT);
 			wait.until(ExpectedConditions.elementToBeClickable(element));
 
 			if (element.isDisplayed()) {
@@ -160,8 +167,14 @@ public class WebInteractUtil {
 	}// end of method setTimeZone()
 
 	public WebElement getWebElement(By locator) {
-		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 		return driver.findElement(locator);
+	} // end of method getWebElement()
+
+	public List<WebElement> getWebElements(By locator) {
+		wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		return driver.findElements(locator);
 	} // end of method getWebElement()
 }
