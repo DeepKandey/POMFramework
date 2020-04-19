@@ -5,14 +5,14 @@
 		<!--<listener class-name="com.qa.extentReportListener.ExtentTestNGIReporterListener" 
 			/> -->
 		<listener
-			class-name="com.trainline.qa.util.AnnotationTransformer" />
+			class-name="com.qa.util.AnnotationTransformer" />
 		<listener
-			class-name="com.trainline.qa.report.ExtentTestNGITestListener" />
+			class-name="com.qa.report.ExtentTestNGITestListener" />
 	</listeners>
 
 	<test name="Test">
 		<classes>
-			<class name="com.trainline.qa.tests.DemoTest">
+			<class name="com.qa.tests.DemoTest">
 			</class>
 		</classes>
 	</test> <!-- Test -->
