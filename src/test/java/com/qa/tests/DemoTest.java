@@ -34,7 +34,7 @@ public class DemoTest {
 	@Test()
 	public void demoTest() {
 		SearchHomePageActions searchHomePageActions = new SearchHomePageActions();
-
+		
 		DriverFactory.getLogger().info("Demo Test Execution");
 		searchHomePageActions.enterTextInDepartureStn("London");
 		Assert.assertEquals(true, true);
