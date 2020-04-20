@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.OutputType;
@@ -17,13 +18,18 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import com.qa.base.DriverFactory;
 
-public class TestUtil {
+public class TestUtil extends DriverFactory {
 
+	private static Logger logger;
 	private static FileInputStream fis = null;
 	private static XSSFWorkbook workbook = null;
 	private static XSSFSheet sheet = null;
 	private static EventFiringWebDriver eDriver = null;
 	private static WebEventListener eventListener = null;
+
+	public TestUtil() {
+		super(logger);
+	}
 
 	public static String takeScreenshotAtEndOfTest(String methodName) throws IOException {
 		File scrFile = ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.FILE);
@@ -55,7 +61,7 @@ public class TestUtil {
 				}
 			}
 		} catch (Exception e) {
-			LoggerUtil.logMessage(e.getMessage());
+			DriverFactory.getLogger().info(e.getMessage());
 		} finally {
 			// workbook.close();
 			// fis.close();

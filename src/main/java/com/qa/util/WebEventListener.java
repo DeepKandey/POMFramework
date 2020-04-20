@@ -1,5 +1,7 @@
 package com.qa.util;
 
+import org.apache.logging.log4j.Logger;
+
 /*************************************** PURPOSE **********************************
 - This class implements the WebDriverEventListener, which is included under events.
 The purpose of implementing this interface is to override all the methods and define certain useful  Log statements 
@@ -14,14 +16,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 
-public class WebEventListener implements WebDriverEventListener {
+import com.qa.base.DriverFactory;
+
+public class WebEventListener extends DriverFactory implements WebDriverEventListener {
+
+	private static Logger logger;
+
+	public WebEventListener() {
+		super(logger);
+	}
 
 	public void beforeAlertAccept(WebDriver driver) {
-		LoggerUtil.logMessage("Before accepting alert");
+		DriverFactory.getLogger().info("Before accepting alert");
 	}
 
 	public void afterAlertAccept(WebDriver driver) {
-		LoggerUtil.logMessage("After accepting alert");
+		DriverFactory.getLogger().info("After accepting alert");
 	}
 
 	public void afterAlertDismiss(WebDriver driver) {
@@ -33,27 +43,27 @@ public class WebEventListener implements WebDriverEventListener {
 	}
 
 	public void beforeNavigateTo(String url, WebDriver driver) {
-		LoggerUtil.logMessage("Before navigating to: '" + url + "'");
+		DriverFactory.getLogger().info("Before navigating to: '" + url + "'");
 	}
 
 	public void afterNavigateTo(String url, WebDriver driver) {
-		LoggerUtil.logMessage("Navigated to:'" + url + "'");
+		DriverFactory.getLogger().info("Navigated to:'" + url + "'");
 	}
 
 	public void beforeNavigateBack(WebDriver driver) {
-		LoggerUtil.logMessage("Navigating back to previous page");
+		DriverFactory.getLogger().info("Navigating back to previous page");
 	}
 
 	public void afterNavigateBack(WebDriver driver) {
-		LoggerUtil.logMessage("Navigated back to previous page");
+		DriverFactory.getLogger().info("Navigated back to previous page");
 	}
 
 	public void beforeNavigateForward(WebDriver driver) {
-		LoggerUtil.logMessage("Navigating forward to next page");
+		DriverFactory.getLogger().info("Navigating forward to next page");
 	}
 
 	public void afterNavigateForward(WebDriver driver) {
-		LoggerUtil.logMessage("Navigated forward to next page");
+		DriverFactory.getLogger().info("Navigated forward to next page");
 	}
 
 	public void beforeNavigateRefresh(WebDriver driver) {
@@ -65,27 +75,27 @@ public class WebEventListener implements WebDriverEventListener {
 	}
 
 	public void beforeFindBy(By by, WebElement element, WebDriver driver) {
-		LoggerUtil.logMessage("Trying to find Element By : " + by.toString());
+		DriverFactory.getLogger().info("Trying to find Element By : " + by.toString());
 	}
 
 	public void afterFindBy(By by, WebElement element, WebDriver driver) {
-		LoggerUtil.logMessage("Found Element By : " + by.toString());
+		DriverFactory.getLogger().info("Found Element By : " + by.toString());
 	}
 
 	public void beforeClickOn(WebElement element, WebDriver driver) {
-		LoggerUtil.logMessage("Trying to click on: " + element.toString());
+		DriverFactory.getLogger().info("Trying to click on: " + element.toString());
 	}
 
 	public void afterClickOn(WebElement element, WebDriver driver) {
-		LoggerUtil.logMessage("Clicked on: " + element.toString());
+		DriverFactory.getLogger().info("Clicked on: " + element.toString());
 	}
 
 	public void beforeChangeValueOf(WebElement element, WebDriver driver, CharSequence[] keysToSend) {
-		LoggerUtil.logMessage("Value of the:" + element.toString() + " before any changes made");
+		DriverFactory.getLogger().info("Value of the:" + element.toString() + " before any changes made");
 	}
 
 	public void afterChangeValueOf(WebElement element, WebDriver driver, CharSequence[] keysToSend) {
-		LoggerUtil.logMessage("Element value changed to: " + element.toString());
+		DriverFactory.getLogger().info("Element value changed to: " + element.toString());
 	}
 
 	public void beforeScript(String script, WebDriver driver) {
@@ -105,7 +115,7 @@ public class WebEventListener implements WebDriverEventListener {
 	}
 
 	public void onException(Throwable throwable, WebDriver driver) {
-		LoggerUtil.logMessage("Exception occured: " + throwable);
+		DriverFactory.getLogger().info("Exception occured: " + throwable);
 		/*
 		 * try { TestUtil.takeScreenshotAtEndOfTest(); } catch (IOException e) {
 		 * e.printStackTrace(); }
@@ -121,10 +131,10 @@ public class WebEventListener implements WebDriverEventListener {
 	}
 
 	public void beforeGetText(WebElement element, WebDriver driver) {
-		LoggerUtil.logMessage("Before getting text of the element:" + element.toString());
+		DriverFactory.getLogger().info("Before getting text of the element:" + element.toString());
 	}
 
 	public void afterGetText(WebElement element, WebDriver driver, String text) {
-		LoggerUtil.logMessage("After getting text of the element:" + element.toString());
+		DriverFactory.getLogger().info("After getting text of the element:" + element.toString());
 	}
 }

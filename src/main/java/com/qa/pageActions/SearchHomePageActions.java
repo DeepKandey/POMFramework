@@ -6,15 +6,15 @@ public class SearchHomePageActions extends SearchPageObjects {
 
 	
 	public void clickOnSearchButton() {
-		Click(getWebElement(searchButton), false);
+		Click(getWebElement(searchButton));
 	}
 
 	public void enterTextInDepartureStn(String departure) {
-		sendKey(getWebElement(departureStn), departure, true, false);
+		sendKey(getWebElement(departureStn), departure);
 	}
 
 	public void enterTextInDestinationStn(String destination) {
-		sendKey(getWebElement(destinationStn), destination, true, false);
+		sendKey(getWebElement(destinationStn), destination);
 	}
 
 } // end of SearchHomePageActions

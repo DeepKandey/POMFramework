@@ -1,10 +1,18 @@
 package com.qa.util;
 
+import org.apache.logging.log4j.Logger;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
-public class RetryAnalyzer implements IRetryAnalyzer {
+import com.qa.base.DriverFactory;
 
+public class RetryAnalyzer extends DriverFactory implements IRetryAnalyzer {
+
+	private static Logger logger;
+
+	public RetryAnalyzer() {
+		super(logger);
+	}
 	/*
 	 * private int counter = 0; private static final int retryLimit = 1;
 	 */
@@ -31,12 +39,12 @@ public class RetryAnalyzer implements IRetryAnalyzer {
 	public boolean retry(ITestResult result) {
 		boolean retryAgain = false;
 		if (count > 0) {
-			LoggerUtil.logMessage("Going to retry test case: " + result.getMethod() + ", "
-					+ (((MAX_RETRY_COUNT - count) + 1)) + " out of " + MAX_RETRY_COUNT);
+			DriverFactory.getLogger().info("Going to retry test case: " + result.getMethod() + ", " + (((MAX_RETRY_COUNT - count) + 1))
+					+ " out of " + MAX_RETRY_COUNT);
 			retryAgain = true;
 			--count;
 			result.setStatus(ITestResult.FAILURE);
-			LoggerUtil.logMessage(result.getInstanceName());
+			DriverFactory.getLogger().info(result.getInstanceName());
 		}
 		return retryAgain;
 	}

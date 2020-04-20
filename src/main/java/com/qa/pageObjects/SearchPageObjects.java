@@ -6,10 +6,8 @@ import com.qa.util.WebInteractUtil;
 
 public class SearchPageObjects extends WebInteractUtil {
 
-
 	public SearchPageObjects() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	protected By departureStn = By.id("from.text");

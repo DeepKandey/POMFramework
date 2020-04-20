@@ -5,25 +5,25 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.safari.SafariDriver;
 
 import com.qa.util.WebInteractUtil;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-
 public class DriverFactory {
-
-	public WebDriver driver;
-	public Properties prop;
-	public OptionsManager optionsManager;
 
 	// thread local driver object for web driver
 	private static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
+	private static ThreadLocal<Logger> tlLogger = new ThreadLocal<>();
 
+	public DriverFactory(Logger logger) {
+		logger=LogManager.getLogger();
+		tlLogger.set(logger);
+	}
 	public static synchronized WebDriver getDriver() {
 		return tlDriver.get();
 	}
@@ -33,6 +33,14 @@ public class DriverFactory {
 		tlDriver.remove();
 	}
 
+	public static synchronized Logger getLogger() {
+		return tlLogger.get();
+	}
+
+	public static synchronized void removeLogger() {
+		tlLogger.remove();
+	}
+
 	/**
 	 * This method is used to initialize the WebDriver on the basis of browserName
 	 * 
@@ -40,7 +48,7 @@ public class DriverFactory {
 	 * @return this method will return driver instance
 	 */
 	public WebDriver init_driver(Properties prop) {
-		WebInteractUtil interact = new WebInteractUtil();
+
 		String browserName = null;
 
 		if (System.getProperty("browser") == null) {
@@ -51,7 +59,7 @@ public class DriverFactory {
 
 		System.out.println("Running on ----> " + browserName + " browser");
 
-		optionsManager = new OptionsManager(prop);
+		OptionsManager optionsManager = new OptionsManager(prop);
 
 		if (browserName.equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver",
@@ -67,9 +75,6 @@ public class DriverFactory {
 																						// console
 
 			tlDriver.set(new FirefoxDriver(optionsManager.getFirefoxOptions()));
-		} else if (browserName.equalsIgnoreCase("safari")) {
-			WebDriverManager.getInstance(SafariDriver.class).setup();
-			tlDriver.set(new SafariDriver());
 		} else if (browserName.equalsIgnoreCase("Edge")) {
 			System.setProperty("webdriver.edge.driver",
 					"C:/Users/deepa/Downloads/Browser Drivers/EdgeDriver/msedgedriver.exe");
@@ -81,7 +86,7 @@ public class DriverFactory {
 		getDriver().manage().window().maximize();
 		getDriver().manage().deleteAllCookies();
 		getDriver().get(prop.getProperty("url"));
-		interact.setDriver(getDriver());
+		WebInteractUtil.setDriver(getDriver(),getLogger());
 		return getDriver();
 
 	}
@@ -92,7 +97,7 @@ public class DriverFactory {
 	 *         file
 	 */
 	public Properties init_prop() {
-		prop = new Properties();
+		Properties prop = new Properties();
 		String path = null;
 		String env = null;
 

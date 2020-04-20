@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -15,58 +15,62 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.qa.base.DriverFactory;
+
 public class WebInteractUtil {
 
-	private WebDriver driver;
-	private WebDriverWait wait;
-	private Actions action;
+	private static WebDriver driver;
+	private static WebDriverWait wait;
+	private static Actions action;
+	private static Logger logger;
 
-	public void setDriver(WebDriver driver) {
-		this.driver= driver;
-		wait = new WebDriverWait(this.driver, Constants.EXPLICIT_WAIT);
-		action = new Actions(this.driver);
+	public static void setDriver(WebDriver driver, Logger logger) {
+		WebInteractUtil.driver = driver;
+		WebInteractUtil.logger= logger;
+		wait = new WebDriverWait(WebInteractUtil.driver, Constants.EXPLICIT_WAIT);
+		action = new Actions(WebInteractUtil.driver);
 	}
-	
-	public void Click(WebElement element, Boolean isClickWithJavaScriptExecutor) {
 
+	public void Click(WebElement element) {
 		try {
-			if (Boolean.TRUE.equals(isClickWithJavaScriptExecutor)) {
-				((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-			} else
-				element.click();
-		} catch (Exception e) {
-			try {
-				action.click().build().perform();
-			} catch (Exception e1) {
-				try {
-					action.moveToElement(element).click().build().perform();
-				} catch (Exception e2) {
-
-					System.out.println("Failed to click element: " + element);
-					e2.printStackTrace();
-				}
-			}
+			element.click();
+		} catch (Exception e2) {
+			DriverFactory.getLogger().info("Failed to click element: " + element);
+			e2.printStackTrace();
 		}
 	}// end of method Click()
 
-	public void sendKey(WebElement element, String value, Boolean clear, Boolean tab) {
+	public void clickWithJavaScript(WebElement element) {
 		try {
-			wait = new WebDriverWait(driver, Constants.EXPLICIT_WAIT);
-			wait.until(ExpectedConditions.elementToBeClickable(element));
-
-			if (element.isDisplayed()) {
-				Click(element, false);
-			}
-
-			// Use clear=false
-			if (Boolean.TRUE.equals(clear))
-				element.clear();
-			element.sendKeys(value);
-
-			if (Boolean.TRUE.equals(tab))
-				element.sendKeys(Keys.TAB);
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 		} catch (Exception e) {
-			System.out.println("Failed to enter value: " + value);
+			DriverFactory.getLogger().info("Failed to click element: " + element);
+			e.printStackTrace();
+		}
+	}
+
+	public void clickWithActions(WebElement element) {
+		try {
+			action.click().build().perform();
+		} catch (Exception e1) {
+			try {
+				action.moveToElement(element).click().build().perform();
+			} catch (Exception e2) {
+
+				DriverFactory.getLogger().info("Failed to click element: " + element);
+				e2.printStackTrace();
+			}
+		}
+	}
+
+	public void sendKey(WebElement element, String value) {
+		try {
+			wait.until(ExpectedConditions.elementToBeClickable(element));
+			if (element.isDisplayed()) {
+				Click(element);
+			}
+		} catch (Exception e) {
+			DriverFactory.getLogger().info("Failed to enter value: " + value);
 			e.printStackTrace();
 		}
 	}// end of method sendKey()
@@ -79,9 +83,9 @@ public class WebInteractUtil {
 
 			try {
 				if (element.isDisplayed())
-					System.out.println("Scrolled to element");
+					DriverFactory.getLogger().info("Scrolled to element");
 			} catch (Exception e) {
-				System.out.println("Failed to Scroll to element");
+				DriverFactory.getLogger().info("Failed to Scroll to element");
 				e.printStackTrace();
 				RemoteWebDriver remoteDriver = (RemoteWebDriver) driver;
 				remoteDriver.getCapabilities().getBrowserName();
@@ -100,30 +104,30 @@ public class WebInteractUtil {
 
 	public void isEnabled(WebElement element) {
 		if (element.isEnabled())
-			System.out.println("Successfully verified that element is enabled");
+			DriverFactory.getLogger().info("Successfully verified that element is enabled");
 		else
-			System.out.println("Failed to verify that element is enabled");
+			DriverFactory.getLogger().info("Failed to verify that element is enabled");
 	}// end of method isEnabled()
 
 	public void clear(WebElement element) {
-		Click(element, null);
+		Click(element);
 		element.clear();
 	} // end of method clear()
 
 	public void isSelected(WebElement element) {
 		if (element.isEnabled())
-			System.out.println("Successfully verified that element is selected");
+			DriverFactory.getLogger().info("Successfully verified that element is selected");
 		else
-			System.out.println("Failed to verify that element is selected");
+			DriverFactory.getLogger().info("Failed to verify that element is selected");
 	}// end of method isSelected()
 
 	public void isDisplayed(WebElement element) {
 		try {
 			if (element.isDisplayed()) {
-				System.out.println("Successfully verified element is displayed");
+				DriverFactory.getLogger().info("Successfully verified element is displayed");
 			}
 		} catch (Exception e) {
-			System.out.println("Failed to verify element is displayed");
+			DriverFactory.getLogger().info("Failed to verify element is displayed");
 		}
 	}// end of method isDisplayed()
 
@@ -160,7 +164,7 @@ public class WebInteractUtil {
 			Process process = new ProcessBuilder("tzutil.exe", "/s", timeZone).start();
 			return process.isAlive();
 		} catch (IOException e) {
-			System.out.println("Failed to set timezone");
+			DriverFactory.getLogger().info("Failed to set timezone");
 			e.printStackTrace();
 			return false;
 		}

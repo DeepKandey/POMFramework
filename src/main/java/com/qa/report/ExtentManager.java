@@ -3,15 +3,17 @@ package com.qa.report;
 import java.io.File;
 import java.util.Date;
 
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Platform;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import com.qa.util.LoggerUtil;
+import com.qa.base.DriverFactory;
 
-public class ExtentManager {
+public class ExtentManager extends DriverFactory {
 
+	private static Logger logger;
 	private static ExtentReports extent;
 	private static Platform platform;
 	private static Date date = new Date();
@@ -22,13 +24,20 @@ public class ExtentManager {
 	private static String winReportFileLoc = windowsPath + "/" + reportFileName;
 	// private static String macReportFileLoc = macPath + "/" + reportFileName;
 
+	public ExtentManager() {
+		super(logger);
+	}
+
 	public static ExtentReports getInstance() {
-		if (extent == null)
+		if (extent == null) {
+			
 			createInstance();
+		}
 		return extent;
 	} // End of method getInstance
 
 	public static ExtentReports createInstance() {
+		new ExtentManager();
 		platform = getCurrentPlatform();
 		String fileName = getReportFileLocation(platform);
 		ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(fileName);
@@ -58,10 +67,10 @@ public class ExtentManager {
 		case WIN10:
 			reportFileLocation = winReportFileLoc;
 			createReportPath(windowsPath);
-			LoggerUtil.logMessage("ExtentReport Path for WINDOWS: " + windowsPath + "\n");
+			DriverFactory.getLogger().info("ExtentReport Path for WINDOWS: " + windowsPath + "\n");
 			break;
 		default:
-			LoggerUtil.logMessage("ExtentReport path has not been set! There is a problem!\n");
+			DriverFactory.getLogger().info("ExtentReport path has not been set! There is a problem!\n");
 			break;
 		}
 		return reportFileLocation;
@@ -72,12 +81,12 @@ public class ExtentManager {
 		File testDirectory = new File(path);
 		if (!testDirectory.exists()) {
 			if (testDirectory.mkdir()) {
-				LoggerUtil.logMessage("Directory: " + path + " is created!");
+				DriverFactory.getLogger().info("Directory: " + path + " is created!");
 			} else {
-				LoggerUtil.logMessage("Failed to create directory: " + path);
+				DriverFactory.getLogger().info("Failed to create directory: " + path);
 			}
 		} else {
-			LoggerUtil.logMessage("Directory already exists: " + path);
+			DriverFactory.getLogger().info("Directory already exists: " + path);
 		}
 	}// End of method createReportPath
 

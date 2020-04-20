@@ -12,6 +12,4 @@ public class CheckOutPageObjects {
 
 	protected By fareOnCheckOut = By.xpath("//span[@data-test='trip-card-total']/span");
 
-	public CheckOutPageObjects() {
-	}
 }

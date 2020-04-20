@@ -1,26 +1,29 @@
 package com.qa.tests;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
+import java.util.Properties;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.qa.base.DriverFactory;
-import com.qa.util.LoggerUtil;
-import com.qa.util.TestUtil;
-import com.qa.util.WebEventListener;
+import com.qa.pageActions.SearchHomePageActions;
+import org.apache.logging.log4j.Logger;
 
 public class DemoTest {
 
-	public static EventFiringWebDriver eDriver;
-	public static WebEventListener eventListener;
+	Properties prop;
+	DriverFactory basePage;
+	Logger logger;
 
 	@BeforeMethod
 	public void setup() {
-		WebDriver driver = TestUtil.webDriverEvents(DriverFactory.getDriver());
-		driver.get("https://www.google.com");
+		basePage = new DriverFactory(logger);
+		prop = basePage.init_prop();
+		basePage.init_driver(prop);
+		// TestUtil.webDriverEvents(basePage.init_driver(prop));
+
 	}
 
 	@AfterMethod
@@ -28,21 +31,28 @@ public class DemoTest {
 		DriverFactory.removeDriver();
 	}
 
-	@Test(alwaysRun = true)
+	@Test()
 	public void demoTest() {
-		LoggerUtil.logMessage("Demo Test Execution");
-		Assert.assertEquals(true, false);
+		SearchHomePageActions searchHomePageActions = new SearchHomePageActions();
+
+		DriverFactory.getLogger().info("Demo Test Execution");
+		searchHomePageActions.enterTextInDepartureStn("London");
+		Assert.assertEquals(true, true);
 	}
 
 	@Test(enabled = false)
 	public void annotationTest() {
-		LoggerUtil.logMessage("Annotation Transformation Test");
-		Assert.assertEquals(false, true);
+		SearchHomePageActions searchHomePageActions = new SearchHomePageActions();
+		DriverFactory.getLogger().info("Annotation Transformation Test");
+		searchHomePageActions.enterTextInDepartureStn("London");
+		Assert.assertEquals(true, true);
 	}
 
 	@Test()
 	public void retryTest() {
-		LoggerUtil.logMessage("RetryAnalyzer Test");
-		Assert.assertEquals(false, true);
+		SearchHomePageActions searchHomePageActions = new SearchHomePageActions();
+		DriverFactory.getLogger().info("RetryAnalyzer Test");
+		searchHomePageActions.enterTextInDepartureStn("London");
+		Assert.assertEquals(true, true);
 	}
 }

@@ -13,7 +13,4 @@ public class MatrixPageObjects {
 
 	protected By quickChckOut = By.xpath("//button[@data-test='cjs-button-quick-buy']");
 
-	public MatrixPageObjects() {
-
-	}
 } // end of class MatrixPageObjects
