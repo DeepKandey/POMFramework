@@ -9,6 +9,14 @@ import org.testng.annotations.Test;
 
 import com.qa.base.DriverFactory;
 import com.qa.pageActions.SearchHomePageActions;
+
+import io.qameta.allure.Description;
+import io.qameta.allure.Link;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Step;
+import io.qameta.allure.Story;
+
 import org.apache.logging.log4j.Logger;
 
 public class DemoTest {
@@ -32,15 +40,25 @@ public class DemoTest {
 	}
 
 	@Test()
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Description of the test case - DemoTest")
+	@Story("Test case written for Story - DemoTest")
+	@Step("Step at test Body level - DemoTest")
+	@Link("https://docs.qameta.io/allure/")
 	public void demoTest() {
 		SearchHomePageActions searchHomePageActions = new SearchHomePageActions();
-		
+
 		DriverFactory.getLogger().info("Demo Test Execution");
 		searchHomePageActions.enterTextInDepartureStn("London");
 		Assert.assertEquals(true, true);
 	}
 
 	@Test(enabled = false)
+	@Severity(SeverityLevel.BLOCKER)
+	@Description("Description of the test case - annotationTest")
+	@Story("Test case written for Story - annotationTest")
+	@Step("Step at test Body level - annotationTest")
+	@Link("https://docs.qameta.io/allure/")
 	public void annotationTest() {
 		SearchHomePageActions searchHomePageActions = new SearchHomePageActions();
 		DriverFactory.getLogger().info("Annotation Transformation Test");
@@ -49,6 +67,11 @@ public class DemoTest {
 	}
 
 	@Test()
+	@Severity(SeverityLevel.MINOR)
+	@Description("Description of the test case - retryTest")
+	@Story("Test case written for Story - retryTest")
+	@Step("Step at test Body level - retryTest")
+	@Link("https://docs.qameta.io/allure/")
 	public void retryTest() {
 		SearchHomePageActions searchHomePageActions = new SearchHomePageActions();
 		DriverFactory.getLogger().info("RetryAnalyzer Test");

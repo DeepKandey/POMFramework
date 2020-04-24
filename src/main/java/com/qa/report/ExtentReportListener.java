@@ -17,14 +17,14 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.qa.base.DriverFactory;
 import com.qa.util.TestUtil;
 
-public class ExtentTestNGITestListener extends DriverFactory implements ITestListener {
+public class ExtentReportListener extends DriverFactory implements ITestListener {
 
 	// Extent Report Declarations
 	private static ExtentReports extent = ExtentManager.createInstance();
 	private static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
 	private static Logger logger;
 
-	public ExtentTestNGITestListener() {
+	public ExtentReportListener() {
 		super(logger);
 	}
 

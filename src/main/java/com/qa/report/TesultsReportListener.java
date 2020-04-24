@@ -16,7 +16,7 @@ import org.testng.ITestResult;
 import com.qa.util.TestUtil;
 import com.tesults.tesults.Results;
 
-public class TesultsListener implements ITestListener {
+public class TesultsReportListener implements ITestListener {
 
 	List<Map<String, Object>> testCases = new ArrayList<>();
 
