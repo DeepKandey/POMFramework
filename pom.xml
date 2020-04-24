@@ -14,6 +14,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
+		<aspectj.version>1.9.5</aspectj.version>
 	</properties>
 
 	<profiles>
@@ -21,6 +22,7 @@
 			<id>Regression</id>
 			<build>
 				<plugins>
+
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>
@@ -31,6 +33,7 @@
 							</suiteXmlFiles>
 						</configuration>
 					</plugin>
+
 				</plugins>
 			</build>
 		</profile>
@@ -121,8 +124,8 @@
 
 		<!-- https://mvnrepository.com/artifact/com.tesults/tesults -->
 		<dependency>
-			<groupId>com.tesults</groupId>
-			<artifactId>tesults</artifactId>
+			<groupId>com.tesults.testng</groupId>
+			<artifactId>tesults-testng</artifactId>
 			<version>1.0.1</version>
 		</dependency>
 		
@@ -147,6 +150,7 @@
 						<target>1.8</target>
 					</configuration>
 				</plugin>
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
@@ -155,8 +159,19 @@
 						<suiteXmlFiles>
 							<suiteXmlFile>${basedir}/src/test/resources/testNGconfigfiles/testng.xml</suiteXmlFile>
 						</suiteXmlFiles>
+						<argLine>
+							-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+						</argLine>
 					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.aspectj</groupId>
+							<artifactId>aspectjweaver</artifactId>
+							<version>${aspectj.version}</version>
+						</dependency>
+					</dependencies>
 				</plugin>
+
 			</plugins>
 		</pluginManagement>
 	</build>

@@ -91,7 +91,7 @@ public class TesultsReportListener implements ITestListener {
 
 	@Override
 	public void onStart(ITestContext context) {
-		throw new UnsupportedOperationException();
+		System.out.println("I am in onStart method " + context.getName());
 	}
 
 	@SuppressWarnings("unchecked")
@@ -99,7 +99,8 @@ public class TesultsReportListener implements ITestListener {
 	public void onFinish(ITestContext iTestContext) {
 		// Map<String, Object> to hold your test results data.
 		Map<String, Object> data = new HashMap<>();
-		data.put("target", "");
+		data.put("target",
+				"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjBhN2M3YmZkLTIxZDgtNDNmOS05ZjQ1LTk0OGNhYzFkMzc4Zi0xNTg3NzA3NDIzNzEyIiwiZXhwIjo0MTAyNDQ0ODAwMDAwLCJ2ZXIiOiIwIiwic2VzIjoiNTU4YjU4YmItMzM3OS00ZWExLWJiNzMtZDIxNjVlYjZhNmIzIiwidHlwZSI6InQifQ.fHE2vZxxaAJLKo6vrSlfMPvQf9APIGa5dJ_dQ4gd6g8");
 
 		Map<String, Object> results = new HashMap<>();
 		results.put("cases", testCases);
