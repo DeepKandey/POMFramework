@@ -8,9 +8,9 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.logging.log4j.Logger;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -19,17 +19,6 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import com.qa.base.DriverFactory;
 
 public class TestUtil extends DriverFactory {
-
-	private static Logger logger;
-	private static FileInputStream fis = null;
-	private static XSSFWorkbook workbook = null;
-	private static XSSFSheet sheet = null;
-	private static EventFiringWebDriver eDriver = null;
-	private static WebEventListener eventListener = null;
-
-	public TestUtil() {
-		super(logger);
-	}
 
 	public static String takeScreenshotAtEndOfTest(String methodName) throws IOException {
 		File scrFile = ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.FILE);
@@ -45,14 +34,14 @@ public class TestUtil extends DriverFactory {
 
 	// Return data from the excel
 	public static String[][] getExcelData(String filePath, String sheetName) throws IOException {
+		Sheet sheet = null;
 		String[][] arrayData = null;
-		try {
-			fis = new FileInputStream(filePath);
-			workbook = new XSSFWorkbook(fis);
-			sheet = workbook.getSheet(sheetName);
+		
+		try (Workbook workbook = WorkbookFactory.create(new FileInputStream(filePath));) {
 
-			int totalNoRows = sheet.getLastRowNum();
-			int totalNoCols = sheet.getRow(0).getLastCellNum();
+			sheet = workbook.getSheet(sheetName);
+			int totalNoRows = sheet.getPhysicalNumberOfRows();
+			int totalNoCols = sheet.getRow(0).getPhysicalNumberOfCells();
 			arrayData = new String[totalNoRows][totalNoCols];
 
 			for (int i = 0; i < totalNoRows; i++) {
@@ -61,15 +50,15 @@ public class TestUtil extends DriverFactory {
 				}
 			}
 		} catch (Exception e) {
-			DriverFactory.getLogger().info(e.getMessage());
-		} finally {
-			// workbook.close();
-			// fis.close();
+			LoggerUtil.log(e.getMessage());
 		}
 		return arrayData;
 	}
 
 	public static EventFiringWebDriver webDriverEvents(WebDriver driver) {
+		EventFiringWebDriver eDriver = null;
+		WebEventListener eventListener = null;
+
 		eDriver = new EventFiringWebDriver(driver);
 		// Now create object of EventListenerHandler to register it with
 		// EventFiringWebDriver

@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 import com.qa.base.DriverFactory;
 import com.qa.pageActions.SearchHomePageActions;
+import com.qa.util.LoggerUtil;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Link;
@@ -27,11 +28,10 @@ public class DemoTest {
 
 	@BeforeMethod
 	public void setup() {
-		basePage = new DriverFactory(logger);
+		basePage = new DriverFactory();
 		prop = basePage.init_prop();
 		basePage.init_driver(prop);
 		// TestUtil.webDriverEvents(basePage.init_driver(prop));
-
 	}
 
 	@AfterMethod
@@ -48,7 +48,7 @@ public class DemoTest {
 	public void demoTest() {
 		SearchHomePageActions searchHomePageActions = new SearchHomePageActions();
 
-		DriverFactory.getLogger().info("Demo Test Execution");
+		LoggerUtil.log("Demo Test Execution");
 		searchHomePageActions.enterTextInDepartureStn("London");
 		Assert.assertEquals(true, true);
 	}
@@ -61,7 +61,7 @@ public class DemoTest {
 	@Link("https://docs.qameta.io/allure/")
 	public void annotationTest() {
 		SearchHomePageActions searchHomePageActions = new SearchHomePageActions();
-		DriverFactory.getLogger().info("Annotation Transformation Test");
+		LoggerUtil.log("Annotation Transformation Test");
 		searchHomePageActions.enterTextInDepartureStn("London");
 		Assert.assertEquals(true, true);
 	}
@@ -74,7 +74,7 @@ public class DemoTest {
 	@Link("https://docs.qameta.io/allure/")
 	public void retryTest() {
 		SearchHomePageActions searchHomePageActions = new SearchHomePageActions();
-		DriverFactory.getLogger().info("RetryAnalyzer Test");
+		LoggerUtil.log("RetryAnalyzer Test");
 		searchHomePageActions.enterTextInDepartureStn("London");
 		Assert.assertEquals(true, true);
 	}

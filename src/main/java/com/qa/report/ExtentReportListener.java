@@ -3,7 +3,6 @@ package com.qa.report;
 import java.io.IOException;
 import java.util.Arrays;
 
-import org.apache.logging.log4j.Logger;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -15,6 +14,7 @@ import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.qa.base.DriverFactory;
+import com.qa.util.LoggerUtil;
 import com.qa.util.TestUtil;
 
 public class ExtentReportListener extends DriverFactory implements ITestListener {
@@ -22,15 +22,14 @@ public class ExtentReportListener extends DriverFactory implements ITestListener
 	// Extent Report Declarations
 	private static ExtentReports extent = ExtentManager.createInstance();
 	private static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
-	private static Logger logger;
 
-	public ExtentReportListener() {
-		super(logger);
+	public static synchronized ExtentTest getExtentTest() {
+		return test.get();
 	}
-
+	
 	@Override
 	public void onTestStart(ITestResult result) {
-		DriverFactory.getLogger().info((result.getMethod().getMethodName() + " started!"));
+		LoggerUtil.getLogger().info((result.getMethod().getMethodName() + " started!"));
 		ExtentTest extentTest = extent.createTest(result.getMethod().getMethodName(),
 				result.getMethod().getDescription());
 		test.set(extentTest);
@@ -38,13 +37,13 @@ public class ExtentReportListener extends DriverFactory implements ITestListener
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
-		DriverFactory.getLogger().info((result.getMethod().getMethodName() + " passed!"));
+		LoggerUtil.getLogger().info((result.getMethod().getMethodName() + " passed!"));
 		test.get().pass("Test Case Passed");
 	}
 
 	@Override
 	public void onTestFailure(ITestResult result) {
-		DriverFactory.getLogger().info((result.getMethod().getMethodName() + " failed!"));
+		LoggerUtil.getLogger().info((result.getMethod().getMethodName() + " failed!"));
 		try {
 			TestUtil.takeScreenshotAtEndOfTest(result.getName());
 		} catch (IOException e) {
@@ -70,27 +69,27 @@ public class ExtentReportListener extends DriverFactory implements ITestListener
 
 	@Override
 	public void onTestSkipped(ITestResult result) {
-		DriverFactory.getLogger().info((result.getMethod().getMethodName() + " skipped!"));
+		LoggerUtil.getLogger().info((result.getMethod().getMethodName() + " skipped!"));
 		test.get().skip("Test Case Skipped");
 		test.get().skip(result.getThrowable());
 	}
 
 	@Override
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-		DriverFactory.getLogger().info(("onTestFailedButWithinSuccessPercentage for " + result.getMethod().getMethodName()));
+		LoggerUtil.log(("onTestFailedButWithinSuccessPercentage for " + result.getMethod().getMethodName()));
 	}
 
 	@Override
 	public void onStart(ITestContext context) {
-		DriverFactory.getLogger().info("Extent Reports Version 4 Test Suite started! " + context.getOutputDirectory());
+		LoggerUtil.log("Extent Reports Version 4 Test Suite started! " + context.getOutputDirectory());
 	}
 
 	@Override
 	public void onFinish(ITestContext context) {
-		DriverFactory.getLogger().info("Extent Reports Version 4  Test Suite is ending!");
-		DriverFactory.getLogger().info("This is onFinish method. Passed Tests: " + context.getPassedTests());
-		DriverFactory.getLogger().info("This is onFinish method. Failed Test: " + context.getFailedTests());
-		DriverFactory.getLogger().info("This is onFinish method. Skipped Test: " + context.getSkippedTests());
+		LoggerUtil.log("Extent Reports Version 4  Test Suite is ending!");
+		LoggerUtil.log("This is onFinish method. Passed Tests: " + context.getPassedTests());
+		LoggerUtil.log("This is onFinish method. Failed Test: " + context.getFailedTests());
+		LoggerUtil.log("This is onFinish method. Skipped Test: " + context.getSkippedTests());
 		extent.getStartedReporters().forEach(a -> a.getReporterName().lines().forEach(b -> System.out.println(b)));
 		extent.flush();
 		test.remove();

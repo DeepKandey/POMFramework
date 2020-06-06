@@ -14,8 +14,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.qa.base.DriverFactory;
-
 public class WebInteractUtil {
 
 	private static WebDriver driver;
@@ -46,7 +44,7 @@ public class WebInteractUtil {
 		try {
 			element.click();
 		} catch (Exception e2) {
-			DriverFactory.getLogger().info("Failed to click element: " + element);
+			LoggerUtil.log("Failed to click element: " + element);
 			e2.printStackTrace();
 		}
 	}// end of method Click()
@@ -62,7 +60,7 @@ public class WebInteractUtil {
 		try {
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 		} catch (Exception e) {
-			DriverFactory.getLogger().info("Failed to click element: " + element);
+			LoggerUtil.log("Failed to click element: " + element);
 			e.printStackTrace();
 		}
 	}
@@ -81,8 +79,7 @@ public class WebInteractUtil {
 			try {
 				action.moveToElement(element).click().build().perform();
 			} catch (Exception e2) {
-
-				DriverFactory.getLogger().info("Failed to click element: " + element);
+				LoggerUtil.log("Failed to click element: " + element);
 				e2.printStackTrace();
 			}
 		}
@@ -102,7 +99,7 @@ public class WebInteractUtil {
 				Click(element);
 			}
 		} catch (Exception e) {
-			DriverFactory.getLogger().info("Failed to enter value: " + value);
+			LoggerUtil.log("Failed to enter value: " + value);
 			e.printStackTrace();
 		}
 	}// end of method sendKey()
@@ -122,9 +119,9 @@ public class WebInteractUtil {
 
 			try {
 				if (element.isDisplayed())
-					DriverFactory.getLogger().info("Scrolled to element");
+					LoggerUtil.getLogger().info("Scrolled to element");
 			} catch (Exception e) {
-				DriverFactory.getLogger().info("Failed to Scroll to element");
+				LoggerUtil.getLogger().info("Failed to Scroll to element");
 				e.printStackTrace();
 				RemoteWebDriver remoteDriver = (RemoteWebDriver) driver;
 				remoteDriver.getCapabilities().getBrowserName();
@@ -164,9 +161,9 @@ public class WebInteractUtil {
 	 */
 	public void isEnabled(WebElement element) {
 		if (element.isEnabled())
-			DriverFactory.getLogger().info("Successfully verified that element is enabled");
+			LoggerUtil.getLogger().info("Successfully verified that element is enabled");
 		else
-			DriverFactory.getLogger().info("Failed to verify that element is enabled");
+			LoggerUtil.getLogger().info("Failed to verify that element is enabled");
 	}// end of method isEnabled()
 
 	/**
@@ -190,9 +187,9 @@ public class WebInteractUtil {
 	 */
 	public void isSelected(WebElement element) {
 		if (element.isEnabled())
-			DriverFactory.getLogger().info("Successfully verified that element is selected");
+			LoggerUtil.getLogger().info("Successfully verified that element is selected");
 		else
-			DriverFactory.getLogger().info("Failed to verify that element is selected");
+			LoggerUtil.getLogger().info("Failed to verify that element is selected");
 	}// end of method isSelected()
 
 	/**
@@ -205,10 +202,10 @@ public class WebInteractUtil {
 	public void isDisplayed(WebElement element) {
 		try {
 			if (element.isDisplayed()) {
-				DriverFactory.getLogger().info("Successfully verified element is displayed");
+				LoggerUtil.getLogger().info("Successfully verified element is displayed");
 			}
 		} catch (Exception e) {
-			DriverFactory.getLogger().info("Failed to verify element is displayed");
+			LoggerUtil.getLogger().info("Failed to verify element is displayed");
 		}
 	}// end of method isDisplayed()
 
@@ -294,7 +291,7 @@ public class WebInteractUtil {
 			Process process = new ProcessBuilder("tzutil.exe", "/s", timeZone).start();
 			return process.isAlive();
 		} catch (IOException e) {
-			DriverFactory.getLogger().info("Failed to set timezone");
+			LoggerUtil.getLogger().info("Failed to set timezone");
 			e.printStackTrace();
 			return false;
 		}

@@ -1,29 +1,21 @@
 package com.qa.base;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Properties;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.qa.util.LoggerUtil;
 import com.qa.util.WebInteractUtil;
 
 public class DriverFactory {
 
 	// thread local driver object for web driver
-	private static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
-	private static ThreadLocal<Logger> tlLogger = new ThreadLocal<>();
+	private static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();	
 
-	public DriverFactory(Logger logger) {
-		logger=LogManager.getLogger();
-		tlLogger.set(logger);
-	}
 	public static synchronized WebDriver getDriver() {
 		return tlDriver.get();
 	}
@@ -33,14 +25,7 @@ public class DriverFactory {
 		tlDriver.remove();
 	}
 
-	public static synchronized Logger getLogger() {
-		return tlLogger.get();
-	}
-
-	public static synchronized void removeLogger() {
-		tlLogger.remove();
-	}
-
+	
 	/**
 	 * This method is used to initialize the WebDriver on the basis of browserName
 	 * 
@@ -57,7 +42,7 @@ public class DriverFactory {
 			browserName = System.getProperty("browser");
 		}
 
-		System.out.println("Running on ----> " + browserName + " browser");
+		LoggerUtil.log("Running on ----> " + browserName + " browser");
 
 		OptionsManager optionsManager = new OptionsManager(prop);
 
@@ -80,7 +65,7 @@ public class DriverFactory {
 					"C:/Users/deepa/Downloads/Browser Drivers/EdgeDriver/msedgedriver.exe");
 			tlDriver.set(new EdgeDriver());
 		} else {
-			System.out.println(browserName + " is not found, please pass the right browser Name");
+			LoggerUtil.log(browserName + " is not found, please pass the right browser Name");
 		}
 
 		getDriver().manage().window().maximize();
@@ -117,7 +102,7 @@ public class DriverFactory {
 					path = "./src/main/java/com/qa/config/config.properties";
 					break;
 				default:
-					System.out.println("no env is passed");
+					LoggerUtil.log("no env is passed");
 					break;
 				}
 			}
@@ -125,11 +110,9 @@ public class DriverFactory {
 			FileInputStream ip = new FileInputStream(path);
 			prop.load(ip);
 
-		} catch (FileNotFoundException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("config file is not foubd.....");
-		} catch (IOException e) {
-			e.printStackTrace();
+			LoggerUtil.log("config file is not found.....");
 		}
 
 		return prop;

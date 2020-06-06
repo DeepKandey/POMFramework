@@ -13,6 +13,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import com.qa.util.LoggerUtil;
 import com.qa.util.TestUtil;
 import com.tesults.tesults.Results;
 
@@ -34,7 +35,7 @@ public class TesultsReportListener implements ITestListener {
 
 	@Override
 	public void onTestStart(ITestResult result) {
-		System.out.println("I am in onTestStart method " + getTestMethodName(result) + " start");
+		LoggerUtil.log("I am in onTestStart method " + getTestMethodName(result) + " start");
 
 	}
 
@@ -71,7 +72,7 @@ public class TesultsReportListener implements ITestListener {
 		Map<String, Object> testCase = new HashMap<>();
 		testCase.put("name", getTestMethodName(iTestResult));
 		testCase.put("suite", "TesultsExample");
-		testCase.put("result", "fail");
+		testCase.put("result", "skip");
 		testCase.put("params", getTestParams(iTestResult));
 		List<String> files = new ArrayList<>();
 		try {
@@ -91,7 +92,7 @@ public class TesultsReportListener implements ITestListener {
 
 	@Override
 	public void onStart(ITestContext context) {
-		System.out.println("I am in onStart method " + context.getName());
+		LoggerUtil.log("I am in onStart method " + context.getName());
 	}
 
 	@SuppressWarnings("unchecked")
@@ -108,9 +109,9 @@ public class TesultsReportListener implements ITestListener {
 
 		// Upload
 		Map<String, Object> response = Results.upload(data);
-		System.out.println("success: " + response.get("success"));
-		System.out.println("message: " + response.get("message"));
-		System.out.println("warnings: " + ((List<String>) response.get("warnings")).size());
-		System.out.println("errors: " + ((List<String>) response.get("errors")).size());
+		LoggerUtil.log("success: " + response.get("success"));
+		LoggerUtil.log("message: " + response.get("message"));
+		LoggerUtil.log("warnings: " + ((List<String>) response.get("warnings")).size());
+		LoggerUtil.log("errors: " + ((List<String>) response.get("errors")).size());
 	}
 }

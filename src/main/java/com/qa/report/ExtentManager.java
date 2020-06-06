@@ -3,17 +3,16 @@ package com.qa.report;
 import java.io.File;
 import java.util.Date;
 
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Platform;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.qa.base.DriverFactory;
+import com.qa.util.LoggerUtil;
 
 public class ExtentManager extends DriverFactory {
 
-	private static Logger logger;
 	private static ExtentReports extent;
 	private static Platform platform;
 	private static Date date = new Date();
@@ -24,13 +23,8 @@ public class ExtentManager extends DriverFactory {
 	private static String winReportFileLoc = windowsPath + "/" + reportFileName;
 	// private static String macReportFileLoc = macPath + "/" + reportFileName;
 
-	public ExtentManager() {
-		super(logger);
-	}
-
 	public static ExtentReports getInstance() {
 		if (extent == null) {
-			
 			createInstance();
 		}
 		return extent;
@@ -67,10 +61,10 @@ public class ExtentManager extends DriverFactory {
 		case WIN10:
 			reportFileLocation = winReportFileLoc;
 			createReportPath(windowsPath);
-			DriverFactory.getLogger().info("ExtentReport Path for WINDOWS: " + windowsPath + "\n");
+			LoggerUtil.log("ExtentReport Path for WINDOWS: " + windowsPath + "\n");
 			break;
 		default:
-			DriverFactory.getLogger().info("ExtentReport path has not been set! There is a problem!\n");
+			LoggerUtil.log("ExtentReport path has not been set! There is a problem!\n");
 			break;
 		}
 		return reportFileLocation;
@@ -81,12 +75,12 @@ public class ExtentManager extends DriverFactory {
 		File testDirectory = new File(path);
 		if (!testDirectory.exists()) {
 			if (testDirectory.mkdir()) {
-				DriverFactory.getLogger().info("Directory: " + path + " is created!");
+				LoggerUtil.log("Directory: " + path + " is created!");
 			} else {
-				DriverFactory.getLogger().info("Failed to create directory: " + path);
+				LoggerUtil.log("Failed to create directory: " + path);
 			}
 		} else {
-			DriverFactory.getLogger().info("Directory already exists: " + path);
+			LoggerUtil.log("Directory already exists: " + path);
 		}
 	}// End of method createReportPath
 
