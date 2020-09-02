@@ -8,13 +8,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.qa.util.Constants;
 import com.qa.util.LoggerUtil;
 import com.qa.util.WebInteractUtil;
 
 public class DriverFactory {
 
 	// thread local driver object for web driver
-	private static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();	
+	private static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
 
 	public static synchronized WebDriver getDriver() {
 		return tlDriver.get();
@@ -25,11 +26,10 @@ public class DriverFactory {
 		tlDriver.remove();
 	}
 
-	
 	/**
 	 * This method is used to initialize the WebDriver on the basis of browserName
 	 * 
-	 * @param browserName
+	 * @param prop
 	 * @return this method will return driver instance
 	 */
 	public WebDriver init_driver(Properties prop) {
@@ -47,23 +47,23 @@ public class DriverFactory {
 		OptionsManager optionsManager = new OptionsManager(prop);
 
 		if (browserName.equalsIgnoreCase("chrome")) {
-			System.setProperty("webdriver.chrome.driver",
-					"C:/Users/deepa/Downloads/Browser Drivers/Chrome Drivers/chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", Constants.DRIVERPATH_CHROME);
 			System.setProperty("webdriver.chrome.silentOutput", "true"); // To suppress the Chrome logs on console
 
 			tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
+
 		} else if (browserName.equalsIgnoreCase("firefox")) {
-			System.setProperty("webdriver.gecko.driver",
-					"C:/Users/deepa/Downloads/Browser Drivers/FireFoxDrivers/geckodriver.exe");
+			System.setProperty("webdriver.gecko.driver", Constants.DRIVERPATH_FIREFOX);
 
 			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "null"); // To suppress FF logs on
 																						// console
 
 			tlDriver.set(new FirefoxDriver(optionsManager.getFirefoxOptions()));
+
 		} else if (browserName.equalsIgnoreCase("Edge")) {
-			System.setProperty("webdriver.edge.driver",
-					"C:/Users/deepa/Downloads/Browser Drivers/EdgeDriver/msedgedriver.exe");
+			System.setProperty("webdriver.edge.driver", Constants.DRIVERPATH_EDGE);
 			tlDriver.set(new EdgeDriver());
+
 		} else {
 			LoggerUtil.log(browserName + " is not found, please pass the right browser Name");
 		}
