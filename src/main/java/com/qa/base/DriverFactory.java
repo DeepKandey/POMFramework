@@ -47,20 +47,19 @@ public class DriverFactory {
 		OptionsManager optionsManager = new OptionsManager(prop);
 
 		if (browserName.equalsIgnoreCase("chrome")) {
-			System.setProperty("webdriver.chrome.driver", Constants.DRIVERPATH_CHROME);
-			System.setProperty("webdriver.chrome.silentOutput", "true"); // To suppress the Chrome logs on console
 
+			System.setProperty("webdriver.chrome.driver", Constants.DRIVERPATH_CHROME);
+			System.setProperty("webdriver.chrome.silentOutput", "true"); // suppress browser logs on console
 			tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
 
 		} else if (browserName.equalsIgnoreCase("firefox")) {
+
 			System.setProperty("webdriver.gecko.driver", Constants.DRIVERPATH_FIREFOX);
-
-			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "null"); // To suppress FF logs on
-																						// console
-
+			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "null"); // To suppress FF logs
 			tlDriver.set(new FirefoxDriver(optionsManager.getFirefoxOptions()));
 
 		} else if (browserName.equalsIgnoreCase("Edge")) {
+
 			System.setProperty("webdriver.edge.driver", Constants.DRIVERPATH_EDGE);
 			tlDriver.set(new EdgeDriver());
 
@@ -78,8 +77,8 @@ public class DriverFactory {
 
 	/**
 	 * 
-	 * @return this method returns properties - prop available in config.proerties
-	 *         file
+	 * @return this method returns properties - prop available in config.properties
+	 * 
 	 */
 	public Properties init_prop() {
 		Properties prop = new Properties();
