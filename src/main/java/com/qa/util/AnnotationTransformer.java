@@ -10,12 +10,10 @@ import org.testng.annotations.ITestAnnotation;
 public class AnnotationTransformer implements IAnnotationTransformer {
 
 	public boolean isTestRunning(ITestAnnotation ins) {
-		if (ins.getAlwaysRun()) {
-			return true;
-		}
-		return false;
+		return ins.getAlwaysRun();
 	}
 
+	@Override
 	@SuppressWarnings("rawtypes")
 	public synchronized void transform(ITestAnnotation annotation, Class testClass, Constructor testConstructor, Method testMethod) {
 
@@ -28,7 +26,6 @@ public class AnnotationTransformer implements IAnnotationTransformer {
 				}
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (isTestRunning(annotation)) {

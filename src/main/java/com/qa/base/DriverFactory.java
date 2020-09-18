@@ -13,7 +13,7 @@ import com.qa.util.LoggerUtil;
 import com.qa.util.WebInteractUtil;
 
 public class DriverFactory {
-
+	
 	// thread local driver object for web driver
 	private static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
 
@@ -32,7 +32,7 @@ public class DriverFactory {
 	 * @param prop
 	 * @return this method will return driver instance
 	 */
-	public WebDriver init_driver(Properties prop) {
+	public WebDriver initializedriver(Properties prop) {
 
 		String browserName = null;
 
@@ -55,7 +55,7 @@ public class DriverFactory {
 		} else if (browserName.equalsIgnoreCase("firefox")) {
 
 			System.setProperty("webdriver.gecko.driver", Constants.DRIVERPATH_FIREFOX);
-			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "null"); // To suppress FF logs
+			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "null"); // suppress browser logs on console
 			tlDriver.set(new FirefoxDriver(optionsManager.getFirefoxOptions()));
 
 		} else if (browserName.equalsIgnoreCase("Edge")) {
@@ -80,7 +80,8 @@ public class DriverFactory {
 	 * @return this method returns properties - prop available in config.properties
 	 * 
 	 */
-	public Properties init_prop() {
+	public Properties initializeProp() {
+		
 		Properties prop = new Properties();
 		String path = null;
 		String env = null;

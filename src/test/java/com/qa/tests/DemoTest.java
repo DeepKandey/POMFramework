@@ -29,8 +29,8 @@ public class DemoTest {
 	@BeforeMethod
 	public void setup() {
 		basePage = new DriverFactory();
-		prop = basePage.init_prop();
-		basePage.init_driver(prop);
+		prop = basePage.initializeProp();
+		basePage.initializedriver(prop);
 		// TestUtil.webDriverEvents(basePage.init_driver(prop));
 	}
 

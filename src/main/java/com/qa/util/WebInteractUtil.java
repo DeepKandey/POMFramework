@@ -40,7 +40,7 @@ public class WebInteractUtil {
 	 * @return void
 	 * @author deepak
 	 */
-	public void Click(WebElement element) {
+	public void click(WebElement element) {
 		try {
 			element.click();
 		} catch (Exception e2) {
@@ -96,7 +96,7 @@ public class WebInteractUtil {
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(element));
 			if (element.isDisplayed()) {
-				Click(element);
+				click(element);
 			}
 		} catch (Exception e) {
 			LoggerUtil.log("Failed to enter value: " + value);
@@ -174,7 +174,7 @@ public class WebInteractUtil {
 	 * @author deepak
 	 */
 	public void clear(WebElement element) {
-		Click(element);
+		click(element);
 		element.clear();
 	} // end of method clear()
 

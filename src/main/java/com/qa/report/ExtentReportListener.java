@@ -90,7 +90,6 @@ public class ExtentReportListener extends DriverFactory implements ITestListener
 		LoggerUtil.log("This is onFinish method. Passed Tests: " + context.getPassedTests());
 		LoggerUtil.log("This is onFinish method. Failed Test: " + context.getFailedTests());
 		LoggerUtil.log("This is onFinish method. Skipped Test: " + context.getSkippedTests());
-		extent.getStartedReporters().forEach(a -> a.getReporterName().lines().forEach(b -> System.out.println(b)));
 		extent.flush();
 		test.remove();
 	}

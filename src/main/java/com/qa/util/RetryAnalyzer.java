@@ -7,10 +7,6 @@ import com.qa.base.DriverFactory;
 
 public class RetryAnalyzer extends DriverFactory implements IRetryAnalyzer {
 
-	/*
-	 * private int counter = 0; private static final int retryLimit = 1;
-	 */
-
 	private static final int MAX_RETRY_COUNT = 2;
 	private int count = MAX_RETRY_COUNT;
 
@@ -22,11 +18,6 @@ public class RetryAnalyzer extends DriverFactory implements IRetryAnalyzer {
 	 * Note: This method will return true if a tests needs to be retried and false
 	 * it not.
 	 *
-	 */
-
-	/*
-	 * public boolean retry(ITestResult result) { if (counter < retryLimit) {
-	 * counter++; return true; } return false; }
 	 */
 
 	@Override

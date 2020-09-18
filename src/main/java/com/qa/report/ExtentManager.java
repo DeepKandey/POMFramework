@@ -6,7 +6,7 @@ import java.util.Date;
 import org.openqa.selenium.Platform;
 
 import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.aventstack.extentreports.reporter.*;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.qa.base.DriverFactory;
 import com.qa.util.LoggerUtil;
@@ -16,12 +16,9 @@ public class ExtentManager extends DriverFactory {
 	private static ExtentReports extent;
 	private static Platform platform;
 	private static Date date = new Date();
-	private static String reportFileName = "Extent_" + date.toString().replaceAll(":", "_") + ".html";
+	private static String reportFileName = "Extent_" + date.toString().replace(":", "_") + ".html";
 	private static String windowsPath = System.getProperty("user.dir") + "/test-output";
-	// private static String macPath = System.getProperty("user.dir")+
-	// "/TestReport";
 	private static String winReportFileLoc = windowsPath + "/" + reportFileName;
-	// private static String macReportFileLoc = macPath + "/" + reportFileName;
 
 	public static ExtentReports getInstance() {
 		if (extent == null) {
@@ -34,7 +31,7 @@ public class ExtentManager extends DriverFactory {
 		new ExtentManager();
 		platform = getCurrentPlatform();
 		String fileName = getReportFileLocation(platform);
-		ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(fileName);
+		ExtentSparkReporter htmlReporter = new ExtentSparkReporter(fileName);
 		htmlReporter.config().setTheme(Theme.STANDARD);
 		htmlReporter.config().setDocumentTitle(fileName);
 		htmlReporter.config().setEncoding("utf-8");
@@ -54,10 +51,6 @@ public class ExtentManager extends DriverFactory {
 	private static String getReportFileLocation(Platform platform) {
 		String reportFileLocation = null;
 		switch (platform) {
-		/*
-		 * case MAC: reportFileLocation = macReportFileLoc; createReportPath(macPath);
-		 * System.out.println("ExtentReport Path for MAC: " + macPath + "\n"); break;
-		 */
 		case WIN10:
 			reportFileLocation = winReportFileLoc;
 			createReportPath(windowsPath);

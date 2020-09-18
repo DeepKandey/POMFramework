@@ -6,7 +6,7 @@ public class SearchHomePageActions extends SearchPageObjects {
 
 	
 	public void clickOnSearchButton() {
-		Click(getWebElement(searchButton));
+		click(getWebElement(searchButton));
 	}
 
 	public void enterTextInDepartureStn(String departure) {
