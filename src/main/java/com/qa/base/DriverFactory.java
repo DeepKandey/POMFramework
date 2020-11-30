@@ -1,6 +1,7 @@
 package com.qa.base;
 
 import java.io.FileInputStream;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
@@ -41,7 +42,7 @@ public class DriverFactory {
 	 * @return this method will return driver instance
 	 * @throws MalformedURLException
 	 */
-	public WebDriver initializeDriver(Properties prop) throws MalformedURLException {
+	public WebDriver initializeDriver(Properties prop, Method methodName) throws MalformedURLException {
 
 		String browserName = null;
 
@@ -89,7 +90,7 @@ public class DriverFactory {
 				caps.setCapability("os_version", "10");
 				caps.setCapability("browser", "Chrome");
 				caps.setCapability("browser_version", "80");
-				caps.setCapability("name", "deepakkumar194's First Test");
+				caps.setCapability("name", methodName.getName());
 				tlDriver.set(new RemoteWebDriver(new URL(URL), caps));
 
 			}

@@ -1,8 +1,10 @@
 package com.qa.tests;
 
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.util.Properties;
 
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -19,8 +21,6 @@ import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Step;
 import io.qameta.allure.Story;
 
-import org.apache.logging.log4j.Logger;
-
 public class DemoTest {
 
 	Properties prop;
@@ -28,10 +28,10 @@ public class DemoTest {
 	Logger logger;
 
 	@BeforeMethod
-	public void setup() throws MalformedURLException {
+	public void setup(Method methodName) throws MalformedURLException {
 		basePage = new DriverFactory();
 		prop = basePage.initializeProp();
-		basePage.initializeDriver(prop);
+		basePage.initializeDriver(prop, methodName);
 		// TestUtil.webDriverEvents(basePage.init_driver(prop));
 	}
 
