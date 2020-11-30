@@ -20,7 +20,7 @@ public class AnnotationTransformer implements IAnnotationTransformer {
 		try {
 			Object[][] object = TestUtil.getExcelData(Constants.TEST_DATA_PATH, "TestScripts");
 
-			for (int i = 0; i < object.length; i++) {
+			for (int i = 1; i < object.length; i++) {
 				if (object[i][0].toString().trim().equals(testMethod.getName())) {
 					annotation.setEnabled(Boolean.parseBoolean(object[i][1].toString()));
 				}

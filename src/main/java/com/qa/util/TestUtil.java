@@ -44,9 +44,9 @@ public class TestUtil extends DriverFactory {
 			int totalNoCols = sheet.getRow(0).getPhysicalNumberOfCells();
 			arrayData = new String[totalNoRows][totalNoCols];
 
-			for (int i = 0; i < totalNoRows; i++) {
+			for (int i = 1; i < totalNoRows; i++) {
 				for (int j = 0; j < totalNoCols; j++) {
-					arrayData[i][j] = sheet.getRow(i + 1).getCell(j).toString();
+					arrayData[i][j] = sheet.getRow(i).getCell(j).toString();
 				}
 			}
 		} catch (Exception e) {

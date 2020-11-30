@@ -47,7 +47,11 @@ tmp/
 local.properties
 .loadpath
 .factorypath
-
+##############################
+## Allure TestNG
+##############################
+allure-results/
+screenshots/
 ##############################
 ## OS X
 ##############################

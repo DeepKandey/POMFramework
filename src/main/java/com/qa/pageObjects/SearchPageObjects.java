@@ -10,9 +10,9 @@ public class SearchPageObjects extends WebInteractUtil {
 		super();
 	}
 
-	protected By departureStn = By.id("from.text");
+	protected By departureStn = By.id("from.search");
 
-	protected By destinationStn = By.id("to.text");
+	protected By destinationStn = By.id("to.search");
 
 	protected By searchButton = By.xpath("//button[@data-test='submit-journey-search-button']");
 

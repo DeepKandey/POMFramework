@@ -15,9 +15,9 @@ public class OptionsManager {
 
 	/**
 	 * 
-		 * {@summary set FirefoxChromeOptionsOptions}
+		 * {@summary set ChromeOptions}
 		 * @param
-		 * @return FirefoxOptions
+		 * @return ChromeOptions
 		 * @author deepak rai
 	 */
 	public ChromeOptions getChromeOptions() {

@@ -1,5 +1,6 @@
 package com.qa.tests;
 
+import java.net.MalformedURLException;
 import java.util.Properties;
 
 import org.testng.Assert;
@@ -27,10 +28,10 @@ public class DemoTest {
 	Logger logger;
 
 	@BeforeMethod
-	public void setup() {
+	public void setup() throws MalformedURLException {
 		basePage = new DriverFactory();
 		prop = basePage.initializeProp();
-		basePage.initializedriver(prop);
+		basePage.initializeDriver(prop);
 		// TestUtil.webDriverEvents(basePage.init_driver(prop));
 	}
 
