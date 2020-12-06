@@ -19,8 +19,8 @@ import com.qa.util.WebInteractUtil;
 
 public class DriverFactory {
 
-	// thread local driver object for web driver
 	private static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
+
 	// BrowserStack credentials
 	public static final String USERNAME = System.getenv("BROWSERSTACK_USERNAME");;
 	public static final String AUTOMATE_KEY = System.getenv("BROWSERSTACK_ACCESSKEY");;
