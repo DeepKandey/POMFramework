@@ -97,7 +97,6 @@ public class DriverFactory {
 		}
 
 		getDriver().manage().window().maximize();
-		getDriver().manage().deleteAllCookies();
 		getDriver().get(prop.getProperty("url"));
 		WebInteractUtil.setDriver(getDriver());
 		return getDriver();
