@@ -1,6 +1,7 @@
 package com.qa.util;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -23,20 +24,20 @@ public class WebInteractUtil {
 	/**
 	 * {@summary Method to set WebDriver and initialize wait and action class}
 	 * 
-	 * @param WebDriver
+	 * @param driver
 	 * @return void
 	 * @author deepak
 	 */
 	public static void setDriver(WebDriver driver) {
 		WebInteractUtil.driver = driver;
-		wait = new WebDriverWait(WebInteractUtil.driver, Constants.EXPLICIT_WAIT);
+		wait = new WebDriverWait(WebInteractUtil.driver, Duration.ofSeconds(Constants.EXPLICIT_WAIT));
 		action = new Actions(WebInteractUtil.driver);
 	}
 
 	/**
 	 * {@summary Method to click on WebElement}
 	 * 
-	 * @param WebElement
+	 * @param element
 	 * @return void
 	 * @author deepak
 	 */
@@ -52,7 +53,7 @@ public class WebInteractUtil {
 	/**
 	 * {@summary Method to click on WebElement using JavaScript}
 	 * 
-	 * @param WebElement
+	 * @param element
 	 * @return void
 	 * @author deepak
 	 */
@@ -68,7 +69,7 @@ public class WebInteractUtil {
 	/**
 	 * {@summary Method to click on WebElement using Actions class}
 	 * 
-	 * @param WebElement
+	 * @param element
 	 * @return void
 	 * @author deepak
 	 */
@@ -88,7 +89,7 @@ public class WebInteractUtil {
 	/**
 	 * {@summary Method to enter text}
 	 * 
-	 * @param WebElement, String
+	 * @param element, String
 	 * @return void
 	 * @author deepak
 	 */
@@ -107,7 +108,7 @@ public class WebInteractUtil {
 	/**
 	 * {@summary Method to scroll to any WebElement using coordinates}
 	 * 
-	 * @param WebElement, integer,integer
+	 * @param element, integer,integer
 	 * @return void
 	 * @author deepak
 	 */
@@ -144,7 +145,7 @@ public class WebInteractUtil {
 	/**
 	 * {@summary Method to execute JavaScript for any WebElement}
 	 * 
-	 * @param String,WebElement
+	 * @param executionScript,WebElement
 	 * @return void
 	 * @author deepak
 	 */
@@ -155,7 +156,7 @@ public class WebInteractUtil {
 	/**
 	 * {@summary Method to verify if WebElement is enabled}
 	 * 
-	 * @param WebElement
+	 * @param element
 	 * @return void
 	 * @author deepak
 	 */
@@ -169,7 +170,7 @@ public class WebInteractUtil {
 	/**
 	 * {@summary Method to clear text on any input box}
 	 * 
-	 * @param WebElement
+	 * @param element
 	 * @return void
 	 * @author deepak
 	 */
@@ -181,7 +182,7 @@ public class WebInteractUtil {
 	/**
 	 * {@summary Method to verify if WebElement is selected}
 	 * 
-	 * @param WebElement
+	 * @param element
 	 * @return void
 	 * @author deepak
 	 */
@@ -195,7 +196,7 @@ public class WebInteractUtil {
 	/**
 	 * {@summary Method to verify if WebElement is displayed}
 	 * 
-	 * @param WebElement
+	 * @param element
 	 * @return void
 	 * @author deepak
 	 */
@@ -212,7 +213,7 @@ public class WebInteractUtil {
 	/**
 	 * {@summary Method to get text attribute on WebElement}
 	 * 
-	 * @param WebElement
+	 * @param element
 	 * @return String
 	 * @author deepak
 	 */
@@ -223,7 +224,7 @@ public class WebInteractUtil {
 	/**
 	 * {@summary Method to get text attribute for list of WebElements}
 	 * 
-	 * @param WebElement list
+	 * @param listOfWebElements
 	 * @return List of Strings
 	 * @author deepak
 	 */
@@ -238,18 +239,18 @@ public class WebInteractUtil {
 	/**
 	 * {@summary Method to get count of list of WebElements}
 	 * 
-	 * @param WebElement list
+	 * @param listOfWebElements
 	 * @return integer
 	 * @author deepak
 	 */
-	public int getCount(List<WebElement> listOfelement) {
-		return listOfelement.size();
+	public int getCount(List<WebElement> listOfElement) {
+		return listOfElement.size();
 	} // end of method getCount()
 
 	/**
 	 * {@summary Method to get attribute value of WebElement}
 	 * 
-	 * @param WebElement, String
+	 * @param element, String
 	 * @return String
 	 * @author deepak
 	 */
@@ -260,7 +261,7 @@ public class WebInteractUtil {
 	/**
 	 * {@summary Method to get CSS value of WebElement}
 	 * 
-	 * @param WebElement, String
+	 * @param element, String
 	 * @return String
 	 * @author deepak
 	 */
@@ -300,12 +301,12 @@ public class WebInteractUtil {
 	/**
 	 * {@summary Method to get WebElement}
 	 * 
-	 * @param By locator
+	 * @param locator
 	 * @return WebElement
 	 * @author deepak
 	 */
 	public WebElement getWebElement(By locator) {
-		wait = new WebDriverWait(driver, 10);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 		return driver.findElement(locator);
 	} // end of method getWebElement()
@@ -313,7 +314,7 @@ public class WebInteractUtil {
 	/**
 	 * {@summary Method to get list of WebElements}
 	 * 
-	 * @param By locator
+	 * @param locator
 	 * @return list of WebElements
 	 * @author deepak
 	 */

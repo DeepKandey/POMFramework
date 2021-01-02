@@ -19,10 +19,10 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import com.qa.base.Base;
+import com.qa.base.DriverFactory;
 
 
-public class ExtentTestNGIReporterListener extends Base implements IReporter {
+public class ExtentTestNGIReporterListener extends DriverFactory implements IReporter {
     
     private static final String OUTPUT_FOLDER = "test-output/";
     private static final String FILE_NAME = "Extent.html";

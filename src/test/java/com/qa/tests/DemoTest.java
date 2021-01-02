@@ -62,6 +62,7 @@ public class DemoTest {
 	@Link("https://docs.qameta.io/allure/")
 	public void annotationTest() {
 		SearchHomePageActions searchHomePageActions = new SearchHomePageActions();
+
 		LoggerUtil.log("Annotation Transformation Test");
 		searchHomePageActions.enterTextInDepartureStn("London");
 		Assert.assertEquals(true, true);
@@ -75,6 +76,7 @@ public class DemoTest {
 	@Link("https://docs.qameta.io/allure/")
 	public void retryTest() {
 		SearchHomePageActions searchHomePageActions = new SearchHomePageActions();
+
 		LoggerUtil.log("RetryAnalyzer Test");
 		searchHomePageActions.enterTextInDepartureStn("London");
 		Assert.assertEquals(true, true);

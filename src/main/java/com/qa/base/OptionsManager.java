@@ -7,39 +7,36 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class OptionsManager {
 
-	Properties prop;
+    Properties properties;
 
-	public OptionsManager(Properties prop) {
-		this.prop = prop;
-	}
+    public OptionsManager(Properties properties) {
+        this.properties = properties;
+    }
 
-	/**
-	 * 
-		 * {@summary set ChromeOptions}
-		 * @param
-		 * @return ChromeOptions
-		 * @author deepak rai
-	 */
-	public ChromeOptions getChromeOptions() {
-		final ChromeOptions co = new ChromeOptions();
-		if (Boolean.parseBoolean(prop.getProperty("headless")))
-			co.addArguments("--headless");
-		if (Boolean.parseBoolean(prop.getProperty("incognito")))
-			co.addArguments("--incognito");
-		return co;
-	}
+    /**
+     * @return ChromeOptions
+     * @summary set ChromeOptions
+     * @author deepak rai
+     */
+    public ChromeOptions getChromeOptions() {
+        final ChromeOptions chromeOptions = new ChromeOptions();
+        if (Boolean.parseBoolean(properties.getProperty("headless")))
+            chromeOptions.addArguments("--headless");
+        if (Boolean.parseBoolean(properties.getProperty("incognito")))
+            chromeOptions.addArguments("--incognito");
+        return chromeOptions;
+    }
 
-	/**
-	 * 
-		 * {@summary set FirefoxOptions}
-		 * @param
-		 * @return FirefoxOptions
-		 * @author deepak rai
-	 */
-	public FirefoxOptions getFirefoxOptions() {
-		final FirefoxOptions fo = new FirefoxOptions();
-		if (Boolean.parseBoolean(prop.getProperty("headless")))
-			fo.addArguments("--headless");
-		return fo;
-	}
-}// End of class OptionManager
+    /**
+     * {@summary set FirefoxOptions}
+     *
+     * @return FirefoxOptions
+     * @author deepak rai
+     */
+    public FirefoxOptions getFirefoxOptions() {
+        final FirefoxOptions firefoxOptions = new FirefoxOptions();
+        if (Boolean.parseBoolean(properties.getProperty("headless")))
+            firefoxOptions.addArguments("--headless");
+        return firefoxOptions;
+    }
+}// End of class OptionsManager
