@@ -4,7 +4,9 @@ import java.io.FileInputStream;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 import java.util.Properties;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -64,7 +66,7 @@ public class DriverFactory {
             } else if (browserName.equalsIgnoreCase("firefox")) {
 
                 System.setProperty("webdriver.gecko.driver", Constants.DRIVERPATH_FIREFOX);
-                System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "null"); // suppress browser logs on console
+                System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "FFBrowserLogs"); // suppress browser logs on console
                 tlDriver.set(new FirefoxDriver(optionsManager.getFirefoxOptions()));
 
             } else if (browserName.equalsIgnoreCase("Edge")) {
@@ -93,6 +95,7 @@ public class DriverFactory {
 
         getDriver().manage().window().maximize();
         getDriver().get(properties.getProperty("url"));
+        getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Constants.PAGE_LOAD_TIMEOUT));
         WebInteractUtil.setDriver(getDriver());
         return getDriver();
 

@@ -3,6 +3,7 @@ package com.qa.report;
 import java.io.IOException;
 import java.util.Arrays;
 
+import com.aventstack.extentreports.Status;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -26,9 +27,10 @@ public class ExtentReportListener extends DriverFactory implements ITestListener
 	public static synchronized ExtentTest getExtentTest() {
 		return test.get();
 	}
-	
+
 	@Override
 	public void onTestStart(ITestResult result) {
+		//test.get().log(Status.INFO,result.getMethod().getMethodName() + " started!");
 		LoggerUtil.getLogger().info((result.getMethod().getMethodName() + " started!"));
 		ExtentTest extentTest = extent.createTest(result.getMethod().getMethodName(),
 				result.getMethod().getDescription());
