@@ -88,11 +88,11 @@ public class WebInteractUtil {
      * @param element,value
      * @author deepak
      */
-    public void sendKey(WebElement element, String value) {
+    public void enterText(WebElement element, String value) {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(element));
             if (element.isDisplayed()) {
-                click(element);
+                element.sendKeys(value);
             }
         } catch (Exception e) {
             LoggerUtil.log("Failed to enter value: " + value);
@@ -301,7 +301,6 @@ public class WebInteractUtil {
      * @author deepak
      */
     public WebElement getWebElement(By locator) {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         return driver.findElement(locator);
     } // end of method getWebElement()
