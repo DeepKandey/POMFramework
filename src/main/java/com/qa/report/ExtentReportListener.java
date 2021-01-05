@@ -22,12 +22,15 @@ public class ExtentReportListener extends DriverFactory implements ITestListener
   private static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
 
   public static synchronized ExtentTest getExtentTest() {
-    return test.get();
+    try {
+      return test.get();
+    } catch (Exception e) {
+      return null;
+    }
   }
 
   @Override
   public void onTestStart(ITestResult result) {
-    // test.get().log(Status.INFO,result.getMethod().getMethodName() + " started!");
     LoggerUtil.getLogger().info((result.getMethod().getMethodName() + " started!"));
     ExtentTest extentTest =
         extent.createTest(result.getMethod().getMethodName(), result.getMethod().getDescription());
