@@ -1,5 +1,7 @@
 package com.qa.base;
 
+import static com.qa.util.LoggerUtil.log;
+
 import com.qa.util.Constants;
 import com.qa.util.LoggerUtil;
 import com.qa.util.WebInteractUtil;
@@ -52,7 +54,7 @@ public class DriverFactory {
       browserName = properties.getProperty("browser");
     } else browserName = System.getProperty("browser");
 
-    LoggerUtil.log("Running on ----> " + browserName + " browser");
+    log("Running on ----> " + browserName + " browser");
 
     if (properties.getProperty("execution").equalsIgnoreCase("local")) {
 
@@ -77,7 +79,7 @@ public class DriverFactory {
         tlDriver.set(new EdgeDriver());
 
       } else {
-        LoggerUtil.log(browserName + " is not found, please pass the right browser name");
+        log(browserName + " is not found, please pass the right browser name");
       }
 
     } else if (properties.getProperty("execution").equalsIgnoreCase("browserStack")) {
@@ -132,9 +134,8 @@ public class DriverFactory {
       properties.load(ip);
     } catch (Exception e) {
       e.printStackTrace();
-      LoggerUtil.log("config file is not found.....");
+      log("config file is not found.....");
     }
-
     return properties;
   }
 } // end of class DriverFactory

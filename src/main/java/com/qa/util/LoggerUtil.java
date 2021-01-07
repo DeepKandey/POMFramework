@@ -2,9 +2,7 @@
 package com.qa.util;
 
 import com.aventstack.extentreports.Status;
-import com.aventstack.extentreports.append.ScreenCaptureTypeAdapter;
 import com.qa.report.AllureReportListener;
-import com.qa.report.ExtentManager;
 import com.qa.report.ExtentReportListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

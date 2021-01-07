@@ -1,5 +1,7 @@
 package com.qa.report;
 
+import static com.qa.util.LoggerUtil.log;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -7,7 +9,6 @@ import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.qa.base.DriverFactory;
-import com.qa.util.LoggerUtil;
 import com.qa.util.TestUtil;
 import java.io.IOException;
 import java.util.Arrays;
@@ -31,21 +32,21 @@ public class ExtentReportListener extends DriverFactory implements ITestListener
 
   @Override
   public void onTestStart(ITestResult result) {
-    LoggerUtil.getLogger().info((result.getMethod().getMethodName() + " started!"));
     ExtentTest extentTest =
         extent.createTest(result.getMethod().getMethodName(), result.getMethod().getDescription());
     test.set(extentTest);
+    log((result.getMethod().getMethodName() + " started!"));
   }
 
   @Override
   public void onTestSuccess(ITestResult result) {
-    LoggerUtil.getLogger().info((result.getMethod().getMethodName() + " passed!"));
+    log((result.getMethod().getMethodName() + " passed!"));
     test.get().pass("Test Case Passed");
   }
 
   @Override
   public void onTestFailure(ITestResult result) {
-    LoggerUtil.getLogger().info((result.getMethod().getMethodName() + " failed!"));
+    log((result.getMethod().getMethodName() + " failed!"));
     try {
       TestUtil.takeScreenshotAtEndOfTest(result.getName());
     } catch (IOException e) {
@@ -87,28 +88,24 @@ public class ExtentReportListener extends DriverFactory implements ITestListener
 
   @Override
   public void onTestSkipped(ITestResult result) {
-    LoggerUtil.getLogger().info((result.getMethod().getMethodName() + " skipped!"));
+    log((result.getMethod().getMethodName() + " skipped!"));
     test.get().skip("Test Case Skipped");
     test.get().skip(result.getThrowable());
   }
 
   @Override
   public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-    LoggerUtil.log(
-        ("onTestFailedButWithinSuccessPercentage for " + result.getMethod().getMethodName()));
+    log(("onTestFailedButWithinSuccessPercentage for " + result.getMethod().getMethodName()));
   }
 
   @Override
   public void onStart(ITestContext context) {
-    LoggerUtil.log("Extent Reports Version 4 Test Suite started! " + context.getOutputDirectory());
+    log("Extent Reports Version 4 Test Suite started! " + context.getOutputDirectory());
   }
 
   @Override
   public void onFinish(ITestContext context) {
-    LoggerUtil.log("Extent Reports Version 4  Test Suite is ending!");
-    LoggerUtil.log("This is onFinish method. Passed Tests: " + context.getPassedTests());
-    LoggerUtil.log("This is onFinish method. Failed Test: " + context.getFailedTests());
-    LoggerUtil.log("This is onFinish method. Skipped Test: " + context.getSkippedTests());
+    log("Extent Reports Version 4  Test Suite is ending!");
     extent.flush();
     test.remove();
   }
