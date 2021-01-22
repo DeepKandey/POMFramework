@@ -13,10 +13,15 @@ public class ExtentManager extends DriverFactory {
 
   private static ExtentReports extent;
   private static Platform platform;
-  private static Date date = new Date();
-  private static String reportFileName = "Extent_" + date.toString().replace(":", "_") + ".html";
-  private static String windowsPath = System.getProperty("user.dir") + "/test-output";
-  private static String winReportFileLoc = windowsPath + "/" + reportFileName;
+  private static final Date date = new Date();
+  private static final String reportFileName =
+          "Extent_" + date.toString().replaceAll(":", "_") + ".html";
+  private static final String windowsPath = System.getProperty("user.dir") + "/test-output";
+  private static final String linuxPath = System.getProperty("user.dir") + "/test-output";
+  private static final String macPath = System.getProperty("user.dir") + "/TestReport";
+  private static final String winReportFileLoc = windowsPath + "/" + reportFileName;
+  private static final String linuxReportFileLoc = linuxPath + "/" + reportFileName;
+  private static final String macReportFileLoc = macPath + "/" + reportFileName;
 
   public static ExtentReports getInstance() {
     if (extent == null) {
@@ -49,14 +54,22 @@ public class ExtentManager extends DriverFactory {
   private static String getReportFileLocation(Platform platform) {
     String reportFileLocation = null;
     switch (platform) {
-      case WIN10:
+      case MAC -> {
+        reportFileLocation = macReportFileLoc;
+        createReportPath(macPath);
+        System.out.println("ExtentReport Path for MAC: " + macPath + "\n");
+      }
+      case WIN10 -> {
         reportFileLocation = winReportFileLoc;
         createReportPath(windowsPath);
-        LoggerUtil.log("ExtentReport Path for WINDOWS: " + windowsPath + "\n");
-        break;
-      default:
-        LoggerUtil.log("ExtentReport path has not been set! There is a problem!\n");
-        break;
+        System.out.println("ExtentReport Path for WINDOWS: " + windowsPath + "\n");
+      }
+      case LINUX -> {
+        reportFileLocation = linuxReportFileLoc;
+        createReportPath(linuxPath);
+        System.out.println("ExtentReport Path for LINUX: " + linuxPath + "\n");
+      }
+      default -> System.out.println("ExtentReport path has not been set! There is a problem!\n");
     }
     return reportFileLocation;
   } // End of method getReportFileLocation
@@ -78,12 +91,12 @@ public class ExtentManager extends DriverFactory {
   // Get current platform
   private static Platform getCurrentPlatform() {
     if (platform == null) {
-      String operSys = System.getProperty("os.name").toLowerCase();
-      if (operSys.contains("win")) {
+      String OS = System.getProperty("os.name").toLowerCase();
+      if (OS.contains("win")) {
         platform = Platform.WIN10;
-      } else if (operSys.contains("nix") || operSys.contains("nux") || operSys.contains("aix")) {
+      } else if (OS.contains("nix") || OS.contains("nux") || OS.contains("aix")) {
         platform = Platform.LINUX;
-      } else if (operSys.contains("mac")) {
+      } else if (OS.contains("mac")) {
         platform = Platform.MAC;
       }
     }

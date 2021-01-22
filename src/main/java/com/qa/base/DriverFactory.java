@@ -18,20 +18,30 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+/**
+ * DriverFactory class to manage driver related methods
+ */
 public class DriverFactory {
+
+  // BrowserStack credentials
+  private static final String USERNAME = System.getenv("BROWSERSTACK_USERNAME");
+  private static final String AUTOMATE_KEY = System.getenv("BROWSERSTACK_ACCESSKEY");
+  private static final String URL =
+      "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 
   private static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
 
-  // BrowserStack credentials
-  public static final String USERNAME = System.getenv("BROWSERSTACK_USERNAME");
-  public static final String AUTOMATE_KEY = System.getenv("BROWSERSTACK_ACCESSKEY");
-  public static final String URL =
-      "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
-
-  public static synchronized WebDriver getDriver() {
+  /**
+   *
+   * @return WebDriver webDriver
+   */
+  protected static synchronized WebDriver getDriver() {
     return tlDriver.get();
   }
 
+  /**
+   * method to remove driver once test completes
+   */
   public static synchronized void removeDriver() {
     tlDriver.get().quit();
     tlDriver.remove();
@@ -40,11 +50,10 @@ public class DriverFactory {
   /**
    * This method is used to initialize the WebDriver on the basis of browserName
    *
-   * @param properties, methodName
-   * @return this method will return driver instance
+   * @param properties,methodName Properties instance and test method Name
    * @throws MalformedURLException exception
    */
-  public WebDriver initializeDriver(Properties properties, Method methodName)
+  public void initializeDriver(Properties properties, Method methodName)
       throws MalformedURLException {
 
     String browserName;
@@ -53,8 +62,6 @@ public class DriverFactory {
     if (System.getProperty("browser") == null) {
       browserName = properties.getProperty("browser");
     } else browserName = System.getProperty("browser");
-
-    log("Running on ----> " + browserName + " browser");
 
     if (properties.getProperty("execution").equalsIgnoreCase("local")) {
 
@@ -103,7 +110,6 @@ public class DriverFactory {
         .timeouts()
         .pageLoadTimeout(Duration.ofSeconds(Constants.PAGE_LOAD_TIMEOUT));
     WebInteractUtil.setDriver(getDriver());
-    return getDriver();
   }
 
   /** @return this method returns properties - properties available in config.properties */

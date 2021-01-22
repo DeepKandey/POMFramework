@@ -3,9 +3,9 @@ package com.qa.pageObjects;
 import com.qa.util.WebInteractUtil;
 import org.openqa.selenium.By;
 
-public class SearchPageObjects extends WebInteractUtil {
+public class TrainLineSearchHomePageObjects extends WebInteractUtil {
 
-  public SearchPageObjects() {
+  public TrainLineSearchHomePageObjects() {
     super();
   }
 
