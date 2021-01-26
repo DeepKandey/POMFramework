@@ -1,24 +1,29 @@
 package com.qa.tests;
 
+import static org.testng.Assert.assertTrue;
+
 import com.qa.base.DriverFactory;
-import com.qa.pageActions.TrainLIneSearchHomePageActions;
+import com.qa.pageActions.TrainLineSearchHomePageActions;
 import com.qa.util.LoggerUtil;
 import io.qameta.allure.*;
+import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.util.Properties;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.lang.reflect.Method;
-import java.net.MalformedURLException;
-import java.util.Properties;
-
-import static org.testng.Assert.assertTrue;
-
-public class DemoTest {
+public class FrameworkDemo {
 
   Properties prop;
   DriverFactory basePage;
 
+  /**
+   * initialise driverFactory and properties classes
+   *
+   * @param methodName testMethodName
+   * @throws MalformedURLException
+   */
   @BeforeMethod
   public void setup(Method methodName) throws MalformedURLException {
     basePage = new DriverFactory();
@@ -27,6 +32,7 @@ public class DemoTest {
     // TestUtil.webDriverEvents(basePage.init_driver(prop));
   }
 
+  /** remove driver */
   @AfterMethod
   public void tearDown() {
     basePage.removeDriver();
@@ -39,7 +45,7 @@ public class DemoTest {
   @Step("Step at test Body level - DemoTest")
   @Link("https://docs.qameta.io/allure/")
   public void demoTest() {
-    TrainLIneSearchHomePageActions searchHomePageActions = new TrainLIneSearchHomePageActions();
+    TrainLineSearchHomePageActions searchHomePageActions = new TrainLineSearchHomePageActions();
 
     LoggerUtil.log("Demo Test Execution");
     searchHomePageActions.enterTextInDepartureStn("London");
@@ -53,7 +59,7 @@ public class DemoTest {
   @Step("Step at test Body level - annotationTest")
   @Link("https://docs.qameta.io/allure/")
   public void annotationTest() {
-    TrainLIneSearchHomePageActions searchHomePageActions = new TrainLIneSearchHomePageActions();
+    TrainLineSearchHomePageActions searchHomePageActions = new TrainLineSearchHomePageActions();
 
     LoggerUtil.log("Annotation Transformation Test");
     searchHomePageActions.enterTextInDepartureStn("London");
@@ -67,7 +73,7 @@ public class DemoTest {
   @Step("Step at test Body level - retryTest")
   @Link("https://docs.qameta.io/allure/")
   public void retryTest() {
-    TrainLIneSearchHomePageActions searchHomePageActions = new TrainLIneSearchHomePageActions();
+    TrainLineSearchHomePageActions searchHomePageActions = new TrainLineSearchHomePageActions();
 
     LoggerUtil.log("RetryAnalyzer Test");
     searchHomePageActions.enterTextInDepartureStn("London");

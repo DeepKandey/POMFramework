@@ -1,5 +1,7 @@
 package com.qa.report;
 
+import static com.qa.util.LoggerUtil.log;
+
 import com.qa.base.DriverFactory;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
@@ -8,8 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-
-import static com.qa.util.LoggerUtil.log;
 
 public class AllureReportListener extends DriverFactory implements ITestListener {
 
@@ -75,7 +75,6 @@ public class AllureReportListener extends DriverFactory implements ITestListener
 
   @Override
   public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
-    log(
-        "Test failed but it is in defined success ratio " + getTestMethodName(iTestResult));
+    log("Test failed but it is in defined success ratio " + getTestMethodName(iTestResult));
   }
 }

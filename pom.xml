@@ -8,8 +8,14 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>POMWithThreadLocal</name>
+    <name>POMTestAutomationFramework</name>
     <url>http://maven.apache.org</url>
+    <description>An UI Test Automation Framework built using the Page Object Model</description>
+
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/DeepKandey/POMFramework/issues</url>
+    </issueManagement>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -152,7 +158,6 @@
 
     <build>
         <finalName>${project.artifactId}</finalName>
-
         <plugins>
 
             <plugin>
@@ -166,6 +171,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M1</version>
                 <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
                     <suiteXmlFiles>
                         <suiteXmlFile>${basedir}/src/test/resources/testNGConfigFiles/testngAnnotationCheck.xml
                         </suiteXmlFile>

@@ -19,7 +19,7 @@
 19/04/2020 12:29:06 devpinoyLogger Extent Reports Version 4  Test Suite is ending!
 19/04/2020 12:29:06 devpinoyLogger This is onFinish method. Passed Tests: [ResultMap map={}]
 19/04/2020 12:29:06 devpinoyLogger This is onFinish method. Failed Test: [ResultMap map={}]
-19/04/2020 12:29:06 devpinoyLogger This is onFinish method. Skipped Test: [ResultMap map={[TestResult name=demoTest status=SKIP method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@18025ced] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@18025ced]}]
+19/04/2020 12:29:06 devpinoyLogger This is onFinish method. Skipped Test: [ResultMap map={[TestResult name=demoTest status=SKIP method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@18025ced] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@18025ced]}]
 19/04/2020 12:39:11 devpinoyLogger Directory already exists: C:\Users\deepa\workspace\POMWithThreadLocal/test-output
 19/04/2020 12:39:11 devpinoyLogger ExtentReport Path for WINDOWS: C:\Users\deepa\workspace\POMWithThreadLocal/test-output
 
@@ -28,15 +28,15 @@
 19/04/2020 12:39:37 devpinoyLogger Navigated to:'https://www.google.com'
 19/04/2020 12:39:37 devpinoyLogger demoTest started!
 19/04/2020 12:39:37 devpinoyLogger Demo Test Execution
-19/04/2020 12:39:37 devpinoyLogger Going to retry test case: DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@18025ced], 1 out of 2
-19/04/2020 12:39:37 devpinoyLogger com.qa.tests.DemoTest
+19/04/2020 12:39:37 devpinoyLogger Going to retry test case: DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@18025ced], 1 out of 2
+19/04/2020 12:39:37 devpinoyLogger com.qa.tests.FrameworkDemo
 19/04/2020 12:39:37 devpinoyLogger demoTest skipped!
 19/04/2020 12:39:52 devpinoyLogger Before navigating to: 'https://www.google.com'
 19/04/2020 12:39:54 devpinoyLogger Navigated to:'https://www.google.com'
 19/04/2020 12:39:54 devpinoyLogger demoTest started!
 19/04/2020 12:39:54 devpinoyLogger Demo Test Execution
-19/04/2020 12:39:54 devpinoyLogger Going to retry test case: DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@18025ced], 2 out of 2
-19/04/2020 12:39:54 devpinoyLogger com.qa.tests.DemoTest
+19/04/2020 12:39:54 devpinoyLogger Going to retry test case: DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@18025ced], 2 out of 2
+19/04/2020 12:39:54 devpinoyLogger com.qa.tests.FrameworkDemo
 19/04/2020 12:39:54 devpinoyLogger demoTest skipped!
 19/04/2020 12:40:10 devpinoyLogger Before navigating to: 'https://www.google.com'
 19/04/2020 12:40:12 devpinoyLogger Navigated to:'https://www.google.com'
@@ -45,29 +45,29 @@
 19/04/2020 12:40:12 devpinoyLogger demoTest failed!
 19/04/2020 12:40:14 devpinoyLogger Extent Reports Version 4  Test Suite is ending!
 19/04/2020 12:40:14 devpinoyLogger This is onFinish method. Passed Tests: [ResultMap map={}]
-19/04/2020 12:40:14 devpinoyLogger This is onFinish method. Failed Test: [ResultMap map={[TestResult name=demoTest status=FAILURE method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@18025ced] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@18025ced]}]
-19/04/2020 12:40:14 devpinoyLogger This is onFinish method. Skipped Test: [ResultMap map={[TestResult name=demoTest status=SKIP method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@18025ced] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@18025ced], [TestResult name=demoTest status=SKIP method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@18025ced] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@18025ced]}]
+19/04/2020 12:40:14 devpinoyLogger This is onFinish method. Failed Test: [ResultMap map={[TestResult name=demoTest status=FAILURE method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@18025ced] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@18025ced]}]
+19/04/2020 12:40:14 devpinoyLogger This is onFinish method. Skipped Test: [ResultMap map={[TestResult name=demoTest status=SKIP method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@18025ced] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@18025ced], [TestResult name=demoTest status=SKIP method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@18025ced] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@18025ced]}]
 19/04/2020 12:46:27 devpinoyLogger Directory already exists: C:\Users\deepa\workspace\POMWithThreadLocal/test-output
 19/04/2020 12:46:27 devpinoyLogger ExtentReport Path for WINDOWS: C:\Users\deepa\workspace\POMWithThreadLocal/test-output
 
 19/04/2020 12:46:29 devpinoyLogger Extent Reports Version 4 Test Suite started! C:\Users\deepa\workspace\POMWithThreadLocal\test-output\Train Line Assignment suite
 19/04/2020 12:46:44 devpinoyLogger demoTest started!
 19/04/2020 12:46:44 devpinoyLogger Demo Test Execution
-19/04/2020 12:46:44 devpinoyLogger Going to retry test case: DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@18025ced], 1 out of 2
-19/04/2020 12:46:44 devpinoyLogger com.qa.tests.DemoTest
+19/04/2020 12:46:44 devpinoyLogger Going to retry test case: DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@18025ced], 1 out of 2
+19/04/2020 12:46:44 devpinoyLogger com.qa.tests.FrameworkDemo
 19/04/2020 12:46:44 devpinoyLogger demoTest skipped!
 19/04/2020 12:47:00 devpinoyLogger demoTest started!
 19/04/2020 12:47:00 devpinoyLogger Demo Test Execution
-19/04/2020 12:47:00 devpinoyLogger Going to retry test case: DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@18025ced], 2 out of 2
-19/04/2020 12:47:00 devpinoyLogger com.qa.tests.DemoTest
+19/04/2020 12:47:00 devpinoyLogger Going to retry test case: DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@18025ced], 2 out of 2
+19/04/2020 12:47:00 devpinoyLogger com.qa.tests.FrameworkDemo
 19/04/2020 12:47:00 devpinoyLogger demoTest skipped!
 19/04/2020 12:47:17 devpinoyLogger demoTest started!
 19/04/2020 12:47:17 devpinoyLogger Demo Test Execution
 19/04/2020 12:47:17 devpinoyLogger demoTest failed!
 19/04/2020 12:47:19 devpinoyLogger Extent Reports Version 4  Test Suite is ending!
 19/04/2020 12:47:19 devpinoyLogger This is onFinish method. Passed Tests: [ResultMap map={}]
-19/04/2020 12:47:19 devpinoyLogger This is onFinish method. Failed Test: [ResultMap map={[TestResult name=demoTest status=FAILURE method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@18025ced] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@18025ced]}]
-19/04/2020 12:47:19 devpinoyLogger This is onFinish method. Skipped Test: [ResultMap map={[TestResult name=demoTest status=SKIP method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@18025ced] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@18025ced], [TestResult name=demoTest status=SKIP method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@18025ced] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@18025ced]}]
+19/04/2020 12:47:19 devpinoyLogger This is onFinish method. Failed Test: [ResultMap map={[TestResult name=demoTest status=FAILURE method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@18025ced] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@18025ced]}]
+19/04/2020 12:47:19 devpinoyLogger This is onFinish method. Skipped Test: [ResultMap map={[TestResult name=demoTest status=SKIP method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@18025ced] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@18025ced], [TestResult name=demoTest status=SKIP method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@18025ced] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@18025ced]}]
 19/04/2020 12:49:46 devpinoyLogger Directory already exists: C:\Users\deepa\workspace\POMWithThreadLocal/test-output
 19/04/2020 12:49:46 devpinoyLogger ExtentReport Path for WINDOWS: C:\Users\deepa\workspace\POMWithThreadLocal/test-output
 
@@ -77,7 +77,7 @@
 19/04/2020 12:50:05 devpinoyLogger Extent Reports Version 4  Test Suite is ending!
 19/04/2020 12:50:05 devpinoyLogger This is onFinish method. Passed Tests: [ResultMap map={}]
 19/04/2020 12:50:05 devpinoyLogger This is onFinish method. Failed Test: [ResultMap map={}]
-19/04/2020 12:50:05 devpinoyLogger This is onFinish method. Skipped Test: [ResultMap map={[TestResult name=demoTest status=SKIP method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9]}]
+19/04/2020 12:50:05 devpinoyLogger This is onFinish method. Skipped Test: [ResultMap map={[TestResult name=demoTest status=SKIP method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9]}]
 19/04/2020 12:50:47 devpinoyLogger Directory already exists: C:\Users\deepa\workspace\POMWithThreadLocal/test-output
 19/04/2020 12:50:47 devpinoyLogger ExtentReport Path for WINDOWS: C:\Users\deepa\workspace\POMWithThreadLocal/test-output
 
@@ -86,7 +86,7 @@
 19/04/2020 12:51:04 devpinoyLogger Demo Test Execution
 19/04/2020 12:51:04 devpinoyLogger demoTest passed!
 19/04/2020 12:51:05 devpinoyLogger Extent Reports Version 4  Test Suite is ending!
-19/04/2020 12:51:05 devpinoyLogger This is onFinish method. Passed Tests: [ResultMap map={[TestResult name=demoTest status=SUCCESS method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9]}]
+19/04/2020 12:51:05 devpinoyLogger This is onFinish method. Passed Tests: [ResultMap map={[TestResult name=demoTest status=SUCCESS method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9]}]
 19/04/2020 12:51:05 devpinoyLogger This is onFinish method. Failed Test: [ResultMap map={}]
 19/04/2020 12:51:05 devpinoyLogger This is onFinish method. Skipped Test: [ResultMap map={}]
 19/04/2020 12:51:37 devpinoyLogger Directory already exists: C:\Users\deepa\workspace\POMWithThreadLocal/test-output
@@ -97,7 +97,7 @@
 19/04/2020 12:51:54 devpinoyLogger Demo Test Execution
 19/04/2020 12:51:54 devpinoyLogger demoTest passed!
 19/04/2020 12:51:55 devpinoyLogger Extent Reports Version 4  Test Suite is ending!
-19/04/2020 12:51:55 devpinoyLogger This is onFinish method. Passed Tests: [ResultMap map={[TestResult name=demoTest status=SUCCESS method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9]}]
+19/04/2020 12:51:55 devpinoyLogger This is onFinish method. Passed Tests: [ResultMap map={[TestResult name=demoTest status=SUCCESS method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9]}]
 19/04/2020 12:51:55 devpinoyLogger This is onFinish method. Failed Test: [ResultMap map={}]
 19/04/2020 12:51:55 devpinoyLogger This is onFinish method. Skipped Test: [ResultMap map={}]
 19/04/2020 21:18:34 devpinoyLogger Directory already exists: C:\Users\deepa\workspace\POMWithThreadLocal/test-output
@@ -106,21 +106,21 @@
 19/04/2020 21:18:36 devpinoyLogger Extent Reports Version 4 Test Suite started! C:\Users\deepa\workspace\POMWithThreadLocal\test-output\Train Line Assignment suite
 19/04/2020 21:18:53 devpinoyLogger demoTest started!
 19/04/2020 21:18:53 devpinoyLogger Demo Test Execution
-19/04/2020 21:18:53 devpinoyLogger Going to retry test case: DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9], 1 out of 2
-19/04/2020 21:18:53 devpinoyLogger com.qa.tests.DemoTest
+19/04/2020 21:18:53 devpinoyLogger Going to retry test case: DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9], 1 out of 2
+19/04/2020 21:18:53 devpinoyLogger com.qa.tests.FrameworkDemo
 19/04/2020 21:18:53 devpinoyLogger demoTest skipped!
 19/04/2020 21:19:09 devpinoyLogger demoTest started!
 19/04/2020 21:19:09 devpinoyLogger Demo Test Execution
-19/04/2020 21:19:09 devpinoyLogger Going to retry test case: DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9], 2 out of 2
-19/04/2020 21:19:09 devpinoyLogger com.qa.tests.DemoTest
+19/04/2020 21:19:09 devpinoyLogger Going to retry test case: DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9], 2 out of 2
+19/04/2020 21:19:09 devpinoyLogger com.qa.tests.FrameworkDemo
 19/04/2020 21:19:09 devpinoyLogger demoTest skipped!
 19/04/2020 21:19:24 devpinoyLogger demoTest started!
 19/04/2020 21:19:24 devpinoyLogger Demo Test Execution
 19/04/2020 21:19:24 devpinoyLogger demoTest failed!
 19/04/2020 21:19:27 devpinoyLogger Extent Reports Version 4  Test Suite is ending!
 19/04/2020 21:19:27 devpinoyLogger This is onFinish method. Passed Tests: [ResultMap map={}]
-19/04/2020 21:19:27 devpinoyLogger This is onFinish method. Failed Test: [ResultMap map={[TestResult name=demoTest status=FAILURE method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9]}]
-19/04/2020 21:19:27 devpinoyLogger This is onFinish method. Skipped Test: [ResultMap map={[TestResult name=demoTest status=SKIP method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9], [TestResult name=demoTest status=SKIP method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9]}]
+19/04/2020 21:19:27 devpinoyLogger This is onFinish method. Failed Test: [ResultMap map={[TestResult name=demoTest status=FAILURE method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9]}]
+19/04/2020 21:19:27 devpinoyLogger This is onFinish method. Skipped Test: [ResultMap map={[TestResult name=demoTest status=SKIP method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9], [TestResult name=demoTest status=SKIP method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9]}]
 19/04/2020 21:20:34 devpinoyLogger Demo Test Execution
 19/04/2020 21:21:59 devpinoyLogger Directory already exists: C:\Users\deepa\workspace\POMWithThreadLocal/test-output
 19/04/2020 21:21:59 devpinoyLogger ExtentReport Path for WINDOWS: C:\Users\deepa\workspace\POMWithThreadLocal/test-output
@@ -128,29 +128,29 @@
 19/04/2020 21:22:01 devpinoyLogger Extent Reports Version 4 Test Suite started! C:\Users\deepa\workspace\POMWithThreadLocal\test-output\Train Line Assignment suite
 19/04/2020 21:22:15 devpinoyLogger demoTest started!
 19/04/2020 21:22:15 devpinoyLogger Demo Test Execution
-19/04/2020 21:22:15 devpinoyLogger Going to retry test case: DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9], 1 out of 2
-19/04/2020 21:22:15 devpinoyLogger com.qa.tests.DemoTest
+19/04/2020 21:22:15 devpinoyLogger Going to retry test case: DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9], 1 out of 2
+19/04/2020 21:22:15 devpinoyLogger com.qa.tests.FrameworkDemo
 19/04/2020 21:22:15 devpinoyLogger demoTest skipped!
 19/04/2020 21:22:30 devpinoyLogger demoTest started!
 19/04/2020 21:22:30 devpinoyLogger Demo Test Execution
-19/04/2020 21:22:30 devpinoyLogger Going to retry test case: DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9], 2 out of 2
-19/04/2020 21:22:30 devpinoyLogger com.qa.tests.DemoTest
+19/04/2020 21:22:30 devpinoyLogger Going to retry test case: DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9], 2 out of 2
+19/04/2020 21:22:30 devpinoyLogger com.qa.tests.FrameworkDemo
 19/04/2020 21:22:30 devpinoyLogger demoTest skipped!
 19/04/2020 21:22:44 devpinoyLogger demoTest started!
 19/04/2020 21:22:44 devpinoyLogger Demo Test Execution
 19/04/2020 21:22:44 devpinoyLogger demoTest failed!
 19/04/2020 21:22:46 devpinoyLogger Extent Reports Version 4  Test Suite is ending!
 19/04/2020 21:22:46 devpinoyLogger This is onFinish method. Passed Tests: [ResultMap map={}]
-19/04/2020 21:22:46 devpinoyLogger This is onFinish method. Failed Test: [ResultMap map={[TestResult name=demoTest status=FAILURE method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9]}]
-19/04/2020 21:22:46 devpinoyLogger This is onFinish method. Skipped Test: [ResultMap map={[TestResult name=demoTest status=SKIP method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9], [TestResult name=demoTest status=SKIP method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9]}]
+19/04/2020 21:22:46 devpinoyLogger This is onFinish method. Failed Test: [ResultMap map={[TestResult name=demoTest status=FAILURE method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9]}]
+19/04/2020 21:22:46 devpinoyLogger This is onFinish method. Skipped Test: [ResultMap map={[TestResult name=demoTest status=SKIP method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9], [TestResult name=demoTest status=SKIP method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9]}]
 19/04/2020 21:25:13 devpinoyLogger Directory already exists: C:\Users\deepa\workspace\POMWithThreadLocal/test-output
 19/04/2020 21:25:13 devpinoyLogger ExtentReport Path for WINDOWS: C:\Users\deepa\workspace\POMWithThreadLocal/test-output
 
 19/04/2020 21:25:15 devpinoyLogger Extent Reports Version 4 Test Suite started! C:\Users\deepa\workspace\POMWithThreadLocal\test-output\Train Line Assignment suite
 19/04/2020 21:25:30 devpinoyLogger demoTest started!
 19/04/2020 21:25:30 devpinoyLogger Demo Test Execution
-19/04/2020 21:26:29 devpinoyLogger Going to retry test case: DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@31198ceb], 1 out of 2
-19/04/2020 21:26:29 devpinoyLogger com.qa.tests.DemoTest
+19/04/2020 21:26:29 devpinoyLogger Going to retry test case: DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@31198ceb], 1 out of 2
+19/04/2020 21:26:29 devpinoyLogger com.qa.tests.FrameworkDemo
 19/04/2020 21:26:29 devpinoyLogger demoTest skipped!
 19/04/2020 21:27:04 devpinoyLogger demoTest started!
 19/04/2020 21:27:04 devpinoyLogger demoTest skipped!
@@ -162,7 +162,7 @@
 19/04/2020 21:49:25 devpinoyLogger Demo Test Execution
 19/04/2020 21:49:26 devpinoyLogger demoTest passed!
 19/04/2020 21:49:27 devpinoyLogger Extent Reports Version 4  Test Suite is ending!
-19/04/2020 21:49:27 devpinoyLogger This is onFinish method. Passed Tests: [ResultMap map={[TestResult name=demoTest status=SUCCESS method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9]}]
+19/04/2020 21:49:27 devpinoyLogger This is onFinish method. Passed Tests: [ResultMap map={[TestResult name=demoTest status=SUCCESS method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9]}]
 19/04/2020 21:49:27 devpinoyLogger This is onFinish method. Failed Test: [ResultMap map={}]
 19/04/2020 21:49:27 devpinoyLogger This is onFinish method. Skipped Test: [ResultMap map={}]
 19/04/2020 21:50:41 devpinoyLogger Directory already exists: C:\Users\deepa\workspace\POMWithThreadLocal/test-output
@@ -173,24 +173,24 @@
 19/04/2020 21:51:05 devpinoyLogger Annotation Transformation Test
 19/04/2020 21:51:07 devpinoyLogger demoTest started!
 19/04/2020 21:51:07 devpinoyLogger Demo Test Execution
-19/04/2020 21:51:08 devpinoyLogger Going to retry test case: DemoTest.annotationTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9], 1 out of 2
-19/04/2020 21:51:08 devpinoyLogger com.qa.tests.DemoTest
+19/04/2020 21:51:08 devpinoyLogger Going to retry test case: DemoTest.annotationTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9], 1 out of 2
+19/04/2020 21:51:08 devpinoyLogger com.qa.tests.FrameworkDemo
 19/04/2020 21:51:08 devpinoyLogger annotationTest skipped!
 19/04/2020 21:51:08 devpinoyLogger demoTest passed!
 19/04/2020 21:51:10 devpinoyLogger retryTest started!
 19/04/2020 21:51:10 devpinoyLogger RetryAnalyzer Test
-19/04/2020 21:51:12 devpinoyLogger Going to retry test case: DemoTest.retryTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9], 1 out of 2
-19/04/2020 21:51:12 devpinoyLogger com.qa.tests.DemoTest
+19/04/2020 21:51:12 devpinoyLogger Going to retry test case: DemoTest.retryTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9], 1 out of 2
+19/04/2020 21:51:12 devpinoyLogger com.qa.tests.FrameworkDemo
 19/04/2020 21:51:12 devpinoyLogger retryTest skipped!
 19/04/2020 21:51:29 devpinoyLogger annotationTest started!
 19/04/2020 21:51:29 devpinoyLogger Annotation Transformation Test
 19/04/2020 21:51:30 devpinoyLogger retryTest started!
 19/04/2020 21:51:30 devpinoyLogger RetryAnalyzer Test
-19/04/2020 21:51:31 devpinoyLogger Going to retry test case: DemoTest.annotationTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9], 2 out of 2
-19/04/2020 21:51:31 devpinoyLogger com.qa.tests.DemoTest
+19/04/2020 21:51:31 devpinoyLogger Going to retry test case: DemoTest.annotationTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9], 2 out of 2
+19/04/2020 21:51:31 devpinoyLogger com.qa.tests.FrameworkDemo
 19/04/2020 21:51:31 devpinoyLogger annotationTest skipped!
-19/04/2020 21:51:32 devpinoyLogger Going to retry test case: DemoTest.retryTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9], 2 out of 2
-19/04/2020 21:51:32 devpinoyLogger com.qa.tests.DemoTest
+19/04/2020 21:51:32 devpinoyLogger Going to retry test case: DemoTest.retryTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9], 2 out of 2
+19/04/2020 21:51:32 devpinoyLogger com.qa.tests.FrameworkDemo
 19/04/2020 21:51:32 devpinoyLogger retryTest skipped!
 19/04/2020 21:51:51 devpinoyLogger retryTest started!
 19/04/2020 21:51:51 devpinoyLogger RetryAnalyzer Test
@@ -199,9 +199,9 @@
 19/04/2020 21:51:55 devpinoyLogger Annotation Transformation Test
 19/04/2020 21:51:56 devpinoyLogger annotationTest failed!
 19/04/2020 21:51:58 devpinoyLogger Extent Reports Version 4  Test Suite is ending!
-19/04/2020 21:51:58 devpinoyLogger This is onFinish method. Passed Tests: [ResultMap map={[TestResult name=demoTest status=SUCCESS method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9]}]
-19/04/2020 21:51:58 devpinoyLogger This is onFinish method. Failed Test: [ResultMap map={[TestResult name=annotationTest status=FAILURE method=DemoTest.annotationTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9] output={null}]=DemoTest.annotationTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9], [TestResult name=retryTest status=FAILURE method=DemoTest.retryTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9] output={null}]=DemoTest.retryTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9]}]
-19/04/2020 21:51:58 devpinoyLogger This is onFinish method. Skipped Test: [ResultMap map={[TestResult name=retryTest status=SKIP method=DemoTest.retryTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9] output={null}]=DemoTest.retryTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9], [TestResult name=annotationTest status=SKIP method=DemoTest.annotationTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9] output={null}]=DemoTest.annotationTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9], [TestResult name=retryTest status=SKIP method=DemoTest.retryTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9] output={null}]=DemoTest.retryTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9], [TestResult name=annotationTest status=SKIP method=DemoTest.annotationTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9] output={null}]=DemoTest.annotationTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9]}]
+19/04/2020 21:51:58 devpinoyLogger This is onFinish method. Passed Tests: [ResultMap map={[TestResult name=demoTest status=SUCCESS method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9]}]
+19/04/2020 21:51:58 devpinoyLogger This is onFinish method. Failed Test: [ResultMap map={[TestResult name=annotationTest status=FAILURE method=DemoTest.annotationTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9] output={null}]=DemoTest.annotationTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9], [TestResult name=retryTest status=FAILURE method=DemoTest.retryTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9] output={null}]=DemoTest.retryTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9]}]
+19/04/2020 21:51:58 devpinoyLogger This is onFinish method. Skipped Test: [ResultMap map={[TestResult name=retryTest status=SKIP method=DemoTest.retryTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9] output={null}]=DemoTest.retryTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9], [TestResult name=annotationTest status=SKIP method=DemoTest.annotationTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9] output={null}]=DemoTest.annotationTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9], [TestResult name=retryTest status=SKIP method=DemoTest.retryTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9] output={null}]=DemoTest.retryTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9], [TestResult name=annotationTest status=SKIP method=DemoTest.annotationTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9] output={null}]=DemoTest.annotationTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9]}]
 19/04/2020 21:52:25 devpinoyLogger Directory already exists: C:\Users\deepa\workspace\POMWithThreadLocal/test-output
 19/04/2020 21:52:25 devpinoyLogger ExtentReport Path for WINDOWS: C:\Users\deepa\workspace\POMWithThreadLocal/test-output
 
@@ -216,6 +216,6 @@
 19/04/2020 21:52:54 devpinoyLogger Demo Test Execution
 19/04/2020 21:52:55 devpinoyLogger demoTest passed!
 19/04/2020 21:52:56 devpinoyLogger Extent Reports Version 4  Test Suite is ending!
-19/04/2020 21:52:56 devpinoyLogger This is onFinish method. Passed Tests: [ResultMap map={[TestResult name=retryTest status=SUCCESS method=DemoTest.retryTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9] output={null}]=DemoTest.retryTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9], [TestResult name=annotationTest status=SUCCESS method=DemoTest.annotationTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9] output={null}]=DemoTest.annotationTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9], [TestResult name=demoTest status=SUCCESS method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.DemoTest@6da00fb9]}]
+19/04/2020 21:52:56 devpinoyLogger This is onFinish method. Passed Tests: [ResultMap map={[TestResult name=retryTest status=SUCCESS method=DemoTest.retryTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9] output={null}]=DemoTest.retryTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9], [TestResult name=annotationTest status=SUCCESS method=DemoTest.annotationTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9] output={null}]=DemoTest.annotationTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9], [TestResult name=demoTest status=SUCCESS method=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9] output={null}]=DemoTest.demoTest()[pri:0, instance:com.qa.tests.FrameworkDemo@6da00fb9]}]
 19/04/2020 21:52:56 devpinoyLogger This is onFinish method. Failed Test: [ResultMap map={}]
 19/04/2020 21:52:56 devpinoyLogger This is onFinish method. Skipped Test: [ResultMap map={}]

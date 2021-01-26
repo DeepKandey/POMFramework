@@ -12,16 +12,15 @@
 
     <test name="Ticket Fare Test">
         <classes>
-            <!--			<class name="com.qa.tests.DemoTest">-->
+            <!--			<class name="com.qa.tests.FrameworkDemo">-->
             <!--				<methods>-->
             <!--					<include name="demoTest" />-->
             <!--					<include name="annotationTest" />-->
             <!--					<include name="retryTest" />-->
             <!--				</methods>-->
             <!--			</class>-->
-            <!--            <class name="com.qa.tests.ShadowDomTest"/>-->
-            <class name="com.qa.tests.CaptchaTextTest"/>
-        </classes>
+            <class name="com.qa.tests.ShadowDOMElements"/>
+           </classes>
     </test> <!-- Default test -->
 
 </suite> <!-- Default suite -->

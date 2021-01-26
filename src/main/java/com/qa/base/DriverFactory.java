@@ -18,9 +18,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-/**
- * DriverFactory class to manage driver related methods
- */
+/** DriverFactory class to manage driver related methods */
 public class DriverFactory {
 
   // BrowserStack credentials
@@ -31,17 +29,12 @@ public class DriverFactory {
 
   private static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
 
-  /**
-   *
-   * @return WebDriver webDriver
-   */
+  /** @return WebDriver webDriver */
   protected static synchronized WebDriver getDriver() {
     return tlDriver.get();
   }
 
-  /**
-   * method to remove driver once test completes
-   */
+  /** method to remove driver once test completes */
   public static synchronized void removeDriver() {
     tlDriver.get().quit();
     tlDriver.remove();

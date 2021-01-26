@@ -15,7 +15,7 @@ public class ExtentManager extends DriverFactory {
   private static Platform platform;
   private static final Date date = new Date();
   private static final String reportFileName =
-          "Extent_" + date.toString().replaceAll(":", "_") + ".html";
+      "Extent_" + date.toString().replaceAll(":", "_") + ".html";
   private static final String windowsPath = System.getProperty("user.dir") + "/test-output";
   private static final String linuxPath = System.getProperty("user.dir") + "/test-output";
   private static final String macPath = System.getProperty("user.dir") + "/TestReport";

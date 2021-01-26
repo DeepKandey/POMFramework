@@ -1,9 +1,8 @@
 package com.qa.pageActions;
 
 import com.qa.pageObjects.SeleniumPracticePageObjects;
-import org.openqa.selenium.WebElement;
-
 import java.util.List;
+import org.openqa.selenium.WebElement;
 
 public class SeleniumPracticePageActions extends SeleniumPracticePageObjects {
 
