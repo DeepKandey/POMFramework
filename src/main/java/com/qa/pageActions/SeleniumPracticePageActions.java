@@ -64,7 +64,10 @@ public class SeleniumPracticePageActions extends SeleniumPracticePageObjects {
 
     click(getWebElement(herokuapp_BasicAuthLink));
 
-    String loginSuccessMsg = getText(getWebElement(herokuapp_BasicAuthText));
-    return loginSuccessMsg;
+    return getText(getWebElement(herokuapp_BasicAuthText));
+  }
+
+  public void openNewTab(){
+
   }
 }

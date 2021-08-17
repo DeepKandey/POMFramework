@@ -30,7 +30,7 @@ public class DriverFactory {
   private static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
 
   /** @return WebDriver webDriver */
-  protected static synchronized WebDriver getDriver() {
+  public static synchronized WebDriver getDriver() {
     return tlDriver.get();
   }
 
