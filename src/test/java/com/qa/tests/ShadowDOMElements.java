@@ -1,10 +1,12 @@
 package com.qa.tests;
 
 import com.qa.base.DriverFactory;
-import com.qa.pageActions.PointsVilleLoginPageActions;
+
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.util.Properties;
+
+import com.qa.pageObjects.PointsVilleLoginPage;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -36,7 +38,7 @@ public class ShadowDOMElements {
   /** verify shadow OOM elements and perform actions */
   @Test
   public void ShadowDOMElementsTest() {
-    var pointsVilleLoginPageActions = new PointsVilleLoginPageActions();
+    var pointsVilleLoginPageActions = new PointsVilleLoginPage();
 
     pointsVilleLoginPageActions.enterUserCredentials();
     pointsVilleLoginPageActions.clickOnResetPwdLink();

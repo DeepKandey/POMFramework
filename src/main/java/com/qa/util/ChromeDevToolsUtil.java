@@ -1,18 +1,18 @@
 package com.qa.util;
 
+import org.apache.commons.codec.binary.Base64;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chromium.ChromiumDriver;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v87.emulation.Emulation;
-import org.openqa.selenium.devtools.v87.log.Log;
-import org.openqa.selenium.devtools.v87.network.Network;
-import org.openqa.selenium.devtools.v87.network.model.ConnectionType;
-import org.openqa.selenium.devtools.v87.network.model.Headers;
-import org.openqa.selenium.devtools.v87.performance.Performance;
-import org.openqa.selenium.devtools.v87.performance.model.Metric;
+import org.openqa.selenium.devtools.v95.emulation.Emulation;
+import org.openqa.selenium.devtools.v95.log.Log;
+import org.openqa.selenium.devtools.v95.network.Network;
+import org.openqa.selenium.devtools.v95.network.model.ConnectionType;
+import org.openqa.selenium.devtools.v95.network.model.Headers;
+import org.openqa.selenium.devtools.v95.performance.Performance;
+import org.openqa.selenium.devtools.v95.performance.model.Metric;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.apache.commons.codec.binary.Base64;
 
 import java.util.*;
 import java.util.stream.Collectors;

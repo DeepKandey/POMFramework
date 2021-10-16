@@ -3,15 +3,17 @@ package com.qa.pageObjects;
 import com.qa.util.WebInteractUtil;
 import org.openqa.selenium.By;
 
-public class TrainLineSearchHomePageObjects extends WebInteractUtil {
+public class TrainLineSearchHomePage extends WebInteractUtil {
 
-  public TrainLineSearchHomePageObjects() {
+  protected By departureStn = By.id("from.search");
+  protected By destinationStn = By.id("to.search");
+  protected By searchButton = By.xpath("//button[@data-test='submit-journey-search-button']");
+
+  public TrainLineSearchHomePage() {
     super();
   }
 
-  protected By departureStn = By.id("from.search");
-
-  protected By destinationStn = By.id("to.search");
-
-  protected By searchButton = By.xpath("//button[@data-test='submit-journey-search-button']");
+  public void enterTextInDepartureStn(String departure) {
+    enterText(getWebElement(departureStn), departure);
+  }
 } // end of class SearchPageObjects

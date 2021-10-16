@@ -3,7 +3,7 @@ package com.qa.tests;
 import static org.testng.Assert.assertTrue;
 
 import com.qa.base.DriverFactory;
-import com.qa.pageActions.TrainLineSearchHomePageActions;
+import com.qa.pageObjects.TrainLineSearchHomePage;
 import com.qa.util.LoggerUtil;
 import io.qameta.allure.*;
 import java.lang.reflect.Method;
@@ -45,7 +45,7 @@ public class FrameworkDemo {
   @Step("Step at test Body level - DemoTest")
   @Link("https://docs.qameta.io/allure/")
   public void demoTest() {
-    TrainLineSearchHomePageActions searchHomePageActions = new TrainLineSearchHomePageActions();
+    TrainLineSearchHomePage searchHomePageActions = new TrainLineSearchHomePage();
 
     LoggerUtil.log("Demo Test Execution");
     searchHomePageActions.enterTextInDepartureStn("London");
@@ -59,7 +59,7 @@ public class FrameworkDemo {
   @Step("Step at test Body level - annotationTest")
   @Link("https://docs.qameta.io/allure/")
   public void annotationTest() {
-    TrainLineSearchHomePageActions searchHomePageActions = new TrainLineSearchHomePageActions();
+    TrainLineSearchHomePage searchHomePageActions = new TrainLineSearchHomePage();
 
     LoggerUtil.log("Annotation Transformation Test");
     searchHomePageActions.enterTextInDepartureStn("London");
@@ -73,7 +73,7 @@ public class FrameworkDemo {
   @Step("Step at test Body level - retryTest")
   @Link("https://docs.qameta.io/allure/")
   public void retryTest() {
-    TrainLineSearchHomePageActions searchHomePageActions = new TrainLineSearchHomePageActions();
+    TrainLineSearchHomePage searchHomePageActions = new TrainLineSearchHomePage();
 
     LoggerUtil.log("RetryAnalyzer Test");
     searchHomePageActions.enterTextInDepartureStn("London");

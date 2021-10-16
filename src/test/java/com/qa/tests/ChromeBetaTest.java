@@ -1,7 +1,7 @@
 package com.qa.tests;
 
 import com.qa.base.DriverFactory;
-import com.qa.pageActions.SeleniumPracticePageActions;
+import com.qa.pageObjects.SeleniumPracticePage;
 import io.qameta.allure.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -42,10 +42,9 @@ public class ChromeBetaTest {
   @Step("Step at test Body level - ChromeDemoTest")
   @Link("https://docs.qameta.io/allure/")
   public void demoTest() {
-    var seleniumPracticePageActions = new SeleniumPracticePageActions();
+    var seleniumPracticePage = new SeleniumPracticePage();
 
-    seleniumPracticePageActions.clickDropdownMenuButton();
-    seleniumPracticePageActions.clickTutorialLink("JavaScript");
-    seleniumPracticePageActions.openNewTab();
+    seleniumPracticePage.clickDropdownMenuButton();
+    seleniumPracticePage.clickTutorialLink("JavaScript");
   }
 }
