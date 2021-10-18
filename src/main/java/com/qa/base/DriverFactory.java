@@ -49,7 +49,6 @@ public class DriverFactory {
    */
   public void initializeDriver(Properties properties, Method method)
       throws MalformedURLException {
-
     String browserName;
 
         if (System.getProperty("browser") == null) {
