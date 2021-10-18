@@ -5,6 +5,8 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -312,4 +314,15 @@ public class WebInteractUtil {
     wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     return driver.findElements(locator);
   } // end of method getWebElement()
+
+  /**
+   * {summary Method to get list of WebElements}
+   *
+   * @param url URL
+   * @author deepak
+   */
+  @Step("Go to URL : {0}")
+  public void goTo(String url){
+    driver.get(url);
+  }
 }

@@ -63,7 +63,7 @@ public class DriverFactory {
     }
 
     getDriver().manage().window().maximize();
-    getDriver().get(properties.getProperty("url"));
+   // getDriver().get(properties.getProperty("url"));
     getDriver()
         .manage()
         .timeouts()

@@ -3,24 +3,21 @@
 <suite name="POMWithThreadLocal suite" parallel="methods"
        verbose="2" thread-count="4" configfailurepolicy="skip">  <!-- continue if precondition i.e *Before fails -->
     <listeners>
-        <!--<listener class-name="com.qa.extentReportListener.ExtentTestNGIReporterListener"/> -->
         <listener class-name="com.qa.util.AnnotationTransformer"/>
         <listener class-name="com.qa.report.ExtentReportListener"/>
         <listener class-name="com.qa.report.AllureReportListener"/>
-        <listener class-name="com.qa.report.TesultsReportListener"/>
     </listeners>
 
-    <test name="Ticket Fare Test">
+    <test name="Test">
         <classes>
-            <!--			<class name="com.qa.tests.FrameworkDemo">-->
-            <!--				<methods>-->
-            <!--					<include name="demoTest" />-->
-            <!--					<include name="annotationTest" />-->
-            <!--					<include name="retryTest" />-->
-            <!--				</methods>-->
-            <!--			</class>-->
-            <class name="com.qa.tests.ShadowDOMElements"/>
-           </classes>
+            <class name="com.qa.tests.PracticeTests">
+                <!--				<methods>-->
+                <!--					<include name="demoTest" />-->
+                <!--					<include name="annotationTest" />-->
+                <!--					<include name="retryTest" />-->
+                <!--				</methods>-->
+            </class>
+        </classes>
     </test> <!-- Default test -->
 
 </suite> <!-- Default suite -->

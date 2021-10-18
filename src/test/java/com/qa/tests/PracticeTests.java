@@ -3,6 +3,7 @@ package com.qa.tests;
 import static org.testng.Assert.assertTrue;
 
 import com.qa.base.DriverFactory;
+import com.qa.pageObjects.SeleniumPracticePage;
 import com.qa.pageObjects.TrainLineSearchHomePage;
 import com.qa.util.LoggerUtil;
 import io.qameta.allure.*;
@@ -13,7 +14,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class FrameworkDemo {
+public class PracticeTests {
 
   Properties prop;
   DriverFactory basePage;
@@ -22,7 +23,7 @@ public class FrameworkDemo {
    * initialise driverFactory and properties classes
    *
    * @param methodName testMethodName
-   * @throws MalformedURLException
+   * @throws MalformedURLException Exception
    */
   @BeforeMethod
   public void setup(Method methodName) throws MalformedURLException {
@@ -35,7 +36,7 @@ public class FrameworkDemo {
   /** remove driver */
   @AfterMethod
   public void tearDown() {
-    basePage.removeDriver();
+    DriverFactory.removeDriver();
   }
 
   @Test()
@@ -44,11 +45,12 @@ public class FrameworkDemo {
   @Story("Test case written for Story - DemoTest")
   @Step("Step at test Body level - DemoTest")
   @Link("https://docs.qameta.io/allure/")
-  public void demoTest() {
-    TrainLineSearchHomePage searchHomePageActions = new TrainLineSearchHomePage();
+  public void enterDepartureStationTest() {
+    TrainLineSearchHomePage trainLineSearchHomePage = new TrainLineSearchHomePage();
 
     LoggerUtil.log("Demo Test Execution");
-    searchHomePageActions.enterTextInDepartureStn("London");
+    trainLineSearchHomePage.goTo("https://www.thetrainline.com/");
+    trainLineSearchHomePage.enterTextInDepartureStn("London");
     assertTrue(true);
   }
 
@@ -59,10 +61,11 @@ public class FrameworkDemo {
   @Step("Step at test Body level - annotationTest")
   @Link("https://docs.qameta.io/allure/")
   public void annotationTest() {
-    TrainLineSearchHomePage searchHomePageActions = new TrainLineSearchHomePage();
+    TrainLineSearchHomePage trainLineSearchHomePage = new TrainLineSearchHomePage();
 
     LoggerUtil.log("Annotation Transformation Test");
-    searchHomePageActions.enterTextInDepartureStn("London");
+    trainLineSearchHomePage.goTo("https://www.thetrainline.com/");
+    trainLineSearchHomePage.enterTextInDepartureStn("London");
     assertTrue(true);
   }
 
@@ -73,10 +76,23 @@ public class FrameworkDemo {
   @Step("Step at test Body level - retryTest")
   @Link("https://docs.qameta.io/allure/")
   public void retryTest() {
-    TrainLineSearchHomePage searchHomePageActions = new TrainLineSearchHomePage();
+    TrainLineSearchHomePage trainLineSearchHomePage = new TrainLineSearchHomePage();
 
     LoggerUtil.log("RetryAnalyzer Test");
-    searchHomePageActions.enterTextInDepartureStn("London");
+    trainLineSearchHomePage.goTo("https://www.thetrainline.com/");
+    trainLineSearchHomePage.enterTextInDepartureStn("London");
     assertTrue(true);
+  }
+
+  @Test()
+  @Severity(SeverityLevel.NORMAL)
+  @Step("Dropdown Test")
+  @Link("https://docs.qameta.io/allure/")
+  public void dropdownTest() {
+    var seleniumPracticePage = new SeleniumPracticePage();
+
+    seleniumPracticePage.goTo("https://seleniumpractise.blogspot.com/2016/08/bootstrap-dropdown-example-for-selenium.html");
+    seleniumPracticePage.clickDropdownMenuButton();
+    seleniumPracticePage.clickTutorialLink("JavaScript");
   }
 }
