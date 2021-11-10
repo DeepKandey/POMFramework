@@ -1,25 +1,23 @@
 package com.qa.util;
 
-import com.qa.base.DriverFactory;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.util.Date;
+import com.qa.base.BaseWebDriverTest;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 
-public class TestUtil extends DriverFactory {
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class TestUtil extends BaseWebDriverTest {
 
   public static String takeScreenshotAtEndOfTest(String methodName) throws IOException {
-    File scrFile = ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.FILE);
+    File scrFile = ((TakesScreenshot) BaseWebDriverTest.getWebDriver()).getScreenshotAs(OutputType.FILE);
     String currentDir = System.getProperty("user.dir");
 
     Date date = new Date();
@@ -33,7 +31,7 @@ public class TestUtil extends DriverFactory {
     return path;
   }
 
-  // Return data from the excel
+  // Return data from the Excel
   public static String[][] getExcelData(String filePath, String sheetName) throws IOException {
     Sheet sheet;
     String[][] arrayData = null;
@@ -54,20 +52,5 @@ public class TestUtil extends DriverFactory {
       LoggerUtil.log(e.getMessage());
     }
     return arrayData;
-  }
-
-  public static EventFiringWebDriver webDriverEvents(WebDriver driver) {
-    EventFiringWebDriver eDriver;
-    WebEventListener eventListener;
-
-    eDriver = new EventFiringWebDriver(driver);
-    // Now create object of EventListenerHandler to register it with
-    // EventFiringWebDriver
-    eventListener = new WebEventListener();
-    eDriver.register(eventListener);
-    eDriver.manage().deleteAllCookies();
-    eDriver.manage().window().maximize();
-    driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Constants.PAGE_LOAD_TIMEOUT));
-    return eDriver;
   }
 } // End of class TestUtil

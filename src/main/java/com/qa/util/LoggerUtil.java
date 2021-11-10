@@ -1,4 +1,4 @@
-/** */
+/* */
 package com.qa.util;
 
 import com.aventstack.extentreports.Status;

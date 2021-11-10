@@ -1,26 +1,25 @@
 package com.qa.base;
 
 import com.qa.util.Constants;
-import com.qa.util.LoggerUtil;
-import com.qa.util.WebInteractUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.ITestContext;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
-import java.io.FileInputStream;
-import java.lang.reflect.Method;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.time.Duration;
 import java.util.Properties;
 
 import static com.qa.util.LoggerUtil.log;
 
 /** DriverFactory class to manage driver related methods */
-public class DriverFactory {
+public class BaseWebDriverTest {
 
   // BrowserStack credentials
   private static final String USERNAME = System.getenv("BROWSERSTACK_USERNAME");
@@ -31,79 +30,44 @@ public class DriverFactory {
   private static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
 
   /** @return WebDriver webDriver */
-  public static synchronized WebDriver getDriver() {
+  public static synchronized WebDriver getWebDriver() {
     return tlDriver.get();
   }
 
   /** method to remove driver once test completes */
-  public static synchronized void removeDriver() {
+  @AfterMethod
+  public static synchronized void removeWebDriver() {
     tlDriver.get().quit();
     tlDriver.remove();
   }
 
   /**
    * This method is used to initialize the WebDriver on the basis of browserName
-   *
-   * @param properties,methodName Properties instance and test method Name
    * @throws MalformedURLException exception
    */
-  public void initializeDriver(Properties properties, Method method)
-      throws MalformedURLException {
-    String browserName;
+  @BeforeMethod
+  public void initializeDriver(ITestContext testContext)
+          throws IOException {
+    String runType;
+   Properties properties= new Properties();
+   properties.load(this.getClass().getResourceAsStream("/maven.properties"));
+   runType = properties.getProperty("runType");
 
-        if (System.getProperty("browser") == null) {
-      browserName = properties.getProperty("browser");
-    } else browserName = System.getProperty("browser");
-
-    if (properties.getProperty("execution").equalsIgnoreCase("local")) {
-      createLocalDriver(browserName,properties);
+    if (runType.equalsIgnoreCase("local")) {
+      createLocalDriver();
 
      } else if (properties.getProperty("execution").equalsIgnoreCase("browserStack")) {
-    createBrowserStackDriver(browserName,method);
+    createBrowserStackDriver(testContext);
     }
 
-    getDriver().manage().window().maximize();
-   // getDriver().get(properties.getProperty("url"));
-    getDriver()
-        .manage()
-        .timeouts()
-        .pageLoadTimeout(Duration.ofSeconds(Constants.PAGE_LOAD_TIMEOUT));
-    WebInteractUtil.setDriver(getDriver());
+    getWebDriver().manage().window().maximize();
   }
 
-  /** @return this method returns properties - properties available in config.properties */
-  public Properties initializeProp() {
+  public void createLocalDriver() throws IOException {
     Properties properties = new Properties();
-    String path;
-    String env;
+    properties.load(this.getClass().getResourceAsStream("/maven.properties"));
+    String browser = properties.getProperty("browser");
 
-    try {
-      env = System.getProperty("env");
-      if (env == null) path = "./src/main/java/com/qa/config/config.properties";
-      else
-        path =
-            switch (env) {
-              case "qa":
-                yield "./src/main/java/com/qa/config/config.qa.properties";
-              case "stg":
-                yield "./src/main/java/com/qa/config/config.stg.properties";
-              case "prod":
-                yield "./src/main/java/com/qa/config/config.properties";
-              default:
-                LoggerUtil.log("no env is passed");
-                throw new IllegalArgumentException("no env is passed!");
-            };
-
-      FileInputStream ip = new FileInputStream(path);
-      properties.load(ip);
-    } catch (Exception e) {
-      e.printStackTrace();
-      log("config file is not found.....");
-    }
-    return properties;
-  }
-
-  public void createLocalDriver(String browser, Properties properties){
     OptionsManager optionsManager = new OptionsManager(properties);
 
     switch (browser.toUpperCase()) {
@@ -128,15 +92,19 @@ public class DriverFactory {
     }
   }
 
-  public void createBrowserStackDriver(String browser, Method method) throws MalformedURLException {
+  public void createBrowserStackDriver(ITestContext testContext) throws IOException {
+    Properties prop = new Properties();
+    prop.load(this.getClass().getResourceAsStream("/maven.properties"));
+    String browserName= prop.getProperty("browser");
+
     DesiredCapabilities caps = new DesiredCapabilities();
 
-    if (browser.equalsIgnoreCase("CHROME")) {
+    if (browserName.equalsIgnoreCase("CHROME")) {
       caps.setCapability("os", "Windows");
       caps.setCapability("os_version", "10");
       caps.setCapability("browser", "Chrome");
       caps.setCapability("browser_version", "latest");
-      caps.setCapability("name", method.getName());
+      caps.setCapability("name", testContext.getName());
       tlDriver.set(new RemoteWebDriver(new URL(URL), caps));
     }
   }

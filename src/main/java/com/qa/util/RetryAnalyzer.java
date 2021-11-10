@@ -1,10 +1,10 @@
 package com.qa.util;
 
-import com.qa.base.DriverFactory;
+import com.qa.base.BaseWebDriverTest;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
-public class RetryAnalyzer extends DriverFactory implements IRetryAnalyzer {
+public class RetryAnalyzer extends BaseWebDriverTest implements IRetryAnalyzer {
 
   private static final int MAX_RETRY_COUNT = 2;
   private int count = MAX_RETRY_COUNT;

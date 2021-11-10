@@ -1,19 +1,26 @@
 package com.qa.pageObjects;
 
-import com.qa.util.WebInteractUtil;
-import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class TrainLineSearchHomePage extends WebInteractUtil {
+public class TrainLineSearchHomePage extends BasePage {
 
-  protected By departureStn = By.id("from.search");
-  protected By destinationStn = By.id("to.search");
-  protected By searchButton = By.xpath("//button[@data-test='submit-journey-search-button']");
+  @FindBy(id = "from.search")
+  private WebElement departureStn;
 
-  public TrainLineSearchHomePage() {
-    super();
+  @FindBy(id = "to.search")
+  private WebElement destinationStn;
+
+  @FindBy(id = "//button[@data-test='submit-journey-search-button']")
+  private WebElement searchButton;
+
+  public TrainLineSearchHomePage(WebDriver driver) {
+    super(driver);
   }
 
   public void enterTextInDepartureStn(String departure) {
-    enterText(getWebElement(departureStn), departure);
+    waitForElementToBeVisible(departureStn);
+    departureStn.sendKeys(departure);
   }
 } // end of class SearchPageObjects

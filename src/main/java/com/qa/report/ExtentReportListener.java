@@ -8,7 +8,7 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
-import com.qa.base.DriverFactory;
+import com.qa.base.BaseWebDriverTest;
 import com.qa.util.TestUtil;
 import java.io.IOException;
 import java.util.Arrays;
@@ -16,7 +16,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-public class ExtentReportListener extends DriverFactory implements ITestListener {
+public class ExtentReportListener extends BaseWebDriverTest implements ITestListener {
 
   // Extent Report Declarations
   private static ExtentReports extent = ExtentManager.createInstance();

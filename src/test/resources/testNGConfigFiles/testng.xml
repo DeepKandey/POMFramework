@@ -10,7 +10,7 @@
 
     <test name="Test">
         <classes>
-            <class name="com.qa.tests.PracticeTests">
+            <class name="com.qa.tests.AnnotationTest">
                 <!--				<methods>-->
                 <!--					<include name="demoTest" />-->
                 <!--					<include name="annotationTest" />-->

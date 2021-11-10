@@ -9,7 +9,7 @@
 
 	<test name="Test">
 		<classes>
-			<class name="com.qa.tests.PracticeTests">
+			<class name="com.qa.tests.AnnotationTest">
 			</class>
 		</classes>
 	</test> <!-- Test -->

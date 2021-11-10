@@ -2,7 +2,7 @@ package com.qa.report;
 
 import static com.qa.util.LoggerUtil.log;
 
-import com.qa.base.DriverFactory;
+import com.qa.base.BaseWebDriverTest;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -11,7 +11,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-public class AllureReportListener extends DriverFactory implements ITestListener {
+public class AllureReportListener extends BaseWebDriverTest implements ITestListener {
 
   private static String getTestMethodName(ITestResult iTestResult) {
     return iTestResult.getMethod().getConstructorOrMethod().getName();
@@ -58,7 +58,7 @@ public class AllureReportListener extends DriverFactory implements ITestListener
   @Override
   public void onTestFailure(ITestResult iTestResult) {
     log("I am in onTestFailure method " + getTestMethodName(iTestResult) + " failed");
-    WebDriver driver = DriverFactory.getDriver();
+    WebDriver driver = BaseWebDriverTest.getWebDriver();
     // Allure ScreenShotRobot and SaveTestLog
     if (driver != null) {
       log("Screenshot captured for test case:" + getTestMethodName(iTestResult));

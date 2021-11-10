@@ -1,4 +1,4 @@
-/** @author Deepak Rai */
+/* @author Deepak Rai */
 package com.qa.util;
 
 import java.io.FileInputStream;
@@ -14,7 +14,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 public class ExcelUtil {
 
-  private String path = null;
+  private String path;
   private FileInputStream fis = null;
   private FileOutputStream fileOut = null;
   private Workbook workBook = null;
@@ -37,8 +37,8 @@ public class ExcelUtil {
   /**
    * {@summary returns the row count in a sheet}
    *
-   * @param
-   * @return
+   * @param sheetName sheetName
+   * @return rows
    * @author deepak rai
    */
   public int getRowCount(String sheetName) {
@@ -320,7 +320,7 @@ public class ExcelUtil {
    * @author deepak rai
    */
   public boolean isSheetExist(String sheetName) {
-    return workBook.getSheetIndex(sheetName) == -1 ? false : true;
+    return workBook.getSheetIndex(sheetName) != -1;
   }
 
   /**

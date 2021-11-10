@@ -43,16 +43,8 @@ public class ChromeDevToolsUtil {
   /** disable dev tools network */
   private void getBrowserDevTools() {
     switch (browser) {
-      case "chrome":
-        devTools = ((ChromeDriver) driver).getDevTools();
-        break;
-
-      case "edge":
-        devTools = ((EdgeDriver) driver).getDevTools();
-        break;
-
-      default:
-        break;
+      case "chrome" -> devTools = ((ChromeDriver) driver).getDevTools();
+      case "edge" -> devTools = ((EdgeDriver) driver).getDevTools();
     }
   }
 
@@ -71,21 +63,14 @@ public class ChromeDevToolsUtil {
   /**
    * Simulating device mode
    *
-   * @param deviceMetrics
+   * @param deviceMetrics device metrics
    */
   public void simulateDeviceMode(Map<String, Object> deviceMetrics) {
     switch (browser) {
-      case "chrome":
-        ((ChromiumDriver) driver)
-            .executeCdpCommand("Emulation.setDeviceMetricsOverride", deviceMetrics);
-        break;
-
-      case "edge":
-        ((EdgeDriver) driver)
-            .executeCdpCommand("Emulation.setDeviceMetricsOverride", deviceMetrics);
-        break;
-      default:
-        break;
+      case "chrome" -> ((ChromiumDriver) driver)
+              .executeCdpCommand("Emulation.setDeviceMetricsOverride", deviceMetrics);
+      case "edge" -> ((EdgeDriver) driver)
+              .executeCdpCommand("Emulation.setDeviceMetricsOverride", deviceMetrics);
     }
   }
 
@@ -183,7 +168,7 @@ public class ChromeDevToolsUtil {
   }
 
   /**
-   * set the geo location
+   * set the geolocation
    *
    * @param latitude
    * @param longitude

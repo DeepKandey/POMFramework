@@ -3,13 +3,13 @@ package com.qa.report;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.*;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import com.qa.base.DriverFactory;
+import com.qa.base.BaseWebDriverTest;
 import com.qa.util.LoggerUtil;
 import java.io.File;
 import java.util.Date;
 import org.openqa.selenium.Platform;
 
-public class ExtentManager extends DriverFactory {
+public class ExtentManager extends BaseWebDriverTest {
 
   private static ExtentReports extent;
   private static Platform platform;
