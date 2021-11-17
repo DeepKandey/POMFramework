@@ -59,7 +59,7 @@ local.properties
 ## Allure TestNG
 ##############################
 allure-results/
-screenshots/
+src/main/java/com/qa/report/screenshots/
 
 ##############################
 ## Intellij

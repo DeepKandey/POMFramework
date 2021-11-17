@@ -1,0 +1,16 @@
+{
+  "browsers": [
+    {
+      "browser": "Chrome",
+      "options": {
+      },
+      "experimentalOptions": {
+      }
+    },
+    {
+      "browser": "Firefox",
+      "options": {
+      }
+    }
+  ]
+}

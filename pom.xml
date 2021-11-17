@@ -8,8 +8,8 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>POMTestAutomationFramework</name>
-    <url>http://maven.apache.org</url>
+    <name>UITestAutomationFramework</name>
+    <url>https://github.com/DeepKandey/POMFramework</url>
     <description>An UI Test Automation Framework built using the Page Object Model</description>
 
     <issueManagement>
@@ -24,32 +24,21 @@
         <lombok.version>1.18.22</lombok.version>
         <maven.compiler.release>17</maven.compiler.release>
         <maven.compiler.testRelease>17</maven.compiler.testRelease>
+        <runType>LOCAL</runType>
+        <!-- Params for running tests locally -->
+        <localBrowser>Chrome</localBrowser>
     </properties>
 
-    <profiles>
-        <profile>
-            <id>Regression</id>
-            <build>
-                <plugins>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.0.0-M1</version>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <testng.dtd.http>true</testng.dtd.http>
-                            </systemPropertyVariables>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>${basedir}/src/test/resources/testNGConfigFiles/testng.xml</suiteXmlFile>
-                            </suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>POMFramework-Snapshot</id>
+            <url>http://localhost:8081/repository/POMFramework-Snapshot</url>
+        </snapshotRepository>
+        <repository>
+            <id>POMFramework-Release</id>
+            <url>http://localhost:8081/repository/POMFramework-Release</url>
+        </repository>
+    </distributionManagement>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/com.beust/jcommander -->
@@ -179,9 +168,6 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <compilerArgs>
-                        --enable-preview
-                    </compilerArgs>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>
@@ -216,28 +202,15 @@
             <plugin>
                 <groupId>com.diffplug.spotless</groupId>
                 <artifactId>spotless-maven-plugin</artifactId>
-                <version>2.17.2</version>
+                <version>1.27.0</version>
                 <configuration>
                     <java>
                         <googleJavaFormat>
-                            <version>1.11.0</version>
+                            <version>1.7</version>
                             <style>GOOGLE</style>
                         </googleJavaFormat>
                     </java>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.2.0</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -256,6 +229,33 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.8</version>
+                <executions>
+                    <execution>
+                        <id>default-deploy</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <serverId>OMFramework-Snapshot</serverId>
+                    <nexusUrl>http://localhost:8081/repository/POMFramework-Snapshot</nexusUrl>
+                    <skipStaging>true</skipStaging>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
