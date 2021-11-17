@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-public class AnnotationWebDriverTest extends BaseWebDriverTest {
+public class AnnotationTest extends BaseWebDriverTest {
 
   @Test
   @Severity(SeverityLevel.BLOCKER)

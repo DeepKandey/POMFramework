@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-public class RetryWebDriverTest extends BaseWebDriverTest {
+public class RetryForFailedTest extends BaseWebDriverTest {
 
     @Test()
     @Severity(SeverityLevel.MINOR)
