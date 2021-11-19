@@ -1,4 +1,4 @@
-# To execute this docker-compose ml file use 'docker-compose -f docker-compose-v3.yml up'
+# To execute this docker-compose yml file use 'docker-compose -f docker-compose-v3.yml up'
 # Add the '-d' flag at the end for the detached execution
 # To stop the execution, hit CTRL+C, and then 'docker-compose -f docker-compose-v3.yml down'
 version: "3"
@@ -12,6 +12,9 @@ services:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_GRID_URL=http://localhost:4444
+    ports:
+      - "6900:5900"
 
   edge:
     image: selenium/node-edge:4.1.0-prerelease-20211105
@@ -23,6 +26,8 @@ services:
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
       - SE_NODE_GRID_URL=http://localhost:4444
+    ports:
+      - "6901:5900"
 
   firefox:
     image: selenium/node-firefox:4.1.0-prerelease-20211105
@@ -34,6 +39,8 @@ services:
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
       - SE_NODE_GRID_URL=http://localhost:4444
+    ports:
+      - "6902:5900"
 
   selenium-hub:
     image: selenium/hub:4.1.0-prerelease-20211105
