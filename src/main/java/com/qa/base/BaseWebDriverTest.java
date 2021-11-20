@@ -59,7 +59,8 @@ public class BaseWebDriverTest {
 
         runType = properties.getProperty("runType");
         switch (runType.toUpperCase()) {
-            case "LOCAL" -> createLocalDriver();
+            case "LOCAL" -> createLocalDriver(false);
+            case "DOCKER" -> createLocalDriver(true);
             case "BROWSERSTACK" -> createBrowserStackDriver(testContext);
         }
     }
@@ -70,27 +71,33 @@ public class BaseWebDriverTest {
         return browserConfigUtility.getOptions();
     }
 
-    protected void createLocalDriver() throws IOException, ParseException {
+    protected void createLocalDriver(Boolean seleniumDocker) throws IOException, ParseException {
         Properties properties = new Properties();
         properties.load(this.getClass().getResourceAsStream("/maven.properties"));
         String browser = properties.getProperty("localBrowser");
 
-        String operatingSystem = System.getProperty("os.name").toLowerCase();
-        String operatingSyst;
-        if (operatingSystem.contains("win")) {
-            operatingSyst = "Windows";
+        String OS = System.getProperty("os.name").toLowerCase();
+        String operatingSystem;
+        if (OS.contains("win")) {
+            operatingSystem = "Windows";
         } else {
-            operatingSyst = "Mac";
+            operatingSystem = "Mac";
         }
 
         switch (browser.toUpperCase()) {
             case "CHROME" -> {
                 ChromeOptions chromeOptions = (ChromeOptions) getBrowserOptionsAndSetVersion(browser);
+                if(!seleniumDocker)
                 driver = new ChromeDriver(chromeOptions);
+                else
+                driver = new RemoteWebDriver(new URL("http://localhost:4444/"),chromeOptions);
             }
             case "FIREFOX" -> {
                 FirefoxOptions firefoxOptions = (FirefoxOptions) getBrowserOptionsAndSetVersion(browser);
-                driver = new FirefoxDriver(firefoxOptions);
+                if(!seleniumDocker)
+                    driver = new FirefoxDriver(firefoxOptions);
+                else
+                    driver = new RemoteWebDriver(new URL("http://localhost:4444/"),firefoxOptions);
             }
             case "SAFARI" -> {
                 SafariOptions safariOptions = (SafariOptions) getBrowserOptionsAndSetVersion(browser);
@@ -98,7 +105,10 @@ public class BaseWebDriverTest {
             }
             case "EDGE" -> {
                 EdgeOptions edgeOptions = (EdgeOptions) getBrowserOptionsAndSetVersion(browser);
-                driver = new EdgeDriver(edgeOptions);
+                if(!seleniumDocker)
+                    driver = new EdgeDriver(edgeOptions);
+                else
+                    driver = new RemoteWebDriver(new URL("http://localhost:4444/"),edgeOptions);
             }
             case "IE" -> {
                 InternetExplorerOptions internetExplorerOptions = (InternetExplorerOptions) getBrowserOptionsAndSetVersion(browser);
@@ -106,7 +116,7 @@ public class BaseWebDriverTest {
             }
         }
         driverThreadLocal.set(driver);
-        browserConfigString = operatingSyst + "_" + browser + "_" + browserVersion;
+        browserConfigString = operatingSystem + "_" + browser + "_" + browserVersion;
     }
 
     protected void createBrowserStackDriver(ITestContext testContext) throws IOException, ParseException {

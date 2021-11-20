@@ -24,9 +24,8 @@
         <lombok.version>1.18.22</lombok.version>
         <maven.compiler.release>17</maven.compiler.release>
         <maven.compiler.testRelease>17</maven.compiler.testRelease>
-        <runType>LOCAL</runType>
-        <!-- Params for running tests locally -->
-        <localBrowser>Chrome</localBrowser>
+        <runType>DOCKER</runType>
+        <localBrowser>CHROME</localBrowser>
     </properties>
 
     <distributionManagement>
@@ -261,6 +260,18 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.9.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

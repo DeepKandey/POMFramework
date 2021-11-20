@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="POMWithThreadLocal suite" parallel="methods"
-       verbose="2" thread-count="4" configfailurepolicy="skip">  <!-- continue if precondition i.e *Before fails -->
+       verbose="2" thread-count="4">
     <listeners>
         <listener class-name="com.qa.util.AnnotationTransformer"/>
         <listener class-name="com.qa.report.ExtentReportListener"/>
@@ -10,13 +10,14 @@
 
     <test name="Test">
         <classes>
-            <class name="com.qa.tests.BrokenLinkTest">
-                <!--				<methods>-->
-                <!--					<include name="demoTest" />-->
-                <!--					<include name="annotationTest" />-->
-                <!--					<include name="retryTest" />-->
-                <!--				</methods>-->
-            </class>
+            <class name="com.qa.tests.RetryForFailedTest"/>
+            <class name="com.qa.tests.BrokenLinkTest"/>
+            <!--				<methods>-->
+            <!--					<include name="demoTest" />-->
+            <!--					<include name="annotationTest" />-->
+            <!--					<include name="retryTest" />-->
+            <!--				</methods>-->
+
         </classes>
     </test> <!-- Default test -->
 

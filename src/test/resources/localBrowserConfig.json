@@ -2,14 +2,19 @@
   "browsers": [
     {
       "browser": "Chrome",
+      "browser_version": "95.0",
       "options": {
+        "chrome.options1": "enable-automation"
       },
       "experimentalOptions": {
       }
     },
     {
       "browser": "Firefox",
+      "browser_version": "94.0",
+      "dom.disable_open_during_load": true,
       "options": {
+        "firefox.options1": "headless"
       }
     }
   ]

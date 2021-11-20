@@ -31,7 +31,7 @@ public class BrowserConfigUtility {
     public BrowserConfigUtility(String browser) throws IOException, ParseException {
         browserType = browser;
         browserOptionsMap = new HashMap<>();
-        experimentalOptions = new HashMap<String, HashMap<String, String>>();
+        experimentalOptions = new HashMap<>();
         setLocalConfig();
         parseBrowserOptionsAndVersion();
     }
@@ -55,7 +55,7 @@ public class BrowserConfigUtility {
         JSONArray configBrowsers = (JSONArray) localConfig.get("browsers");
 
         for (Object configBrowser : configBrowsers) {
-            if (((JSONObject) configBrowser).get("browser").equals(browserType)) {
+            if (((JSONObject) configBrowser).get("browser").toString().equalsIgnoreCase(browserType)) {
                 JSONObject browserOptions = (JSONObject) ((JSONObject) configBrowser).get("options");
                 if (browserOptions != null) {
                     for (Object o : browserOptions.entrySet()) {
