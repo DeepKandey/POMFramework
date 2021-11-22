@@ -58,3 +58,14 @@ services:
       - "4442:4442"
       - "4443:4443"
       - "4444:4444"
+
+  uitest-module:
+    image: deepkandey/uitestautomation:latest
+    depends_on:
+      - chrome
+      - firefox
+      - edge
+    environment:
+      - HUB_HOST=selenium-hub
+    volumes:
+      - ./test-result-extent:/usr/share/UITestAutomationFramework/test-output

@@ -74,7 +74,11 @@ public class BaseWebDriverTest {
     protected void createLocalDriver(Boolean seleniumDocker) throws IOException, ParseException {
         Properties properties = new Properties();
         properties.load(this.getClass().getResourceAsStream("/maven.properties"));
+        String host= "localhost";
         String browser = properties.getProperty("localBrowser");
+        if (System.getProperty("HUB_HOST") != null) {
+            host = System.getProperty("HUB_HOST");
+        }
 
         String OS = System.getProperty("os.name").toLowerCase();
         String operatingSystem;
@@ -90,14 +94,14 @@ public class BaseWebDriverTest {
                 if(!seleniumDocker)
                 driver = new ChromeDriver(chromeOptions);
                 else
-                driver = new RemoteWebDriver(new URL("http://localhost:4444/"),chromeOptions);
+                driver = new RemoteWebDriver(new URL("http://"+host+":4444/"),chromeOptions);
             }
             case "FIREFOX" -> {
                 FirefoxOptions firefoxOptions = (FirefoxOptions) getBrowserOptionsAndSetVersion(browser);
                 if(!seleniumDocker)
                     driver = new FirefoxDriver(firefoxOptions);
                 else
-                    driver = new RemoteWebDriver(new URL("http://localhost:4444/"),firefoxOptions);
+                    driver = new RemoteWebDriver(new URL("http://"+host+":4444/"),firefoxOptions);
             }
             case "SAFARI" -> {
                 SafariOptions safariOptions = (SafariOptions) getBrowserOptionsAndSetVersion(browser);
@@ -108,7 +112,7 @@ public class BaseWebDriverTest {
                 if(!seleniumDocker)
                     driver = new EdgeDriver(edgeOptions);
                 else
-                    driver = new RemoteWebDriver(new URL("http://localhost:4444/"),edgeOptions);
+                    driver = new RemoteWebDriver(new URL("http://"+host+":4444/"),edgeOptions);
             }
             case "IE" -> {
                 InternetExplorerOptions internetExplorerOptions = (InternetExplorerOptions) getBrowserOptionsAndSetVersion(browser);

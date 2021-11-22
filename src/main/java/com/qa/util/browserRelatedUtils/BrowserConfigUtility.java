@@ -11,8 +11,10 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.safari.SafariOptions;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -48,7 +50,7 @@ public class BrowserConfigUtility {
     private void setLocalConfig() throws IOException, ParseException {
         JSONParser parser = new JSONParser();
         localConfig = (JSONObject)
-                parser.parse((new FileReader(currentDirectory + "/src/test/resources/localBrowserConfig.json")));
+                parser.parse(new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/localBrowserConfig.json"))));
     }
 
     private void parseBrowserOptionsAndVersion() {

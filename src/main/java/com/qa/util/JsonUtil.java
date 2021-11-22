@@ -15,11 +15,11 @@ public class JsonUtil {
       JSONParser parser = new JSONParser();
       return (JSONObject) parser.parse(new FileReader(filePath));
     } catch (FileNotFoundException e) {
-      LoggerUtil.log("JSON file not found at location" + filePath);
+      LoggerUtil.error("JSON file not found at location" + filePath);
     } catch (IOException e) {
-      LoggerUtil.log("Unable to find json file: " + filePath);
+      LoggerUtil.error("Unable to find json file: " + filePath);
     } catch (ParseException e) {
-      LoggerUtil.log("Unable to parse json file: " + filePath);
+      LoggerUtil.error("Unable to parse json file: " + filePath);
     }
     return null;
   }

@@ -81,7 +81,7 @@ public class BasePage {
     try {
       actions.moveToElement(element).click().build().perform();
     } catch (Exception e1) {
-      LoggerUtil.log("Failed to click element: " + element);
+      LoggerUtil.error("Failed to click element: " + element);
       e1.printStackTrace();
     }
   }
@@ -144,7 +144,7 @@ public class BasePage {
       Process process = new ProcessBuilder("tzutil.exe", "/s", timeZone).start();
       return process.isAlive();
     } catch (IOException e) {
-      LoggerUtil.getLogger().info("Failed to set timezone");
+      LoggerUtil.error("Failed to set timezone");
       e.printStackTrace();
       return false;
     }

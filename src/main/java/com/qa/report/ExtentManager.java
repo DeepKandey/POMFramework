@@ -1,19 +1,17 @@
 package com.qa.report;
 
 import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.reporter.*;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import com.qa.base.BaseWebDriverTest;
 import com.qa.util.LoggerUtil;
+import org.openqa.selenium.Platform;
 
 import java.io.File;
 import java.util.Date;
 
-import org.openqa.selenium.Platform;
-
 public class ExtentManager {
 
-    private static ExtentReports extent;
+    private static ExtentReports extentReport;
     private static Platform platform;
     private static final Date date = new Date();
     private static final String reportFileName =
@@ -26,10 +24,10 @@ public class ExtentManager {
     private static final String macReportFileLoc = macPath + "/" + reportFileName;
 
     public static ExtentReports getInstance() {
-        if (extent == null) {
+        if (extentReport == null) {
             createInstance();
         }
-        return extent;
+        return extentReport;
     } // End of method getInstance
 
     public static ExtentReports createInstance() {
@@ -40,16 +38,16 @@ public class ExtentManager {
         htmlReporter.config().setTheme(Theme.STANDARD);
         htmlReporter.config().setDocumentTitle(fileName);
         htmlReporter.config().setEncoding("utf-8");
-        htmlReporter.config().setReportName(fileName);
+        htmlReporter.config().setReportName("Sample Extent Report");
 
-        extent = new ExtentReports();
-        extent.attachReporter(htmlReporter);
+        extentReport = new ExtentReports();
+        extentReport.attachReporter(htmlReporter);
 
-        extent.setSystemInfo("Automation Tester", "Deepak Rai");
-        extent.setSystemInfo("Organization", "Deepak Automation Labs");
-        extent.setSystemInfo("Build Number", "Deepak 1.0");
+        extentReport.setSystemInfo("Automation Tester", "Deepak Rai");
+        extentReport.setSystemInfo("Organization", "Deepak Automation Labs");
+        extentReport.setSystemInfo("Build Number", "Deepak 1.0");
 
-        return extent;
+        return extentReport;
     } // End of method createInstance
 
     // Select the extent report file location based on platform
@@ -81,12 +79,12 @@ public class ExtentManager {
         File testDirectory = new File(path);
         if (!testDirectory.exists()) {
             if (testDirectory.mkdir()) {
-                LoggerUtil.log("Directory: " + path + " is created!");
+                LoggerUtil.info("Directory: " + path + " is created!");
             } else {
-                LoggerUtil.log("Failed to create directory: " + path);
+                LoggerUtil.info("Failed to create directory: " + path);
             }
         } else {
-            LoggerUtil.log("Directory already exists: " + path);
+            LoggerUtil.info("Directory already exists: " + path);
         }
     } // End of method createReportPath
 

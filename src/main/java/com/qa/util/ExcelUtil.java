@@ -375,7 +375,7 @@ public class ExcelUtil {
                 }
             }
         } catch (Exception e) {
-            LoggerUtil.log(e.getMessage());
+            LoggerUtil.error(e.getMessage());
         }
         return arrayData;
     }

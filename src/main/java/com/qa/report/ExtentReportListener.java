@@ -21,11 +21,11 @@ public class ExtentReportListener extends BaseWebDriverTest implements ITestList
 
   // Extent Report Declarations
   private ExtentReports extent = ExtentManager.createInstance();
-  private ThreadLocal<ExtentTest> test = new ThreadLocal<>();
+  private static ThreadLocal<ExtentTest> extentTestThreadLocal = new ThreadLocal<>();
 
-  public ExtentTest getExtentTest() {
+  public static synchronized ExtentTest getExtentTest() {
     try {
-      return test.get();
+      return extentTestThreadLocal.get();
     } catch (Exception e) {
       return null;
     }
@@ -35,12 +35,12 @@ public class ExtentReportListener extends BaseWebDriverTest implements ITestList
   public void onTestStart(ITestResult result) {
     ExtentTest extentTest =
         extent.createTest(result.getMethod().getMethodName(), result.getMethod().getDescription());
-    test.set(extentTest);
+    extentTestThreadLocal.set(extentTest);
   }
 
   @Override
   public void onTestSuccess(ITestResult result) {
-    test.get().pass("Test Case Passed");
+    extentTestThreadLocal.get().pass("Test Case Passed");
   }
 
   @Override
@@ -65,25 +65,25 @@ public class ExtentReportListener extends BaseWebDriverTest implements ITestList
         "data:image/png;base64,"
             + ((TakesScreenshot) Objects.requireNonNull(driver)).getScreenshotAs(OutputType.BASE64);
     // ExtentReports log and screenshot operations for failed tests.
-    test.get()
+    extentTestThreadLocal.get()
         .log(
             Status.FAIL,
             "Test Failed",
-            test.get()
+                extentTestThreadLocal.get()
                 .addScreenCaptureFromBase64String(base64Screenshot)
                 .getModel()
                 .getMedia()
                 .get(0));
 
     String exceptionMessage = Arrays.toString(result.getThrowable().getStackTrace());
-    test.get()
+    extentTestThreadLocal.get()
         .fail(
             "<details>"
                 + "<summary>"
                 + "<b>"
                 + "<font color="
                 + "red>"
-                + "Exception Occured:Click to see"
+                + "Exception Occurred:Click to see"
                 + "</font>"
                 + "</b>"
                 + "</summary>"
@@ -94,13 +94,13 @@ public class ExtentReportListener extends BaseWebDriverTest implements ITestList
 
     String failureLog = "TEST CASE FAILED";
     Markup markup = MarkupHelper.createLabel(failureLog, ExtentColor.RED);
-    test.get().fail(markup);
+    extentTestThreadLocal.get().fail(markup);
   }
 
   @Override
   public void onTestSkipped(ITestResult result) {
-    test.get().skip(result.getThrowable());
-    test.get().skip("Test Case Skipped");
+    extentTestThreadLocal.get().skip(result.getThrowable());
+    extentTestThreadLocal.get().skip("Test Case Skipped");
   }
 
   @Override
@@ -112,6 +112,6 @@ public class ExtentReportListener extends BaseWebDriverTest implements ITestList
   @Override
   public void onFinish(ITestContext context) {
     extent.flush();
-    test.remove();
+    extentTestThreadLocal.remove();
   }
 } // End of class ExtentTestNGITestListener

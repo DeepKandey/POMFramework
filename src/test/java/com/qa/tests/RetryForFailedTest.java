@@ -19,7 +19,7 @@ public class RetryForFailedTest extends BaseWebDriverTest {
     public void verifyTestIsRetriedWhenFailed() {
         TrainLineSearchHomePage trainLineSearchHomePage = new TrainLineSearchHomePage(getDriver());
 
-        LoggerUtil.log("RetryAnalyzer Test");
+        LoggerUtil.info("RetryAnalyzer Test");
         getDriver().get("https://www.thetrainline.com/");
         trainLineSearchHomePage.enterTextInDepartureStn("London");
         assertTrue(false);

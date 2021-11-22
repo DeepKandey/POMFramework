@@ -1,7 +1,5 @@
 package com.qa.report;
 
-import static com.qa.util.LoggerUtil.log;
-
 import com.qa.base.BaseWebDriverTest;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
@@ -53,7 +51,6 @@ public class AllureReportListener extends BaseWebDriverTest implements ITestList
     Object testClass = iTestResult.getInstance();
     WebDriver driver = ((BaseWebDriverTest) testClass).getDriver();
     if (driver != null) {
-      log("Screenshot captured for test case:" + getTestMethodName(iTestResult));
       saveScreenshotPNG(driver);
     }
     // Save a log on allure.
