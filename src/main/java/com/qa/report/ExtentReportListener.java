@@ -14,7 +14,6 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 public class ExtentReportListener extends BaseWebDriverTest implements ITestListener {
@@ -65,18 +64,21 @@ public class ExtentReportListener extends BaseWebDriverTest implements ITestList
         "data:image/png;base64,"
             + ((TakesScreenshot) Objects.requireNonNull(driver)).getScreenshotAs(OutputType.BASE64);
     // ExtentReports log and screenshot operations for failed tests.
-    extentTestThreadLocal.get()
+    extentTestThreadLocal
+        .get()
         .log(
             Status.FAIL,
             "Test Failed",
-                extentTestThreadLocal.get()
+            extentTestThreadLocal
+                .get()
                 .addScreenCaptureFromBase64String(base64Screenshot)
                 .getModel()
                 .getMedia()
                 .get(0));
 
-    String exceptionMessage = Arrays.toString(result.getThrowable().getStackTrace());
-    extentTestThreadLocal.get()
+    String exceptionMessage = String.valueOf(result.getThrowable());
+    extentTestThreadLocal
+        .get()
         .fail(
             "<details>"
                 + "<summary>"

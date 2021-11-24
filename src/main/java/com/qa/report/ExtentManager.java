@@ -57,17 +57,14 @@ public class ExtentManager {
             case MAC -> {
                 reportFileLocation = macReportFileLoc;
                 createReportPath(macPath);
-                System.out.println("ExtentReport Path for MAC: " + macPath + "\n");
             }
             case WIN10 -> {
                 reportFileLocation = winReportFileLoc;
                 createReportPath(windowsPath);
-                System.out.println("ExtentReport Path for WINDOWS: " + windowsPath + "\n");
             }
             case LINUX -> {
                 reportFileLocation = linuxReportFileLoc;
                 createReportPath(linuxPath);
-                System.out.println("ExtentReport Path for LINUX: " + linuxPath + "\n");
             }
             default -> System.out.println("ExtentReport path has not been set! There is a problem!\n");
         }
@@ -78,13 +75,7 @@ public class ExtentManager {
     private static void createReportPath(String path) {
         File testDirectory = new File(path);
         if (!testDirectory.exists()) {
-            if (testDirectory.mkdir()) {
-                LoggerUtil.info("Directory: " + path + " is created!");
-            } else {
-                LoggerUtil.info("Failed to create directory: " + path);
-            }
-        } else {
-            LoggerUtil.info("Directory already exists: " + path);
+            testDirectory.mkdir() ;
         }
     } // End of method createReportPath
 
