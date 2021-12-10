@@ -21,7 +21,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aspectj.version>1.9.8.RC1</aspectj.version>
         <poi.version>4.1.1</poi.version>
-        <log4j-version>2.14.1</log4j-version>
+        <log4j-version>2.15.0</log4j-version>
         <lombok.version>1.18.22</lombok.version>
         <maven.compiler.release>17</maven.compiler.release>
         <maven.compiler.testRelease>17</maven.compiler.testRelease>
