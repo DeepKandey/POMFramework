@@ -89,7 +89,7 @@ public class BasePage {
   /**
    * {summary Method to scroll to any WebElement}
    *
-   * @param element Webelement
+   * @param element WebElement
    * @author deepak
    */
   protected void scrollToElement(WebElement element) {
@@ -115,14 +115,14 @@ public class BasePage {
   }
 
   protected void waitForElementToBeVisible(By locator) {
-    WebDriverWait wait = new WebDriverWait(driver, longTimeout, POLLING);
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(longTimeout), Duration.ofMillis(POLLING));
     wait.ignoring(NoSuchElementException.class);
     wait.ignoring(ElementClickInterceptedException.class);
     wait.until(ExpectedConditions.elementToBeClickable(locator));
   }
 
   protected void waitForElementToBeVisible(WebElement element) {
-    WebDriverWait wait = new WebDriverWait(driver, longTimeout, POLLING);
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(longTimeout), Duration.ofMillis(POLLING));
     wait.ignoring(NoSuchElementException.class);
     wait.ignoring(ElementClickInterceptedException.class);
     wait.until(ExpectedConditions.elementToBeClickable(element));
