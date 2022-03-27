@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="POMWithThreadLocal suite" parallel="methods"
+<suite name="UI Automation" parallel="methods"
        verbose="2" thread-count="4">
     <listeners>
         <listener class-name="com.qa.util.AnnotationTransformer"/>
-        <listener class-name="com.qa.report.ExtentReportListener"/>
+        <!--<listener class-name="com.qa.report.ExtentReportListener"/>-->
         <listener class-name="com.qa.report.AllureReportListener"/>
     </listeners>
 
@@ -12,12 +12,7 @@
         <classes>
             <class name="com.qa.tests.RetryForFailedTest"/>
             <class name="com.qa.tests.BrokenLinkTest"/>
-            <!--				<methods>-->
-            <!--					<include name="demoTest" />-->
-            <!--					<include name="annotationTest" />-->
-            <!--					<include name="retryTest" />-->
-            <!--				</methods>-->
-
+            <class name="com.qa.tests.DragAndDropTest"/>
         </classes>
     </test> <!-- Default test -->
 
