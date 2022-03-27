@@ -40,8 +40,7 @@ public class SeleniumPracticePage extends BasePage {
     super(driver);
   }
 
-  /** click on DropDownMenuButton */
-  @Step("click on DropDownMenu button")
+  @Step("Click on dropDownMenu button")
   public void clickDropdownMenuButton() {
     waitForElementToBeVisible(dropdownMenuButton);
     elementClick(dropdownMenuButton);
@@ -52,7 +51,7 @@ public class SeleniumPracticePage extends BasePage {
    *
    * @param tutorial tutorial name
    */
-  @Step("click on given tutorial : {0}")
+  @Step("Click on given tutorial : {0}")
   public void clickTutorialLink(String tutorial) {
     for (WebElement webElement : tutorialList) {
       if (webElement.getAttribute("innerHTML").equals(tutorial)) {
@@ -62,7 +61,7 @@ public class SeleniumPracticePage extends BasePage {
     }
   }
 
-  @Step("find broken links count")
+  @Step("Find broken links count")
   public long getBrokenLinks() {
     List<Integer> acceptedStatusCodeList = new ArrayList<>();
 
@@ -97,6 +96,7 @@ public class SeleniumPracticePage extends BasePage {
         .count();
   }
 
+  @Step("Perform Drag and drop")
   public String performDragAndDropColumns() {
     JavascriptExecutor js = (JavascriptExecutor) driver;
     js.executeScript(

@@ -3,6 +3,7 @@ package com.qa.base;
 import static com.google.common.base.Strings.isNullOrEmpty;
 
 import com.google.gson.Gson;
+import com.qa.util.LoggerUtil;
 import com.qa.util.browserRelatedUtils.BrowserConfigUtility;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -47,6 +48,7 @@ public class BaseWebDriverTest {
     protected Gson gson = new Gson();
 
     protected ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
+    protected LoggerUtil logger = new LoggerUtil(BaseWebDriverTest.class);
 
     public WebDriver getDriver() {
         return driverThreadLocal.get();
@@ -121,6 +123,7 @@ public class BaseWebDriverTest {
         }
         driverThreadLocal.set(driver);
         browserConfigString = operatingSystem + "_" + browser + "_" + browserVersion;
+        logger.info(browserConfigString);
     }
 
     protected void createBrowserStackDriver(ITestContext testContext) throws IOException, ParseException {
@@ -241,6 +244,7 @@ public class BaseWebDriverTest {
             }
             browserConfigString = operatingSys + "_" + browser + "_" + browserVersion;
         }
+        logger.info(browserConfigString);
     }
 
     @AfterMethod

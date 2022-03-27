@@ -11,15 +11,16 @@ import java.io.IOException;
 public class JsonUtil {
 
   public static JSONObject getTestClassJsonObject(String filePath) {
+    LoggerUtil loggerUtil = new LoggerUtil(JsonUtil.class);
     try {
       JSONParser parser = new JSONParser();
       return (JSONObject) parser.parse(new FileReader(filePath));
     } catch (FileNotFoundException e) {
-      LoggerUtil.error("JSON file not found at location" + filePath);
+      loggerUtil.error("JSON file not found at location" + filePath);
     } catch (IOException e) {
-      LoggerUtil.error("Unable to find json file: " + filePath);
+      loggerUtil.error("Unable to find json file: " + filePath);
     } catch (ParseException e) {
-      LoggerUtil.error("Unable to parse json file: " + filePath);
+      loggerUtil.error("Unable to parse json file: " + filePath);
     }
     return null;
   }

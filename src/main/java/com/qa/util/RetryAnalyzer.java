@@ -1,20 +1,17 @@
 package com.qa.util;
 
-import com.aventstack.extentreports.Status;
 import com.qa.base.BaseWebDriverTest;
-import com.qa.report.ExtentReportListener;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
-import java.util.Objects;
-
 public class RetryAnalyzer implements IRetryAnalyzer {
 
   private static final int MAX_RETRY_COUNT = 2;
   private int count = MAX_RETRY_COUNT;
+  LoggerUtil loggerUtil = new LoggerUtil(RetryAnalyzer.class);
 
   /*
    * This method decides how many times a test needs to be rerun. TestNg will call
@@ -30,7 +27,7 @@ public class RetryAnalyzer implements IRetryAnalyzer {
   public boolean retry(ITestResult result) {
     boolean retryAgain = false;
     if (count > 0) {
-      LoggerUtil.info(
+      loggerUtil.info(
           "Going to retry test case: "
               + result.getMethod()
               + ", "
@@ -40,7 +37,7 @@ public class RetryAnalyzer implements IRetryAnalyzer {
       retryAgain = true;
       --count;
       result.setStatus(ITestResult.FAILURE);
-      LoggerUtil.info(result.getInstanceName());
+      loggerUtil.info(result.getInstanceName());
     }
     return retryAgain;
   }
@@ -50,14 +47,14 @@ public class RetryAnalyzer implements IRetryAnalyzer {
     WebDriver webDriver = ((BaseWebDriverTest) testClass).getDriver();
     String base64Screenshot =
         "data:image/png;base64," + ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BASE64);
-    Objects.requireNonNull(ExtentReportListener.getExtentTest())
-        .log(
-            Status.FAIL,
-            "Test Failed",
-            ExtentReportListener.getExtentTest()
-                .addScreenCaptureFromBase64String(base64Screenshot)
-                .getModel()
-                .getMedia()
-                .get(0));
+//    Objects.requireNonNull(ExtentReportListener.getExtentTest())
+//        .log(
+//            Status.FAIL,
+//            "Test Failed",
+//            ExtentReportListener.getExtentTest()
+//                .addScreenCaptureFromBase64String(base64Screenshot)
+//                .getModel()
+//                .getMedia()
+//                .get(0));
   }
 }

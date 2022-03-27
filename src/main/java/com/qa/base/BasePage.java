@@ -19,6 +19,7 @@ public class BasePage {
   private int longTimeout = 60;
   private WebDriverWait shortWait;
   private WebDriverWait longWait;
+  private LoggerUtil loggerUtil;
 
   public BasePage(WebDriver driver) {
     this.driver = driver;
@@ -26,6 +27,7 @@ public class BasePage {
         new WebDriverWait(driver, Duration.ofSeconds(shortTimeout), Duration.ofMillis(POLLING));
     longWait =
         new WebDriverWait(driver, Duration.ofSeconds(longTimeout), Duration.ofMillis(POLLING));
+    loggerUtil = new LoggerUtil(BasePage.class);
     PageFactory.initElements(new AjaxElementLocatorFactory(driver, shortTimeout), this);
   }
 
@@ -81,7 +83,7 @@ public class BasePage {
     try {
       actions.moveToElement(element).click().build().perform();
     } catch (Exception e1) {
-      LoggerUtil.error("Failed to click element: " + element);
+      loggerUtil.error("Failed to click element: " + element);
       e1.printStackTrace();
     }
   }
@@ -115,14 +117,16 @@ public class BasePage {
   }
 
   protected void waitForElementToBeVisible(By locator) {
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(longTimeout), Duration.ofMillis(POLLING));
+    WebDriverWait wait =
+        new WebDriverWait(driver, Duration.ofSeconds(longTimeout), Duration.ofMillis(POLLING));
     wait.ignoring(NoSuchElementException.class);
     wait.ignoring(ElementClickInterceptedException.class);
     wait.until(ExpectedConditions.elementToBeClickable(locator));
   }
 
   protected void waitForElementToBeVisible(WebElement element) {
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(longTimeout), Duration.ofMillis(POLLING));
+    WebDriverWait wait =
+        new WebDriverWait(driver, Duration.ofSeconds(longTimeout), Duration.ofMillis(POLLING));
     wait.ignoring(NoSuchElementException.class);
     wait.ignoring(ElementClickInterceptedException.class);
     wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -144,7 +148,7 @@ public class BasePage {
       Process process = new ProcessBuilder("tzutil.exe", "/s", timeZone).start();
       return process.isAlive();
     } catch (IOException e) {
-      LoggerUtil.error("Failed to set timezone");
+      loggerUtil.error("Failed to set timezone");
       e.printStackTrace();
       return false;
     }

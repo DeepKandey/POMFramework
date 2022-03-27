@@ -1,54 +1,42 @@
 /* */
 package com.qa.util;
 
-import com.aventstack.extentreports.Status;
-import com.qa.report.AllureReportListener;
-import com.qa.report.ExtentReportListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-/** @author Deepak Rai */
+/**
+ * @author Deepak Rai
+ */
 public class LoggerUtil {
 
-  // Initialize Log4j instance
-  private static Logger logger = LogManager.getLogger(LoggerUtil.class);
+  private final Logger logger;
 
-  private LoggerUtil() {}
+  public LoggerUtil(Class className) {
+    logger = LogManager.getLogger(className);
+  }
 
-  // Info Level Logs
-  public static void info(String message) {
+  public void info(String message) {
     logger.info(message);
-    ExtentReportListener.getExtentTest().log(Status.INFO, message);
-    AllureReportListener.saveTextLog(message);
+    // ExtentReportListener.getExtentTest().log(Status.INFO, message);
   }
-  // Warn Level Logs
-  public static void warn(String message) {
+
+  public void warn(String message) {
     logger.warn(message);
-    ExtentReportListener.getExtentTest().log(Status.WARNING, message);
+    // ExtentReportListener.getExtentTest().log(Status.WARNING, message);
   }
-  // Error Level Logs
-  public static void error(String message) {
+
+  public void error(String message) {
     logger.error(message);
-    ExtentReportListener.getExtentTest().log(Status.FAIL, message);
+    // ExtentReportListener.getExtentTest().log(Status.FAIL, message);
   }
-  // Fatal Level Logs
-  public static void fatal(String message) {
-    LoggerUtil.fatal(message);
-    ExtentReportListener.getExtentTest().log(Status.WARNING, message);
+
+  public void fatal(String message) {
+    logger.fatal(message);
+    // ExtentReportListener.getExtentTest().log(Status.WARNING, message);
   }
-  // Debug Level Logs
-  public static void debug(String message) {
-    LoggerUtil.debug(message);
-    ExtentReportListener.getExtentTest().log(Status.INFO, message);
+
+  public void debug(String message) {
+    logger.debug(message);
+    // ExtentReportListener.getExtentTest().log(Status.INFO, message);
   }
-  //    /**
-  //     * {@summary this method logs messages on console, Allure Report and Extent Report}
-  //     *
-  //     * @param message logMessage
-  //     * @author deepak
-  //     */
-  //    public static void log(String message) {
-  //        getLogger().info(message);
-  //        AllureReportListener.saveTextLog(message);
-  //    }
 } // end of class LoggerUtil

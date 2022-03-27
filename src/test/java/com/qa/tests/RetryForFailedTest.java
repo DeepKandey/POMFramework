@@ -14,12 +14,12 @@ public class RetryForFailedTest extends BaseWebDriverTest {
     @Severity(SeverityLevel.MINOR)
     @Description("Description of the test case - retryTest")
     @Story("Test case written for Story - retryTest")
-    @Step("Step at test Body level - retryTest")
     @Link("https://docs.qameta.io/allure/")
     public void verifyTestIsRetriedWhenFailed() {
         TrainLineSearchHomePage trainLineSearchHomePage = new TrainLineSearchHomePage(getDriver());
+        LoggerUtil loggerUtil = new LoggerUtil(TrainLineSearchHomePage.class);
 
-        LoggerUtil.info("RetryAnalyzer Test");
+        loggerUtil.info("RetryAnalyzer Test");
         getDriver().get("https://www.thetrainline.com/");
         trainLineSearchHomePage.enterTextInDepartureStn("London");
         assertTrue(false);
