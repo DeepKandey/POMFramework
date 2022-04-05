@@ -17,19 +17,19 @@ public class AllureReportListener extends BaseWebDriverTest implements ITestList
 
   // Text attachments for Allure
   @Attachment(value = "{0}", type = "text/plain")
-  public static String saveTextLog(String message) {
+  private static String saveTextLog(String message) {
     return message;
   }
 
   // HTML attachments for Allure
   @Attachment(value = "{0}", type = "text/html")
-  public static String attachHtml(String html) {
+  private static String attachHtml(String html) {
     return html;
   }
 
   // Image attachment for Allure
   @Attachment(value = "Page screenshot", type = "image/png")
-  public byte[] saveScreenshotPNG(WebDriver driver) {
+  private byte[] saveScreenshotPNG(WebDriver driver) {
     return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
   }
 

@@ -60,6 +60,7 @@ local.properties
 ##############################
 target/allure-results/
 src/main/java/com/qa/report/screenshots/
+.allure
 
 ##############################
 ## Intellij
@@ -71,4 +72,13 @@ src/main/java/com/qa/report/screenshots/
 ## OS X
 ##############################
 .DS_Store
-© 2020 GitHub, Inc.
+
+##############################
+## Log4j2
+##############################
+src/test/resources/log4j2-application*.log
+
+##############################
+## driver binaries
+##############################
+webdriver
