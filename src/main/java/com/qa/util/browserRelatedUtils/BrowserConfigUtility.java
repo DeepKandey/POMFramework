@@ -93,8 +93,6 @@ public class BrowserConfigUtility {
         switch (browserType.toUpperCase()) {
             case "FIREFOX" -> {
                 options = new FirefoxOptions();
-                extension = getSpecialDriverExtension();
-                System.setProperty("webdriver.gecko.driver", currentDirectory + "/webdriver/geckodriver" + extension);
                 it = getBrowserOptionsMap().entrySet().iterator();
                 while (it.hasNext()) {
                     Map.Entry pair = (Map.Entry) it.next();
@@ -103,8 +101,6 @@ public class BrowserConfigUtility {
             }
             case "CHROME" -> {
                 options = new ChromeOptions();
-                extension = getSpecialDriverExtension();
-                System.setProperty("webdriver.chrome.driver", currentDirectory + "/webdriver/chromedriver" + extension);
                 it = getBrowserOptionsMap().entrySet().iterator();
                 while (it.hasNext()) {
                     Map.Entry pair = (Map.Entry) it.next();
@@ -118,7 +114,6 @@ public class BrowserConfigUtility {
             }
             case "SAFARI" -> {
                 options = new SafariOptions();
-                extension = getSpecialDriverExtension();
                 it = getBrowserOptionsMap().entrySet().iterator();
                 while (it.hasNext()) {
                     Map.Entry pair = (Map.Entry) it.next();
@@ -127,13 +122,10 @@ public class BrowserConfigUtility {
             }
             case "Edge" -> {
                 options = new EdgeOptions();
-                extension = getSpecialDriverExtension();
-                System.setProperty("webdriver.edge.driver", currentDirectory + "/webdriver/msedgedriver" + extension);
             }
             case "IE" -> {
                 options = new InternetExplorerOptions();
-                extension = getSpecialDriverExtension();
-                System.setProperty("webdriver.ie.driver", currentDirectory + "/webdriver/IEDriverServer" + extension);
+//
                 it = getBrowserOptionsMap().entrySet().iterator();
                 while (it.hasNext()) {
                     Map.Entry pair = (Map.Entry) it.next();
@@ -153,10 +145,4 @@ public class BrowserConfigUtility {
         return browserVersion;
     }
 
-    public static String getSpecialDriverExtension() {
-        String operatingSystem = System.getProperty("os.name").toLowerCase();
-        if (operatingSystem.contains("win")) {
-            return ".exe";
-        } else return "";
-    }
 }
