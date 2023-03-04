@@ -3,9 +3,9 @@
 <suite name="UI Automation" parallel="classes"
        verbose="2" thread-count="4">
     <listeners>
-        <listener class-name="com.qa.util.AnnotationTransformer"/>
-        <!--<listener class-name="com.qa.report.ExtentReportListener"/>-->
-        <listener class-name="com.qa.report.AllureReportListener"/>
+<!--        <listener class-name="com.qa.util.AnnotationTransformer"/>-->
+        <listener class-name="com.qa.report.ExtentReportListener"/>
+<!--        <listener class-name="com.qa.report.AllureReportListener"/>-->
     </listeners>
 
     <test name="Test">
