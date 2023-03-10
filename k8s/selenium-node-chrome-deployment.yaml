@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selenium-node-chrome
+  labels:
+    app: selenium-node-chrome
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: selenium-node-chrome
+  template:
+    metadata:
+      labels:
+        app: selenium-node-chrome
+    spec:
+      volumes:
+        - name: dshm
+          emptyDir:
+            medium: Memory
+      containers:
+        - name: selenium-node-chrome
+          image: selenium/node-chrome:4.8.1-20230221
+          ports:
+            - containerPort: 5555
+          lifecycle:
+            preStop:
+              exec:
+                command: [ "/bin/sh", "-c", "curl --request POST 'localhost:5555/se/grid/node/drain' --header 'X-REGISTRATION-SECRET;'; tail --pid=$(pgrep -f '[n]ode --bind-host false --config /opt/selenium/config.toml') -f /dev/null; sleep 30s" ]
+          volumeMounts:
+            - name: dshm
+              mountPath: /dev/shm
+          env:
+            - name: SE_EVENT_BUS_HOST
+              value: "selenium-hub"
+            - name: SE_EVENT_BUS_SUBSCRIBE_PORT
+              value: "4443"
+            - name: SE_EVENT_BUS_PUBLISH_PORT
+              value: "4442"
+          resources:
+            limits:
+              memory: "1000Mi"
+              cpu: ".5"
+      terminationGracePeriodSeconds: 3600 # Time to wait before moving from a TERM signal to the pod's main process to a KILL signal.
