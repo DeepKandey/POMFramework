@@ -13,6 +13,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: selenium-hub-deployment
+                name: selenium-hub
                 port:
                   number: 4444
