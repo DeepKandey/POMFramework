@@ -20,7 +20,7 @@ spec:
             medium: Memory
       containers:
         - name: selenium-node-chrome
-          image: selenium/node-chrome:4.8.1-20230221
+          image: selenium/node-chrome:4.9.0-20230421
           ports:
             - containerPort: 5555
           lifecycle:
