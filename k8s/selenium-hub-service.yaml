@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: selenium-hub
+  labels:
+    app: selenium-hub
+spec:
+  ports:
+    - port: 4444
+      targetPort: 4444
+      nodePort: 31321
+      name: port0
+    - port: 4443
+      targetPort: 4443
+      nodePort: 31322
+      name: port1
+    - port: 4442
+      targetPort: 4442
+      nodePort: 31323
+      name: port2
+  selector:
+    app: selenium-hub
+  type: NodePort
+  sessionAffinity: None
+
+  #4444:31321/TCP,4443:30298/TCP,4442:31654/TCP
