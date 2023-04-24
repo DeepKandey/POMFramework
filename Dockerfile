@@ -3,7 +3,8 @@ FROM openjdk:17-jdk-alpine3.14
 #workspace
 WORKDIR /usr/share/UITestAutomationFramework
 
-#ADD .jar under target from host into this image
+# jar files under target folder can be generated using maven command - mvn package -DskipTests=true
+#ADD .jar under target from host into this image 
 ADD target/POMBasedFramework.jar          POMBasedFramework.jar
 ADD target/POMBasedFramework-tests.jar    POMBasedFramework-tests.jar
 ADD target/libs                            libs
