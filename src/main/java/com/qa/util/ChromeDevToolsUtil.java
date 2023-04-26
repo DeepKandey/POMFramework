@@ -6,13 +6,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chromium.ChromiumDriver;
 import org.openqa.selenium.devtools.DevTools;
 
-import org.openqa.selenium.devtools.v108.emulation.Emulation;
-import org.openqa.selenium.devtools.v108.log.Log;
-import org.openqa.selenium.devtools.v108.network.Network;
-import org.openqa.selenium.devtools.v108.network.model.ConnectionType;
-import org.openqa.selenium.devtools.v108.network.model.Headers;
-import org.openqa.selenium.devtools.v108.performance.Performance;
-import org.openqa.selenium.devtools.v108.performance.model.Metric;
+
+import org.openqa.selenium.devtools.v112.emulation.Emulation;
+import org.openqa.selenium.devtools.v112.log.Log;
+import org.openqa.selenium.devtools.v112.network.Network;
+import org.openqa.selenium.devtools.v112.network.model.ConnectionType;
+import org.openqa.selenium.devtools.v112.network.model.Headers;
+import org.openqa.selenium.devtools.v112.performance.Performance;
+import org.openqa.selenium.devtools.v112.performance.model.Metric;
 import org.openqa.selenium.edge.EdgeDriver;
 
 import java.util.*;
@@ -208,7 +209,7 @@ public class ChromeDevToolsUtil {
     public void getPerformanceMetrics() {
         devTools.send(Performance.enable(Optional.empty()));
         List<Metric> metrics = devTools.send(Performance.getMetrics());
-        List<String> metricNames = metrics.stream().map(o -> o.getName()).collect(Collectors.toList());
+        List<String> metricNames = metrics.stream().map(Metric::getName).toList();
 
         devTools.send(Performance.disable());
 
