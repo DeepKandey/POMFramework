@@ -1,9 +1,12 @@
+# Generate jar files under target folder using maven command - mvn package -DskipTests=true
+# Then build the image using docker command - docker build -t deepkandey/uitestautomation:latest .
+
 FROM openjdk:17-jdk-alpine3.14
 
 #workspace
 WORKDIR /usr/share/UITestAutomationFramework
 
-#ADD .jar under target from host into this image
+#ADD .jar under target from host into this image 
 ADD target/POMBasedFramework.jar          POMBasedFramework.jar
 ADD target/POMBasedFramework-tests.jar    POMBasedFramework-tests.jar
 ADD target/libs                            libs
