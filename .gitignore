@@ -38,7 +38,7 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
-
+*maven.properties
 ##############################
 ## Eclipse
 ##############################
@@ -56,12 +56,13 @@ local.properties
 .loadpath
 .factorypath
 ##############################
-## Allure TestNG
+## Allure - Extent
 ##############################
 target/allure-results/
+allure-results/
 src/main/java/com/qa/report/screenshots/
 .allure
-
+test-result-extent/
 ##############################
 ## Intellij
 ##############################
