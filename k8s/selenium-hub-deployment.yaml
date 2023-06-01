@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: selenium-hub
+  namespace: default
   labels:
     app: selenium-hub
 spec:

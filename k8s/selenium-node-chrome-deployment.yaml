@@ -1,9 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: selenium-node-chrome
+  name: node-chrome-deployment
+  namespace: default
   labels:
-    app: selenium-node-chrome
+    app: node-chrome-deployment
 spec:
   replicas: 1
   selector:
@@ -19,7 +20,7 @@ spec:
           emptyDir:
             medium: Memory
       containers:
-        - name: selenium-node-chrome
+        - name: node-chrome-pod
           image: selenium/node-chrome:4.9.1-20230508
           ports:
             - containerPort: 5555

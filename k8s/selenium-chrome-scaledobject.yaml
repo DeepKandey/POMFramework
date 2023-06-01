@@ -9,10 +9,10 @@ spec:
   minReplicaCount: 0
   maxReplicaCount: 8
   scaleTargetRef:
-    name: selenium-node-chrome
+    name:  node-chrome-deployment
   triggers:
     - type: selenium-grid
       metadata:
-        url: 'http://selenium-hub:4444/graphql'
+        url: 'http://selenium-hub.default:4444/graphql'
         browserName: 'chrome'
         unsafeSsl : 'true'
