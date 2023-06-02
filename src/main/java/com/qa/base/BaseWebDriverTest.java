@@ -95,8 +95,9 @@ public class BaseWebDriverTest {
                 ChromeOptions chromeOptions = (ChromeOptions) getBrowserOptionsAndSetVersion(browser);
                 if(!seleniumDocker)
                 driver = new ChromeDriver(chromeOptions);
-                else
-                driver = new RemoteWebDriver(new URL("http://"+host+":4444/"),chromeOptions);
+                else {
+                    driver = new RemoteWebDriver(new URL("http://"+host+":4444/"),chromeOptions);
+                }
             }
             case "FIREFOX" -> {
                 FirefoxOptions firefoxOptions = (FirefoxOptions) getBrowserOptionsAndSetVersion(browser);
@@ -158,6 +159,7 @@ public class BaseWebDriverTest {
                 throw new IllegalStateException("Unexpected value");
         };
 
+        assert jsonInputFile != null;
         BSConfig = (JSONObject) jsonParser.parse(new InputStreamReader(jsonInputFile, StandardCharsets.UTF_8));
         JSONArray environments = (JSONArray) BSConfig.get("environments");
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -182,11 +184,11 @@ public class BaseWebDriverTest {
         }
 
         Map<String, String> envCapabilities = (Map<String, String>) environments.get(Integer.parseInt(browserStackEnvironment));
-        Iterator iterator = envCapabilities.entrySet().iterator();
+        Iterator<Map.Entry<String, String>> iterator = envCapabilities.entrySet().iterator();
         while (iterator.hasNext()) {
-            Map.Entry pair = (Map.Entry) iterator.next();
-            capabilities.setCapability(pair.getKey().toString(), pair.getValue().toString());
-            if (pair.getKey().toString().equalsIgnoreCase("os")) {
+            Map.Entry<String, String> pair = iterator.next();
+            capabilities.setCapability(pair.getKey(), pair.getValue());
+            if (pair.getKey().equalsIgnoreCase("os")) {
                 desktopSession = true;
             }
         }
@@ -194,9 +196,9 @@ public class BaseWebDriverTest {
         Map<String, String> commonCapabilities = (Map<String, String>) BSConfig.get("capabilities");
         iterator = commonCapabilities.entrySet().iterator();
         while (iterator.hasNext()) {
-            Map.Entry pair = (Map.Entry) iterator.next();
-            if (capabilities.getCapability(pair.getKey().toString()) == null) {
-                capabilities.setCapability(pair.getKey().toString(), pair.getValue().toString());
+            Map.Entry<String, String> pair = iterator.next();
+            if (capabilities.getCapability(pair.getKey()) == null) {
+                capabilities.setCapability(pair.getKey(), pair.getValue());
             }
         }
 
