@@ -22,11 +22,14 @@ spec:
     spec:
       containers:
         - name: selenium-hub
-          image: selenium/hub:4.9.1-20230508
+          image: selenium/hub:4.10.0-20230607
           ports:
             - containerPort: 4444
             - containerPort: 4443
             - containerPort: 4442
+#          env:
+#            - name: SE_OPTS
+#              value: "--log-level FINE"
           resources:
             limits:
               memory: "1000Mi"

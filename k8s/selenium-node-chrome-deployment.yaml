@@ -21,7 +21,7 @@ spec:
             medium: Memory
       containers:
         - name: node-chrome-pod
-          image: selenium/node-chrome:4.9.1-20230508
+          image: selenium/node-chrome:4.10.0-20230607
           ports:
             - containerPort: 5555
           lifecycle:
@@ -38,8 +38,18 @@ spec:
               value: "4443"
             - name: SE_EVENT_BUS_PUBLISH_PORT
               value: "4442"
+            - name: SE_VNC_NO_PASSWORD
+              value: "1"
+#            - name: SE_NODE_MAX_INSTANCES
+#              value: "2"
+#            - name: SE_NODE_MAX_SESSIONS   # MaxInstances limits the number of tests that can be executed in parallel with a specific browser on the respective node
+#              value: "2"
+#            - name: SE_NODE_OVERRIDE_MAX_SESSIONS  #MaxSession, however, limits the number of tests that can be executed in parallel on a node, regardless of which browser they use
+#              value: "true"
           resources:
             limits:
               memory: "1000Mi"
               cpu: ".5"
       terminationGracePeriodSeconds: 3600 # Time to wait before moving from a TERM signal to the pod's main process to a KILL signal.
+
+      # MaxInstances applies to a specific browser, while MaxSessions applies to the entire node.
