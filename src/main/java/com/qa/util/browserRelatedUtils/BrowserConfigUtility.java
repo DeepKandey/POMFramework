@@ -12,23 +12,20 @@ import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.safari.SafariOptions;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
 
 public class BrowserConfigUtility {
 
     private String browserVersion;
-    private HashMap<String, String> browserOptionsMap;
-    private String browserType;
+    private final HashMap<String, String> browserOptionsMap;
+    private final String browserType;
     private JSONObject localConfig;
-    private HashMap<String, HashMap<String, String>> experimentalOptions;
-
-    String extension = "";
-    String currentDirectory = System.getProperty("user.dir");
+    private final HashMap<String, HashMap<String, String>> experimentalOptions;
 
     public BrowserConfigUtility(String browser) throws IOException, ParseException {
         browserType = browser;
@@ -50,9 +47,9 @@ public class BrowserConfigUtility {
     private void setLocalConfig() throws IOException, ParseException {
         JSONParser parser = new JSONParser();
         localConfig = (JSONObject)
-                parser.parse(new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/localBrowserConfig.json"))));
+                parser.parse(new BufferedReader(new InputStreamReader(Objects.requireNonNull(getClass().getResourceAsStream("/localBrowserConfig.json")))));
     }
-
+    @SuppressWarnings("unchecked")
     private void parseBrowserOptionsAndVersion() {
         JSONArray configBrowsers = (JSONArray) localConfig.get("browsers");
 
@@ -89,22 +86,23 @@ public class BrowserConfigUtility {
 
     public MutableCapabilities getOptions() {
         MutableCapabilities options = null;
-        Iterator it;
+        Iterator<Map.Entry<String, String>> it;
+
         switch (browserType.toUpperCase()) {
             case "FIREFOX" -> {
                 options = new FirefoxOptions();
                 it = getBrowserOptionsMap().entrySet().iterator();
                 while (it.hasNext()) {
-                    Map.Entry pair = (Map.Entry) it.next();
-                    ((FirefoxOptions) options).addArguments(pair.getValue().toString());
+                    Map.Entry<String, String> pair = it.next();
+                    ((FirefoxOptions) options).addArguments(pair.getValue());
                 }
             }
             case "CHROME" -> {
                 options = new ChromeOptions();
                 it = getBrowserOptionsMap().entrySet().iterator();
                 while (it.hasNext()) {
-                    Map.Entry pair = (Map.Entry) it.next();
-                    ((ChromeOptions) options).addArguments(pair.getValue().toString());
+                    Map.Entry<String, String> pair = it.next();
+                    ((ChromeOptions) options).addArguments(pair.getValue());
                 }
 
                 Iterator<Map.Entry<String, HashMap<String, String>>> iterator = getExperimentalOptions().entrySet().iterator();
@@ -116,24 +114,21 @@ public class BrowserConfigUtility {
                 options = new SafariOptions();
                 it = getBrowserOptionsMap().entrySet().iterator();
                 while (it.hasNext()) {
-                    Map.Entry pair = (Map.Entry) it.next();
-                    options.setCapability(pair.getKey().toString(), pair.getValue().toString());
+                    Map.Entry<String, String> pair = it.next();
+                    options.setCapability(pair.getKey(), pair.getValue());
                 }
             }
-            case "Edge" -> {
-                options = new EdgeOptions();
-            }
+            case "EDGE" -> options = new EdgeOptions();
             case "IE" -> {
                 options = new InternetExplorerOptions();
-//
                 it = getBrowserOptionsMap().entrySet().iterator();
                 while (it.hasNext()) {
-                    Map.Entry pair = (Map.Entry) it.next();
-                    if (pair.getValue().toString().equalsIgnoreCase("true")
-                            || pair.getValue().toString().equalsIgnoreCase("false")) {
-                        options.setCapability(pair.getKey().toString(), Boolean.parseBoolean(pair.getValue().toString()));
+                    Map.Entry<String, String> pair = it.next();
+                    if (pair.getValue().equalsIgnoreCase("true")
+                            || pair.getValue().equalsIgnoreCase("false")) {
+                        options.setCapability(pair.getKey(), Boolean.parseBoolean(pair.getValue()));
                     } else {
-                        options.setCapability(pair.getKey().toString(), pair.getValue().toString());
+                        options.setCapability(pair.getKey(), pair.getValue());
                     }
                 }
             }

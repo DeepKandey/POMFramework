@@ -39,23 +39,24 @@ services:
       - DISPLAY_CONTAINER_NAME=chrome
       - FILE_NAME=chrome_video.mp4
 
-  #  edge:
-  #    image: selenium/node-edge:4.10.0-20230607
-  #    shm_size: 2gb
-  #    depends_on:
-  #      - selenium-hub
-  #    environment:
-  #      - SE_EVENT_BUS_HOST=selenium-hub
-  #      - SE_EVENT_BUS_PUBLISH_PORT=4442
-  #      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-  #      - SE_NODE_GRID_URL=http://localhost:4444
-  #      - SE_NODE_MAX_INSTANCES=3
-  #      - SE_NODE_MAX_SESSIONS=3
-  #      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
-  #      - SE_ENABLE_TRACING=true
-  #      - JAVA_OPTS=-Dotel.traces.exporter=jaeger -Dotel.exporter.jaeger.endpoint=http://jaegar:14250 -Dotel.resource.attributes=service.name=selenium-node-chrome
-  #    ports:
-  #      - "6901:5900"
+  edge:
+    image: selenium/node-edge:4.10.0-20230607
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_GRID_URL=http://localhost:4444
+      - SE_NODE_MAX_INSTANCES=3
+      - SE_NODE_MAX_SESSIONS=3
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+      - SE_ENABLE_TRACING=true
+      - JAVA_OPTS=-Dotel.traces.exporter=jaeger -Dotel.exporter.jaeger.endpoint=http://jaegar:14250 -Dotel.resource.attributes=service.name=selenium-node-chrome
+      - SE_VNC_NO_PASSWORD=1
+    ports:
+        - "6901:5900"
 
   firefox:
     image: selenium/node-firefox:4.10.0-20230607

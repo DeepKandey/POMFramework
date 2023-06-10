@@ -12,7 +12,7 @@ public class LoggerUtil {
 
   private final Logger logger;
 
-  public LoggerUtil(Class className) {
+  public LoggerUtil(Class<?> className) {
     logger = LogManager.getLogger(className);
   }
 
